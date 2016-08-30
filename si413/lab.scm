@@ -98,3 +98,10 @@
           (else (+ (fib (- n 1)) (fib (- n 2))))))
 
 ;14
+(define (split-inches i)
+    (cond ((< i 12) (display (cons 0 i)))
+          (else (display (cons (/ (- i (remainder i 12)) 12) (remainder i 12))))
+    )
+  )
+
+;15
