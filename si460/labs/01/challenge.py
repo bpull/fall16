@@ -13,9 +13,9 @@ class census:
                     num = num.strip()
                     word = wholeLine[226:316]
                     word = word.strip()
-                    lon = wholeLine[337:347]
+                    lon = wholeLine[336:347]
                     lon = lon.strip()
-                    lat = wholeLine[348:362]
+                    lat = wholeLine[347:362]
                     lat = lat.strip()
 
                     test = []
@@ -57,18 +57,17 @@ class census:
         '''This will write the district data from the census to a proper KML file to view on maps'''
         filename = str(filename)
         with open(filename,'w') as f:
-            f.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>")
-            f.write("<kml xmlns=\"http://www.opengis.net/kml/2.2\">")
-            f.write("<Document>")
+            f.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n")
+            f.write("<kml xmlns=\"http://www.opengis.net/kml/2.2\">\n")
+            f.write("  <Document>\n")
 
             for item in self.data:
-                f.write("<Placement>")
-                f.write("<name>"+item[0]+"</name>")
-                f.write("<LookAt>")
-                f.write("<longitude>"+item[2]+"</longitude>")
-                f.write("<latitude>"+item[3]+"</latitude>")
-                f.write("</LookAt>")
-                f.write("</Placement>")
+                f.write("    <Placemark>\n")
+                f.write("      <name>"+item[0]+"</name>\n")
+                f.write("      <Point>\n")
+                f.write("        <coordinates>"+str(item[3])+","+str(item[2])+",0</coordinates>\n")
+                f.write("      </Point>\n")
+                f.write("    </Placemark>\n")
 
-            f.write("</Document>")
-            f.write("</kml>")
+            f.write("  </Document>\n")
+            f.write("</kml>\n")
