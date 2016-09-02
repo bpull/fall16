@@ -17,10 +17,10 @@ class Vector3D:
         return Vector3D(self.v + other.v)
     def __sub__(self, other):
         return Vector3D(self.v - other.v)
-    def __mul__(self, other):
-        return Vector3D(self.v * other.v)
+    def __mul__(self, c):
+        return Vector3D(self.v * c)
     def __truediv__(self, other):
-        return Vector3D(np.divide(self.v, other.v))
+        return Vector3D(np.divide(self.v, float(other)))
     def copy(self):
         return Vector3D(np.copy(self.v))
     def magnitude(self):
@@ -51,7 +51,7 @@ class Point3D:
         elif args and len(args) == 2:
             self.p = np.array([val,args[0],args[1]], dtype='float64')
         else:
-            raise Exception("Invalid Arguments to Vector3D")
+            raise Exception("Invalid Arguments to Point3D")
     def __repr__(self):
         return str(self.p)
     def __add__(self, other):
@@ -69,7 +69,24 @@ class Point3D:
     def copy(self):
         return Point3D(np.copy(self.p))
     def __mul__(self, other):
-        return Point3D(self.p * other.p)
+        return Point3D(self.p * other)
+
+
+class Normal:
+
+    def __init__(self, val, *args):
+        if type(val) is np.ndarray:
+            self.n = val
+        elif args and len(args) == 2:
+            self.n = np.array([val,args[0],args[1]], dtype='float64')
+        else:
+            raise Exception("Invalid Arguments to Normal")
+    def __neg__(self):
+        return Normal(np.negative(self.n))
+    def __add__(self, other):
+        return Normal(self.n + other.n)
+    def __mul__(self, c):
+        return Normal(self.n * float(c))
 
 # We should always have debugging in our libraries
 # that run if the file is called from the command line
@@ -77,6 +94,8 @@ class Point3D:
 if __name__ == '__main__':
     u = Vector3D(1,2,3)
     v = Vector3D(4,5,6)
+    cint = float(10)
+
     print("Testing Printing...")
     if str(u) != '[ 1.  2.  3.]':
         raise Exception("Printing Error!")
@@ -89,14 +108,14 @@ if __name__ == '__main__':
     if str(d) != '[ 3.  3.  3.]':
         raise Exception("Subtraction Error!")
     print("Testing Multiplication...")
-    e = u * v
-    if str(e) != '[  4.  10.  18.]':
+    e = u * cint
+    if str(e) != '[ 10.  20.  30.]':
         print (str(e))
         raise Exception("Multiplication Error!")
     print("Testing Division...")
     w = Vector3D(4,5,6)
-    f = v / w
-    if str(f) != '[ 1.  1.  1.]':
+    f = v / c
+    if str(f) != '[ .1.  .2.  .3.]':
         print (str(f))
         raise Exception("Division Error!")
     print("Testing Equality...")
@@ -145,7 +164,7 @@ if __name__ == '__main__':
     if str(dp) != '[ 3.  3.  3.]':
         raise Exception("Subtraction Error!")
     print("Testing Multiplication...")
-    ep = up * vp
+    ep = up * c
     if str(ep) != '[  4.  10.  18.]':
         raise Exception("Multiplication Error!")
     print("Testing Equality...")
