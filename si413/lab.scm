@@ -75,21 +75,17 @@
         (* x (factorial (- x 1)))))
 ;Java would not have given this answer because it would have overflown MAX_INT
 
-;12 WRONG
-#|(define (compound-month B r)
-  (* B (+1 (/ r 1200))))
+;12
 (define (accrue-months B r m)
-    (if (= m 1)
+  (let ((bal (compound-month B r)))
+     (if (= m 1)
         ;if
-        B
+        bal
         ;else
-        (
-         (let bal (* B (+ 1 (/ r 1200))))
          (accrue-months bal r (- m 1))
-        )
       )
-   )
-|#
+   ))
+
 ;13
 (define (fib n)
     (cond ((< n 1) 0)
@@ -105,3 +101,15 @@
   )
 
 ;15
+(define (shorter? x y)
+    (let ((af (* (car x) 12)))
+     (let ((bf (* (car y) 12)))
+     (let ((at (+ af (cdr x))))
+      (let ((bt (+ bf (cdr y))))
+    (if (< at bt)
+        #t
+        #f))
+       )
+       )
+      )
+  )
