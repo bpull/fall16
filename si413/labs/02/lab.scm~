@@ -1,0 +1,40 @@
+;1
+(define (to-usdollar amt cur)
+    (cond ((eqv? cur 'euro)
+            (/ amt .76))
+          ((eqv? cur 'yen)
+           (/ amt 98.18))
+          ((eqv? cur 'won)
+            (/ amt 1109.85)))
+        )
+
+;2
+(define (from-usdollar amt cur)
+    (cond ((eqv? cur 'euro)
+            (* amt .76))
+          ((eqv? cur 'yen)
+            (* amt 98.18))
+          ((eqv? cur 'won)
+           (* amt 1109.85)))
+        )
+
+;3
+(define (convert amt fromCur toCur)
+    (from-usdollar (to-usdollar amt fromCur) toCur))
+
+;4
+(define (squares i j)
+    (if (> i j)
+       '()
+       (cons (* i i) (squares (+ i 1) j))
+       )
+    )
+
+;5
+(define (longer? L1 L2)
+    (if (null? L1)
+        #f)
+    (if (null? L2)
+        #t)
+    (longer? (cdr L1) (cdr L2))
+    )
