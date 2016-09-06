@@ -14,13 +14,16 @@ class Vector3D:
     def __repr__(self):
         return str(self.v)
     def __add__(self, other):
-        return Vector3D(self.v + other.v)
+        if isinstance(other, Vector3D):
+            return Vector3D(self.v + other.v)
+        if isinstance(other, Normal):
+            return Vector3D(self.v + other.n)
     def __sub__(self, other):
         return Vector3D(self.v - other.v)
     def __mul__(self, c):
         return Vector3D(self.v * c)
-    def __truediv__(self, other):
-        return Vector3D(np.divide(self.v, float(other)))
+    def __truediv__(self, c):
+        return Vector3D(self.v / c)
     def copy(self):
         return Vector3D(np.copy(self.v))
     def magnitude(self):
@@ -30,7 +33,10 @@ class Vector3D:
         return np.sum(np.square(self.v))
     def dot(self, other):
         '''returns a float. the dot product of two vectors'''
-        return np.sum(np.dot(self.v, other.v))
+        if isinstance(other, Vector3D):
+            return np.sum(np.dot(self.v, other.v))
+        if isinstance(other, Normal):
+            return np.sum(self.v * other.n)
     def dotangle(self, other, angle):
         '''returns dot product times an angle'''
         angle = int(angle)
@@ -68,12 +74,12 @@ class Point3D:
         return np.sqrt(self.distancesquared(other))
     def copy(self):
         return Point3D(np.copy(self.p))
-    def __mul__(self, other):
-        return Point3D(self.p * other)
+    def __mul__(self, c):
+        return Point3D(self.p * c)
 
 
 class Normal:
-
+    
     def __init__(self, val, *args):
         if type(val) is np.ndarray:
             self.n = val
@@ -81,16 +87,39 @@ class Normal:
             self.n = np.array([val,args[0],args[1]], dtype='float64')
         else:
             raise Exception("Invalid Arguments to Normal")
+    def __repr__(self):
+        return str(self.n)
     def __neg__(self):
         return Normal(np.negative(self.n))
     def __add__(self, other):
-        return Normal(self.n + other.n)
+        if isinstance(other, Normal):
+            return Normal(self.n + other.n)
+        if isinstance(other, Vector3D):
+            return Vector3D(self.n + other.v)
     def __mul__(self, c):
-        return Normal(self.n * float(c))
+        return Normal(self.n * c)
+    def dot(self, other):
+        return np.sum(self.n * other.v)
 
 # We should always have debugging in our libraries
 # that run if the file is called from the command line
 # vice from an import statement!
+def randomCube(fll, bur, n):
+    '''takes 2 Point3Ds to define a cube and returns n random points inside the cube'''
+    cube_points = []
+    x_range = bur.p[0] - fll.p[0]
+    y_range = bur.p[1] - fll.p[1]
+    z_range = bur.p[2] - fll.p[2]
+
+    for i in range(n):
+        x = bur.p[0]-x_range*np.random.rand(1)
+        y = bur.p[1]-y_range*np.random.rand(1)
+        z = bur.p[2]-z_range*np.random.rand(1)
+        rand_point = Point3D(float(x),float(y),float(z))
+        cube_points.append(rand_point)
+    return cube_points
+
+
 if __name__ == '__main__':
     u = Vector3D(1,2,3)
     v = Vector3D(4,5,6)
@@ -114,8 +143,8 @@ if __name__ == '__main__':
         raise Exception("Multiplication Error!")
     print("Testing Division...")
     w = Vector3D(4,5,6)
-    f = v / c
-    if str(f) != '[ .1.  .2.  .3.]':
+    f = v / cint
+    if str(f) != '[ 0.4  0.5  0.6]':
         print (str(f))
         raise Exception("Division Error!")
     print("Testing Equality...")
@@ -164,8 +193,8 @@ if __name__ == '__main__':
     if str(dp) != '[ 3.  3.  3.]':
         raise Exception("Subtraction Error!")
     print("Testing Multiplication...")
-    ep = up * c
-    if str(ep) != '[  4.  10.  18.]':
+    ep = up * cint
+    if str(ep) != '[ 10.  20.  30.]':
         raise Exception("Multiplication Error!")
     print("Testing Equality...")
     gp = up.copy()
@@ -178,3 +207,27 @@ if __name__ == '__main__':
     if hp != 3:
         raise Exception("Distance Error!")
     print("Tests for Point3D Complete!\n---------------")
+    un = Normal(1,2,3)
+    vn = Normal(4,5,6)
+    print("Testing Printing...")
+    if str(un) != '[ 1.  2.  3.]':
+        raise Exception("Printing Error!")
+    print("Testing Addition...")
+    cn = un + vn
+    if str(cn) != '[ 5.  7.  9.]':
+        raise Exception("Addition Error!")
+    print("Testing Multiplication...")
+    en = un * cint
+    if str(en) != '[ 10.  20.  30.]':
+        raise Exception("Multiplication Error!")
+    print("Testing Equality...")
+    nn = -un
+    if str(nn) != '[-1. -2. -3.]':
+        raise Exception("Negation Error!")
+    print("Tests for Normal Complete!\n---------------")
+
+    print("Testing RandomCube...")
+    fll = Point3D(-1, -1, -1)
+    bur = Point3D(1, 1, 1)
+    points = randomCube(fll, bur, 4)
+    print (points)
