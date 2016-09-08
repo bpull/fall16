@@ -49,3 +49,44 @@
       (+ (to-usdollar (caar L) (cdar L)) (sum-cash (cdr L)))
         )
     )
+
+;7
+(define (sum x)
+    (if (null? x)
+        0
+        (+ (car x) (sum (cdr x)))))
+(define (average x)
+  (/ (sum x) (length x)))
+(define (square x)
+  (* x x))
+(define (square-sum x ave)
+  (if (null? x)
+      0
+      (+ (square (- (car x) ave)) (square-sum (cdr x) ave))))
+(define (std-dev x)
+  (let ((ave (average x)))
+  (sqrt (/ (square-sum x ave) (- (length x) 1)))
+    )
+  )
+
+;8
+;PASS
+
+;9
+(define (test-sin x)
+    (let ((sinx (+ (square (sin x)) 1)))
+      (- (+ (/ 1 sinx) (sqrt sinx)) (square sinx))))
+
+;10
+(define (dist a b c d)
+    (let ((L1 (+ (* a 12) b))
+          (L2 (+ (* c 12) d)))
+      (abs (- L1 L2))))
+
+;11
+(define (fd-at g n)
+  (- (g (+ n 1)) (g n)))
+
+;12
+(define (sqrt-prod n)
+  
