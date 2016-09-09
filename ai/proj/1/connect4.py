@@ -47,7 +47,9 @@ class Game:
         else:
             print ("Black player, what's your move?")
         self.input = input()
-        if self.input.isdigit() and int(self.input) != 0:
+        if self.input.isdigit():
+            if int(self.input) == 0:
+                self.input = 10
             self.input = int(self.input) - 1
 
     def play_turn(self):
