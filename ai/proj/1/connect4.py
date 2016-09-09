@@ -5,22 +5,25 @@ import numpy as np
 class Board:
 
     def __init__(self):
-        self.b = np.ndarray(shape=(6,7), dtype=(str,1))
-        self.b.fill('*')
+        self.b = np.ndarray(shape=(6,7), dtype=(str,11))
+        self.b.fill("\033[1;32;40m*")
 
     def __repr__(self):
         for i in range(6):
             for j in range(7):
-                print(str(self.b[i][j]), end="")
+                print(str(self.b[i][j]), end="\033[1;32;40m")
             print('')
-        print ("1234567")
+        print ("\033[1;32;40m1234567")
         return ""
 
     def play_piece(self, column, token):
         for i in range(5,-1,-1):
             try:
-                if self.b[i][column] == '*':
-                    self.b[i][column] = str(token)
+                if self.b[i][column] == "\033[1;32;40m*":
+                    if token == 'B':
+                        self.b[i][column] = str("\033[1;30;40m") + str(token)
+                    else:
+                        self.b[i][column] = str("\033[1;31;41m") + str(token)
                     return i
             except Exception as e:
                 return False
@@ -44,7 +47,7 @@ class Game:
         else:
             print ("Black player, what's your move?")
         self.input = input()
-        if self.input.isdigit():
+        if self.input.isdigit() and int(self.input) != 0:
             self.input = int(self.input) - 1
 
     def play_turn(self):
@@ -68,7 +71,7 @@ class Game:
 
                 cur_token = self.b.b[row][col]
 
-                if cur_token != '*':
+                if cur_token != '\033[1;32;40m*':
                     if cur_token == token_counted:
                         num_in_a_row = num_in_a_row + 1
                     else:
@@ -82,7 +85,7 @@ class Game:
                     return True
 
             num_in_a_row = 0
-            token_counted = '*'
+            token_counted = '\033[1;32;40m*'
             cur_token = ''
 
         #check all horizontals
@@ -91,7 +94,7 @@ class Game:
 
                 cur_token = self.b.b[row][col]
 
-                if cur_token != '*':
+                if cur_token != '\033[1;32;40m*':
                     if cur_token == token_counted:
                         num_in_a_row = num_in_a_row + 1
                     else:
@@ -99,13 +102,13 @@ class Game:
                         token_counted = cur_token
                 else:
                     num_in_a_row = 0
-                    token_counted = '*'
+                    token_counted = '\033[1;32;40m*'
 
                 if num_in_a_row is 4:
                     return True
 
             num_in_a_row = 0
-            token_counted = '*'
+            token_counted = '\033[1;32;40m*'
             cur_token = ''
 
         #check all left slanted diagonals
@@ -115,7 +118,7 @@ class Game:
 
                 cur_token = self.b.b[i][i-j]
 
-                if cur_token != '*':
+                if cur_token != '\033[1;32;40m*':
                     if cur_token == token_counted:
                         num_in_a_row = num_in_a_row + 1
                     else:
@@ -123,13 +126,13 @@ class Game:
                         token_counted = cur_token
                 else:
                     num_in_a_row = 0
-                    token_counted = '*'
+                    token_counted = '\033[1;32;40m*'
 
                 if num_in_a_row is 4:
                     return True
 
             num_in_a_row = 0
-            token_counted = '*'
+            token_counted = '\033[1;32;40m*'
             cur_token = ''
 
         #check all right slanted straights
@@ -140,7 +143,7 @@ class Game:
 
                 cur_token = self.b.b[i][j]
 
-                if cur_token != '*':
+                if cur_token != '\033[1;32;40m*':
                     if cur_token == token_counted:
                         num_in_a_row = num_in_a_row + 1
                     else:
@@ -148,13 +151,13 @@ class Game:
                         token_counted = cur_token
                 else:
                     num_in_a_row = 0
-                    token_counted = '*'
+                    token_counted = '\033[1;32;40m*'
 
                 if num_in_a_row is 4:
                     return True
 
             num_in_a_row = 0
-            token_counted = '*'
+            token_counted = '\033[1;32;40m*'
             cur_token = ''
 
         return False
