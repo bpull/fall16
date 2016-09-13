@@ -124,6 +124,93 @@ class Ray:
     def copy(self):
         return Ray(np.copy(self.origin), np.copy(self.direct))
 
+class ColorRGB:
+
+    def __init__(self,val,*args):
+        if type(val) is np.ndarray:
+            self.c = val
+        elif args and len(args) == 2:
+            self.c = np.array([val,args[0],args[1]], dtype='float64')
+        else:
+            raise Exception("Invalid Arguments to ColorRGB")
+    def __repr__(self):
+        print (str(self.c))
+    def __add__(self, other):
+        return self.c + other.c
+    def __mul__(self, other):
+        if isinstance(other, float):
+            return ColorRGB(self.c * other)
+        elif isinstance(other, ColorRGB):
+            return ColorRGB(self.c * other.c)
+        else:
+            raise Exception("Can only multiply floats and Colors with RGB")
+    def __truediv__(self, other):
+        return ColorRGB(self.c / other)
+    def __pow__(self, other):
+        return ColorRGB(np.pow(self.c, other))
+    def copy(self):
+        return ColorRGB(np.copy(self.c))
+    def get(self):
+        return self.c[0],self.c[1],self.c[2]
+
+class Plane:
+
+    def __init__(self, point, normal, color):
+        if type(point) is Point3D and type(normal) is Normal and type(color) is ColorRGB:
+            self.point = point
+            self.normal = normal
+            self.color = color
+        else:
+            raise Exception("Invalid Arguments to Plane")
+    def __repr__(self):
+        print ("["+self.point+", "+self.normal+"]")
+    def copy(self):
+        return Plane(self.point.copy(), self.normal.copy(), self.color.copy())
+    def hit(self, ray, epsilon, shadeRec):
+        t = ((self.point - ray.origin) * self.normal) / (ray.direct * self.normal)
+        if t > epsilon:
+            p = ray.origin + (ray.direct * t)
+            return True, t, p, self.color
+        else:
+            return False, False, False, False
+
+
+class Sphere:
+
+    def __init__(self, point, rad, color):
+        if type(point) is Point3D and type(color) is ColorRGB:
+            self.center = point
+            self.radius = rad
+            self.color = color
+        else:
+            raise Exception("Invalid Arguments to Sphere")
+    def copy(self):
+        return Sphere(self.center.copy(), self.rad, self.color.copy())
+    def __repr__(self):
+        print ("["+self.center+", "+self.rad+"]")
+    def hit(self, ray, epsilon, shadeRec):
+        a = ray.direct * ray.direct
+        b = 2 * (ray.origin - self.center) * ray.direct
+        c = (ray.origin - self.center) * (ray.origin - self.center) - pow(self.radius, 2)
+        d = (b * b) - (4 * (a * c))
+
+        if d > -1:
+            t1 = (-b + ((b * b) - (4 * a * c))) / (2 * a)
+            t2 = (-b - ((b * b) - (4 * a * c))) / (2 * a)
+            if t1 > epsilon and t2 > epsilon:
+                t = min(t1, t2)
+            elif t1 > epsilon:
+                t = t1
+            elif t2 > epsilon:
+                t = t2
+            else:
+                return False, False, False, False
+
+            p = ray.origin + (ray.direct * t)
+            return True, t, p, self.color
+        else:
+            return False, False, False, False
+
 # We should always have debugging in our libraries
 # that run if the file is called from the command line
 # vice from an import statement!
