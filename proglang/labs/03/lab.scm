@@ -1,9 +1,15 @@
+(#%require racket/base)
+
 ;1
+;TAIL RECURSIVE
 (define (which-sin L minnum)
   (if (not (null? L))
       (if (= (sin (car L)) minnum)
           (car L)
-          (which-sin (cdr L) minnum))))
+          (which-sin (cdr L) minnum))
+      #t
+      )
+  )
 (define (min-sin x . args)
     (let ((minnum (apply min x (map sin args))))
       (if (eq? minnum (sin x))
@@ -48,6 +54,7 @@
 
 
 ;4 recieved help from sijing qiu
+;TAIL RECURSIVE
 (define (call_c*rs L y)
   (if (null? L)
       y
@@ -93,19 +100,24 @@
 
 ;7
 (define (contains? L data)
-  (if )
+  (if (null? L)
+      #f
+      (if (< data (car L))
+           (contains? (cdr L) data)
+           (if (= data (car L))
+               #t
+               #f
+               )
+           )
+      )
   )
 (define (insert-help L data)
-  (if (not (null? data)
-      ((if (not (contains? L data))
-           ((append L data)
-            (sort L <)
-            (insert-help L (cdr data)))
-           ))
+  (if (not (null? (cdr data)))
+      (if (not (contains? L data))
+           ((append L data)(sort L <)(insert-help L (cdr data))))
       )
       L
   )
-)
 (define (make-set) 
   (let ((L '())) 
     (lambda (command . data)
@@ -118,6 +130,8 @@
             ((eqv? command 'insert!)
              (set! L (insert-help L data))
              (set! L (sort L <)))
+            ((eqv? command 'contains?)
+             (contains? L data))
       )
     )
   ))
