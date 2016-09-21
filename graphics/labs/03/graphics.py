@@ -236,11 +236,11 @@ class ViewPlane:
             raise Exception("Invalid arguments to ViewPlane")
 
     def get_color(self, row, col):
-        return self.hxr[row][col]
+        return self.hxr[col][row]
 
     def set_color(self, row, col, color):
         if isinstance(color, ColorRGB):
-            self.hxr[row][col] = color
+            self.hxr[col][row] = color
 
     def get_point(self, row, col):
         Vup = Vector3D(0,-1,0)
