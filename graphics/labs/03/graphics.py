@@ -17,6 +17,8 @@ class Vector3D:
             return Vector3D(self.v + other.v)
         if isinstance(other, Normal):
             return Vector3D(self.v + other.n)
+        if isinstance(other, Point3D):
+            return Point3D(self.v + other.p)
     def __sub__(self, other):
         return Vector3D(self.v - other.v)
     def __mul__(self, c):
@@ -28,7 +30,10 @@ class Vector3D:
         if isinstance(c, float):
             return Vector3D(self.v * c)
     def __truediv__(self, c):
-        return Vector3D(self.v / c)
+        if isinstance(c, Vector3D):
+            return Vector3D(self.v / c.v)
+        else:
+            return Vector3D(self.v / c)
     def copy(self):
         return Vector3D(np.copy(self.v))
     def magnitude(self):
@@ -51,7 +56,10 @@ class Vector3D:
         uv = u * v
         return uv * np.cos(angle)
     def cross(self, other):
-        return Vector3D(np.cross(self.v, other.v))
+        if isinstance(other, Vector3D):
+            return Vector3D(np.cross(self.v, other.v))
+        else:
+            return Vector3D(np.cross(self.v, other.n))
 
 
 class Point3D:
@@ -114,7 +122,7 @@ class Normal:
 class Ray:
 
     def __init__(self, point, vector):
-        if type(point) is Point3D and type(vector) is Vector3D:
+        if isinstance(point, Point3D) and (isinstance(vector, Vector3D) or isinstance(vector, Normal)):
             self.origin = point
             self.direct = vector
         else:
@@ -211,6 +219,44 @@ class Sphere:
         else:
             return False, False, False, False
 
+
+class ViewPlane:
+
+    def __init__(self, center, normal, hres, vres, pixelsize):
+        if isinstance(center, Point3D) and isinstance(normal, Normal):
+            self.c = center
+            self.n = normal
+            self.hres = hres
+            self.vres = vres
+            self.pixelsize = pixelsize
+
+            HxVres = [[ColorRGB(0.0,0.0,0.0)]*vres for i in range(hres)]
+            self.hxr = HxVres
+        else:
+            raise Exception("Invalid arguments to ViewPlane")
+
+    def get_color(self, row, col):
+        return self.hxr[row][col]
+
+    def set_color(self, row, col, color):
+        if isinstance(color, ColorRGB):
+            self.hxr[row][col] = color
+
+    def get_point(self, row, col):
+        Vup = Vector3D(0,-1,0)
+        u = Vup.cross(-self.n)
+        u = u / u.magnitude()
+        v = u.cross(-self.n)
+        LL = self.c - (u * (self.hres/2.0) * self.pixelsize) - (v * (self.vres/2.0) * self.pixelsize)
+        return LL + u * (row+0.5) * self.pixelsize + v * (col+0.5) * self.pixelsize
+
+    def get_resolution(self):
+        return hres, vres
+
+    def orthographic_ray(self, row, col):
+        center = self.get_point(row, col)
+        return Ray(center, self.n)
+
 # We should always have debugging in our libraries
 # that run if the file is called from the command line
 # vice from an import statement!
@@ -295,7 +341,7 @@ if __name__ == '__main__':
     if str(up) != '[ 1.  2.  3.]':
         raise Exception("Printing Error!")
     print("Testing Addition...")
-    cp = up + vp
+    cp = up + v
     if str(cp) != '[ 5.  7.  9.]':
         raise Exception("Addition Error!")
     print("Testing Subtraction...")
