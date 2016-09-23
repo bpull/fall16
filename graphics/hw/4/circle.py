@@ -20,16 +20,11 @@ def createCircle(cx, cy, rad, verts):
 
 # The function that we will use to draw the environment
 def display():
-    verts = 'a'
-    while not verts.isdigit():
-        verts = input("How many vertices for your circle?")
-        verts = int(verts)
-
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
     glColor3f(1.0, 1.0, 1.0)   # White
 
     glBegin(GL_LINE_LOOP)
-    createCircle(50, 50, 25, verts)
+    createCircle(50, 50, 25, 10) #last parameter is the number of vertices
     glEnd()
 
     glFlush()
