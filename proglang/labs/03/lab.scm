@@ -3,12 +3,12 @@
 ;1
 ;TAIL RECURSIVE
 (define (which-sin L minnum)
-  (if (not (null? L))
-      (if (= (sin (car L)) minnum)
-          (car L)
-          (which-sin (cdr L) minnum))
-      #t
+  (cond ((not (null? L))
+         (cond ((= (sin (car L)) minnum)
+                (car L))
+               (else (which-sin (cdr L) minnum)))
       )
+  )
   )
 (define (min-sin x . args)
     (let ((minnum (apply min x (map sin args))))
@@ -100,9 +100,9 @@
 
 ;7
 (define (contains? L data)
-  (if (null? L)
+  (if (null? (cdr L))
       #f
-      (if (< data (car L))
+      (if (< car data (car L))
            (contains? (cdr L) data)
            (if (= data (car L))
                #t
@@ -112,11 +112,10 @@
       )
   )
 (define (insert-help L data)
-  (if (not (null? (cdr data)))
-      (if (not (contains? L data))
-           ((append L data)(sort L <)(insert-help L (cdr data))))
-      )
-      L
+  (cond ((not (null? (cdr data)))
+         (cond ((not (contains? L data))
+                ((append L data)(sort L <)(insert-help L (cdr data))))))
+      (else (list L)))
   )
 (define (make-set) 
   (let ((L '())) 

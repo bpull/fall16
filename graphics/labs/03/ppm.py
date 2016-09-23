@@ -1,12 +1,18 @@
-import graphics as g
-from ppm import PPM
+from graphics import *
 
-myViewPlane = g.ViewPlane(g.Point3D(0,0,0), g.Normal(0,0,1), 3, 4, 1)
-myViewPlane.set_color(0,0,g.ColorRGB(1,1,1))
-myViewPlane.set_color(0,2,g.ColorRGB(1,0,0))
-myViewPlane.set_color(1,1,g.ColorRGB(1,0,1))
-myViewPlane.set_color(1,2,g.ColorRGB(1,1,0))
-myViewPlane.set_color(3,0,g.ColorRGB(0,1,0))
-myViewPlane.set_color(3,2,g.ColorRGB(0,0,1))
+class PPM:
 
-PPM(myViewPlane, 'part2-testing.ppm')
+    def __init__(self, vp, filename):
+        with open(filename, 'w') as f:
+            f.write('P3\n')
+            f.write(str(vp.hres)+" "+str(vp.vres)+"\n")
+            f.write("255\n")
+            for i in range(vp.vres-1, -1, -1):
+                for j in range(vp.hres):
+                    color = vp.get_color(i,j)
+                    r,g,b = color.get()
+                    r = int(r * 255)
+                    g = int(g * 255)
+                    b = int(b * 255)
+                    f.write(str(r)+" "+str(g)+" "+str(b)+" ")
+                f.write("\n")
