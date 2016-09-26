@@ -216,7 +216,10 @@ class ViewPlane:
             self.vres = vres
             self.pixelsize = pixelsize
 
-            HxVres = [[ColorRGB(0.0,0.0,0.0)]*vres for i in range(hres)]
+            HxVres = []
+            for i in range(vres):
+                row = [ColorRGB(0.0,0.0,0.0)]*hres
+                HxVres.append(row)
             self.hxr = HxVres
         else:
             raise Exception("Invalid arguments to ViewPlane")
@@ -226,7 +229,7 @@ class ViewPlane:
 
     def set_color(self, row, col, color):
         if isinstance(color, ColorRGB):
-            self.hxr[col][row] = color
+            self.hxr[row][col] = color
 
     def get_point(self, row, col):
         Vup = Vector3D(0,-1,0)
@@ -234,7 +237,7 @@ class ViewPlane:
         u = u / u.magnitude()
         v = u.cross(-self.n)
         LL = self.c - (u * (self.hres/2.0) * self.pixelsize) - (v * (self.vres/2.0) * self.pixelsize)
-        return LL + u * (row+0.5) * self.pixelsize + v * (col+0.5) * self.pixelsize
+        return LL + u * (col+0.5) * self.pixelsize + v * (row+0.5) * self.pixelsize
 
     def get_resolution(self):
         return self.hres, self.vres
