@@ -9,14 +9,18 @@ from OpenGL.GLUT import *
 def createCircle(cx, cy, rad, verts):
     theta = 360/verts
     count = 1
+    firstx = (cx + rad * math.cos(theta))
+    firsty = (cy + rad * math.sin(theta))
 
-    while theta <= 360:
-        theta = theta * count
+    while theta < 360:
+        theta = (360/verts) * count
         x = (cx + rad * math.cos(theta))
         y = (cy + rad * math.sin(theta))
+        print ("["+str(x)+","+str(y)+"]")
         glVertex3f(x, y, 0.0)
         count = count + 1
 
+    glVertex3f(firstx, firsty, 0.0)
 
 # The function that we will use to draw the environment
 def display():
