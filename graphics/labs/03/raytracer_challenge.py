@@ -13,7 +13,9 @@ S5 = Sphere(Point3D(400,400,900), 400, ColorRGB(0.0,0.2,1.0))
 P1 = Plane(Point3D(50,50,999), Normal(0,0,1), ColorRGB(0.8,0.8,0.8))
 P2 = Plane(Point3D(50,50,900), Normal(1,1,1), ColorRGB(1.0,1.0,1.0))
 
-vp = ViewPlane(Point3D(50,50,-50), Normal(-0.2,0,1), 200, 100, 1.0)
+vp = ViewPlane(Point3D(0,0,0), Normal(0,0,1), 640, 480, 1.0)
+Camera1 = Ray(Point3D(0,0,-100), Normal(0,0,1))
+
 objects = []
 objects.append(S1)
 objects.append(S2)
@@ -24,7 +26,7 @@ objects.append(P1)
 objects.append(P2)
 
 rt = raytracer(vp, objects)
-rt.color_plane()
+rt.color_plane_challenge(Camera1)
 camera = rt.get_viewplane()
 
-PPM(camera, 'part4_5.ppm')
+PPM(camera, 'part5_1.ppm')
