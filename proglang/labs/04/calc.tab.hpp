@@ -47,6 +47,8 @@ extern int yydebug;
 #include <string>
 #include <map>
 #include "colorout.hpp"
+#include <cstring>
+#include <math.h>
 using namespace std;
 
 //-- Lexer prototype required by bison
@@ -56,7 +58,7 @@ int yylex();
 extern colorout resout;
 extern colorout errout;
 
-#line 60 "calc.tab.hpp" /* yacc.c:1909  */
+#line 62 "calc.tab.hpp" /* yacc.c:1909  */
 
 /* Token type.  */
 #ifndef YYTOKENTYPE
@@ -66,10 +68,16 @@ extern colorout errout;
     NUM = 258,
     OPA = 259,
     OPM = 260,
-    LP = 261,
-    RP = 262,
-    STOP = 263,
-    STOPB = 264
+    OPE = 261,
+    NAME = 262,
+    LP = 263,
+    RP = 264,
+    STOP = 265,
+    STOPB = 266,
+    SETACC = 267,
+    ACC = 268,
+    ASN = 269,
+    LAST = 270
   };
 #endif
 
@@ -78,12 +86,13 @@ extern colorout errout;
 
 union YYSTYPE
 {
-#line 45 "calc.ypp" /* yacc.c:1909  */
+#line 51 "calc.ypp" /* yacc.c:1909  */
 
   int val;
   char sym;
+  char* nam;
 
-#line 87 "calc.tab.hpp" /* yacc.c:1909  */
+#line 96 "calc.tab.hpp" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;
