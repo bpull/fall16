@@ -7,21 +7,11 @@ from OpenGL.GLUT import *
 import math
 import csv
 
-save = False
-filename = ""
-
 class Scene:
 
     def keyboard(self, key, x, y):
         print ("['key', "+str(key)+", "+str(x)+", "+str(y)+"]")
         if str(key) is 'q':
-            if save:
-                with open(filename, "w") as out:
-                    alllines.append(line)
-                    alllines.append(lines)
-                    alllines.append(points)
-                    writer = csv.writer(out, lineterminator='\n')
-                    writer.writerows(alllines)
             glutDestroyWindow(1)
         elif str(key) is 'c':
             self.line = []
@@ -59,16 +49,13 @@ class Scene:
             self.line.append([x,self.window_height-y])
         glutPostRedisplay()
 
-    def __init__(self, filen):
+    def __init__(self):
 
         self.line_width = 2
         self.window_height = 500
-        if filen is not False:
-            a = True
-        else:
-            self.points = []
-            self.line = []
-            self.lines = []
+        self.line = []
+        self.lines = []
+        self.points = []
 
         # Initialize the environment
         glutInit(sys.argv)
@@ -149,11 +136,4 @@ class Scene:
 
         glFlush()
 
-if len(sys.argv) > 1:
-    if sys.argv[1] is "-s":
-        save = True
-        filename = sys.argv[2]
-    elif sys.argv[1] is "-l":
-        etch = Scene(str(sys.argv[2]))
-
-etch = Scene(False)
+etch = Scene()
