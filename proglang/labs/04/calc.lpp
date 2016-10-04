@@ -1,10 +1,11 @@
 /* SI 413 Fall 2013
  * Lab 4
- * YOUR NAMES HERE!
+ * Brandon Pullig Sam Coons
  * Flex file specifying the calculator program scanner
  */
 %{
 #include "calc.tab.hpp"
+#include <cstring>
 #include <cstdlib> // for atoi
 %}
 
@@ -13,18 +14,23 @@
 
 %%
 
-[0-9]+    { yylval.val = atoi(yytext); return NUM; }
-[01]+[b]  { yylval.val = strtol(yytext, NULL, 2); return NUM; }
-[+-]      { yylval.sym = yytext[0]; return OPA; }
-[*/]      { yylval.sym = yytext[0]; return OPM; }
-"!"       { return SETACC; }
-
-#.*\n     { }
-"("       { return LP; }
-")"       { return RP; }
-";b"      { return STOPB; }
-";"       { return STOP; }
-<<EOF>>   { return 0; }
-[ \t\n]+  { }
-.         { errout << "Unrecognized token starting with " << yytext[0] << endl; exit(1); }
+[0-9]+            { yylval.val = atoi(yytext); return NUM; }
+[01]+[b]          { yylval.val = strtol(yytext, NULL, 2); return NUM; }
+[+-]              { yylval.sym = yytext[0]; return OPA; }
+[*/%]             { yylval.sym = yytext[0]; return OPM; }
+\^                { yylval.sym = yytext[0]; return OPE; }
+"?"               { return LAST; }
+[a-zA-Z0-9]+      { yylval.nam = strdup(yytext); return NAME; }
+":="              { return ASN; }
+"!"               { return SETACC; }
+"@"               { return ACC; }
+#.*\n             { }
+\".*\"            { }
+"("               { return LP; }
+")"               { return RP; }
+";b"              { return STOPB; }
+";"               { return STOP; }
+<<EOF>>           { return 0; }
+[ \t\n]+          { }
+.                 { errout << "Unrecognized token starting with " << yytext[0] << endl; exit(1); }
 %%

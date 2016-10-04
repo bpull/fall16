@@ -128,6 +128,8 @@ class Ray:
         return Ray(self.origin.copy(), self.direction.copy())
     def __repr__(self):
         return str([self.origin, self.direction])
+    def get_direction(self):
+        return self.direction
 
 # ColorRGB Class
 class ColorRGB:
@@ -245,6 +247,10 @@ class ViewPlane:
     def orthographic_ray(self, row, col):
         center = self.get_point(row, col)
         return Ray(center, self.n)
+
+    def perspective_ray(self, row, col, ray):
+        center = self.get_point(row,col)
+        return Ray(center, ray.direction)
 
 # We should always have debugging in our libraries
 # that run if the file is called from the command line
