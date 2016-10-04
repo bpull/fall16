@@ -5,14 +5,26 @@ from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
 import math
+import csv
+
+save = False
+filename = ""
 
 class Scene:
 
     def keyboard(self, key, x, y):
         print ("['key', "+str(key)+", "+str(x)+", "+str(y)+"]")
         if str(key) is 'q':
+            if save:
+                with open(filename, "w") as out:
+                    alllines.append(line)
+                    alllines.append(lines)
+                    alllines.append(points)
+                    writer = csv.writer(out, lineterminator='\n')
+                    writer.writerows(alllines)
             glutDestroyWindow(1)
         elif str(key) is 'c':
+            self.line = []
             self.lines = []
             self.points = []
             glutPostRedisplay()
@@ -26,17 +38,17 @@ class Scene:
     def mouse(self, buttonNumber, state, x, y):
         print ("['mouse', "+str(buttonNumber)+", "+str(state)+", "+str(x)+", "+str(y)+"]")
         if str(buttonNumber) is '0' and str(state) is '0':
-            if 100 < x and x < 500 and 100 < self.window_height-y and self.window_height-y < 450:
-                self.points.append([x,self.window_height-y])
-        elif str(buttonNumber) is '0' and str(state) is '1':
             if len(self.line) is 1:
                 self.points.append(self.line[0])
             self.lines.append(self.line)
             self.line = []
-        elif str(buttonNumber) is '3':
+        elif str(buttonNumber) is '0' and str(state) is '1':
+            if 100 < x and x < 500 and 100 < self.window_height-y and self.window_height-y < 450:
+                self.points.append([x,self.window_height-y])
+        elif str(buttonNumber) is '3' and str(state) is '0':
             if self.line_width < 9:
                 self.line_width += 1
-        elif str(buttonNumber) is '4':
+        elif str(buttonNumber) is '4' and str(state) is '0':
             if self.line_width > 1:
                 self.line_width -= 1
         glutPostRedisplay()
@@ -44,18 +56,19 @@ class Scene:
     def motion(self, x, y):
         print ("['motion', "+str(x)+", "+str(y)+"]")
         if 100 < x and x < 500 and 100 < self.window_height-y and self.window_height-y < 450:
-            if len(self.line) is 0:
-                self.points.pop()
             self.line.append([x,self.window_height-y])
         glutPostRedisplay()
 
-    def __init__(self):
+    def __init__(self, filen):
 
         self.line_width = 2
-        self.points = []
-        self.line = []
-        self.lines = []
         self.window_height = 500
+        if filen is not False:
+            a = True
+        else:
+            self.points = []
+            self.line = []
+            self.lines = []
 
         # Initialize the environment
         glutInit(sys.argv)
@@ -136,4 +149,11 @@ class Scene:
 
         glFlush()
 
-etch = Scene()
+if len(sys.argv) > 1:
+    if sys.argv[1] is "-s":
+        save = True
+        filename = sys.argv[2]
+    elif sys.argv[1] is "-l":
+        etch = Scene(str(sys.argv[2]))
+
+etch = Scene(False)
