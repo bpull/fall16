@@ -16,7 +16,7 @@ using namespace std;
 // This says that semantic values of tokens should be ParseTree pointers.
 #define YYSTYPE ParseTree*
 
-int yylex();
+int yylex(); 
 extern colorout resout;
 extern colorout errout;
 
@@ -24,8 +24,8 @@ extern colorout errout;
 
 %code {
 
-int yyerror(const char *p) {
-  errout << "Parser error: " << p << endl;
+int yyerror(const char *p) { 
+  errout << "Parser error: " << p << endl; 
   exit(3);
 }
 
@@ -46,15 +46,7 @@ colorout errout(2, 'r');
   /* This defines the tokens. You will have to change this to
      set their precedence and associativity!
    */
-%left STOP
-%left FOLD
-%left SYM
-%left NAME
-%left LB
-%left RB
-%right CATTOKEN
-%left REV
-%left COLON
+%token STOP FOLD COLON REV SYM NAME LB RB
 
 %%
 
@@ -62,15 +54,19 @@ colorout errout(2, 'r');
 S: seq STOP              { tree = $1; YYACCEPT; }
 |                        { done = true;; }
 
-seq:    seq seq          {$$ = new ParseTree("seq",$1,$2);}    %prec CATTOKEN
-|       LB seq RB        {$$ = new ParseTree("seq",$1,$2,$3);}
-|       seq FOLD seq     {$$ = new ParseTree("seq",$1,$2,$3);}
-|       seq COLON NAME   {$$ = new ParseTree("seq",$1,$2,$3);}
-|       SYM              {$$ = new ParseTree("seq",$1);}
-|       NAME             {$$ = new ParseTree("seq",$1);}
-|       seq REV          {$$ = new ParseTree("seq",$1,$2);}
+seq: seq FOLD catseq     {$$ = new ParseTree("seq",$1,$2,$3);}
+|    catseq              {$$ = new ParseTree("seq",$1);}
 
+catseq: catseq opseq     {$$ = new ParseTree("catseq",$1,$2);}
+|       opseq            {$$ = new ParseTree("catseq",$1);}
 
+opseq: opseq COLON NAME  {$$ = new ParseTree("opseq",$1,$2,$3);}
+|      opseq REV         {$$ = new ParseTree("opseq",$1,$2);}
+|      atom              {$$ = new ParseTree("opseq",$1);}
+
+atom: SYM                {$$ = new ParseTree("atom",$1);}
+|     NAME               {$$ = new ParseTree("atom",$1);}
+|     LB seq RB          {$$ = new ParseTree("atom",$1,$2,$3);}
 
 %%
 int main()
@@ -98,3 +94,4 @@ int main()
 
   return 0;
 }
+

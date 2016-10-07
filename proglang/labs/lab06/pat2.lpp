@@ -13,22 +13,20 @@ using namespace std;
 %option noyywrap
 
 %%
-[a-z][a-zA-Z0-9]* { yylval = new vector<string>;
-                    yylval->push_back(yytext);
+[a-z][a-zA-Z0-9]* { yylval = new vector<string>; 
+                    yylval->push_back(yytext); 
 		                        return SYM; }
 "*"               { return FOLD; }
 ";"               { return STOP; }
 ":"               { return COLON; }
-[A-Z][a-zA-Z0-9]* { yylval = new vector<string>;
-                    yyval->push_back(yytext);
-                                return NAME; }
+[A-Z][a-zA-Z0-9]* { return NAME; }
 "_r"              { return REV; }
 "["               { return LB; }
 "]"               { return RB; }
 <<EOF>>           { return 0; }
 [ \t\n]+          { }
 .                 { errout << "Unrecognized token starting with"
-                           << yytext << endl;
-                    exit(1);
+                           << yytext << endl; 
+                    exit(1); 
                   }
 %%

@@ -1,0 +1,236 @@
+Grammar
+
+    0 $accept: S $end
+
+    1 S: seq STOP
+    2  | %empty
+
+    3 seq: seq FOLD catseq
+    4    | catseq
+
+    5 catseq: catseq opseq
+    6       | opseq
+
+    7 opseq: opseq COLON NAME
+    8      | opseq REV
+    9      | atom
+
+   10 atom: SYM
+   11     | NAME
+   12     | LB seq RB
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+STOP (258) 1
+FOLD (259) 3
+COLON (260) 7
+REV (261) 8
+SYM (262) 10
+NAME (263) 7 11
+LB (264) 12
+RB (265) 12
+
+
+Nonterminals, with rules where they appear
+
+$accept (11)
+    on left: 0
+S (12)
+    on left: 1 2, on right: 0
+seq (13)
+    on left: 3 4, on right: 1 3 12
+catseq (14)
+    on left: 5 6, on right: 3 4 5
+opseq (15)
+    on left: 7 8 9, on right: 5 6 7 8
+atom (16)
+    on left: 10 11 12, on right: 9
+
+
+State 0
+
+    0 $accept: . S $end
+
+    SYM   shift, and go to state 1
+    NAME  shift, and go to state 2
+    LB    shift, and go to state 3
+
+    $default  reduce using rule 2 (S)
+
+    S       go to state 4
+    seq     go to state 5
+    catseq  go to state 6
+    opseq   go to state 7
+    atom    go to state 8
+
+
+State 1
+
+   10 atom: SYM .
+
+    $default  reduce using rule 10 (atom)
+
+
+State 2
+
+   11 atom: NAME .
+
+    $default  reduce using rule 11 (atom)
+
+
+State 3
+
+   12 atom: LB . seq RB
+
+    SYM   shift, and go to state 1
+    NAME  shift, and go to state 2
+    LB    shift, and go to state 3
+
+    seq     go to state 9
+    catseq  go to state 6
+    opseq   go to state 7
+    atom    go to state 8
+
+
+State 4
+
+    0 $accept: S . $end
+
+    $end  shift, and go to state 10
+
+
+State 5
+
+    1 S: seq . STOP
+    3 seq: seq . FOLD catseq
+
+    STOP  shift, and go to state 11
+    FOLD  shift, and go to state 12
+
+
+State 6
+
+    4 seq: catseq .
+    5 catseq: catseq . opseq
+
+    SYM   shift, and go to state 1
+    NAME  shift, and go to state 2
+    LB    shift, and go to state 3
+
+    $default  reduce using rule 4 (seq)
+
+    opseq  go to state 13
+    atom   go to state 8
+
+
+State 7
+
+    6 catseq: opseq .
+    7 opseq: opseq . COLON NAME
+    8      | opseq . REV
+
+    COLON  shift, and go to state 14
+    REV    shift, and go to state 15
+
+    $default  reduce using rule 6 (catseq)
+
+
+State 8
+
+    9 opseq: atom .
+
+    $default  reduce using rule 9 (opseq)
+
+
+State 9
+
+    3 seq: seq . FOLD catseq
+   12 atom: LB seq . RB
+
+    FOLD  shift, and go to state 12
+    RB    shift, and go to state 16
+
+
+State 10
+
+    0 $accept: S $end .
+
+    $default  accept
+
+
+State 11
+
+    1 S: seq STOP .
+
+    $default  reduce using rule 1 (S)
+
+
+State 12
+
+    3 seq: seq FOLD . catseq
+
+    SYM   shift, and go to state 1
+    NAME  shift, and go to state 2
+    LB    shift, and go to state 3
+
+    catseq  go to state 17
+    opseq   go to state 7
+    atom    go to state 8
+
+
+State 13
+
+    5 catseq: catseq opseq .
+    7 opseq: opseq . COLON NAME
+    8      | opseq . REV
+
+    COLON  shift, and go to state 14
+    REV    shift, and go to state 15
+
+    $default  reduce using rule 5 (catseq)
+
+
+State 14
+
+    7 opseq: opseq COLON . NAME
+
+    NAME  shift, and go to state 18
+
+
+State 15
+
+    8 opseq: opseq REV .
+
+    $default  reduce using rule 8 (opseq)
+
+
+State 16
+
+   12 atom: LB seq RB .
+
+    $default  reduce using rule 12 (atom)
+
+
+State 17
+
+    3 seq: seq FOLD catseq .
+    5 catseq: catseq . opseq
+
+    SYM   shift, and go to state 1
+    NAME  shift, and go to state 2
+    LB    shift, and go to state 3
+
+    $default  reduce using rule 3 (seq)
+
+    opseq  go to state 13
+    atom   go to state 8
+
+
+State 18
+
+    7 opseq: opseq COLON NAME .
+
+    $default  reduce using rule 7 (opseq)

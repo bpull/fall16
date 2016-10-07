@@ -18,7 +18,7 @@ using namespace std;
 // This says that semantic values of tokens should be ParseTree pointers.
 #define YYSTYPE vector<string>*
 
-int yylex();
+int yylex(); 
 extern colorout resout;
 extern colorout errout;
 
@@ -70,8 +70,8 @@ vector<string>* rev(const vector<string> *A) {
   return res;
 }
 
-int yyerror(const char *p) {
-  errout << "Parser error: " << p << endl;
+int yyerror(const char *p) { 
+  errout << "Parser error: " << p << endl; 
   exit(3);
 }
 
@@ -87,34 +87,17 @@ bool done = false;
   /* Tell bison to give descriptive error mesages. */
 %error-verbose
 
-  /* COPY YOUR TOKEN AND GRAMMAR SPEC FROM PART 1 INTO HERE.
+  /* COPY YOUR TOKEN AND GRAMMAR SPEC FROM PART 1 INTO HERE. 
      Delete everything up to the part with
      %%
      int main()
    */
 
-%left STOP
-%left FOLD
-%left SYM
-%left NAME
-%left LB
-%left RB
-%right CATTOKEN
-%left REV
-%left COLON
+%token STOP FOLD COLON REV SYM NAME LB RB
 
 %%
 
-S: seq STOP              { YYACCEPT; }
-|                        { done = true;; }
-
-seq:    seq seq          { resout << $1 << $2; }    %prec CATTOKEN
-|       LB seq RB        { resout << "[" << $2 << "]"; }
-|       seq FOLD seq     { resout << fold($1, $3); }
-|       seq COLON NAME   {$$ = new ParseTree("seq",$1,$2,$3);}
-|       SYM              {$$ = $1 }
-|       NAME             {$$ = }
-|       seq REV          { resout << rev($1); }
+S: STOP { YYACCEPT; }
 
 %%
 int main()
