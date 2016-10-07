@@ -4,16 +4,17 @@
 from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
+import random
 import math
 import objects
 import time
 
 def box(deltaX, deltaY, scale, lx, ly, ux, uy, Z, fill=False):
     glBegin(GL_LINE_LOOP)
-    glVertex3f(scale*(deltaX+lx),scale*(deltaY+ly),Z)
-    glVertex3f(scale*(deltaX+ux),scale*(deltaY+ly),Z)
-    glVertex3f(scale*(deltaX+ux),scale*(deltaY+uy),Z)
-    glVertex3f(scale*(deltaX+lx),scale*(deltaY+uy),Z)
+    glVertex3f(lx,ly,Z)
+    glVertex3f(ux,ly,Z)
+    glVertex3f(ux,uy,Z)
+    glVertex3f(lx,uy,Z)
     glEnd()
 
 def text(deltaX, deltaY, scale, start_row, start_col, start_z, font, word):
@@ -79,19 +80,19 @@ class Scene:
 
         if key == 101:
             self.dir = "front"
-            if self.deltaYman < 450:
+            if self.deltaYman < 450/self.scaleman:
                 self.deltaYman += self.stepSize
         elif key == 103:
             self.dir = "front"
-            if self.deltaYman > -75:
+            if self.deltaYman > -75/self.scaleman:
                 self.deltaYman -= self.stepSize
         elif key == 102:
             self.dir = "right"
-            if self.deltaXman < 550:
+            if self.deltaXman < 550/self.scaleman:
                 self.deltaXman += self.stepSize
         elif key == 100:
             self.dir = "left"
-            if self.deltaXman > -50:
+            if self.deltaXman > -50/self.scaleman:
                 self.deltaXman -= self.stepSize
         self.stage = (self.stage + 1) % 3
 
@@ -116,11 +117,27 @@ class Scene:
         glutPostRedisplay()
 
     def idle(self):
-        if (time.time() / 0.2) % 1 == 0:
+        if time.time() > self.idletime+0.2:
             print ("['time', "+str(time.time())+"]")
             if self.dir == "front":
                 self.stage = (self.stage + 1) % 3
+                self.idletime = time.time()
                 glutPostRedisplay()
+        if time.time() > self.balltime+0.005:
+            if random.random() > 0.9:
+                if random.random() > 0.5:
+                    self.dir += 20
+                    self.dir = self.dir % 360
+                else:
+                    self.dir -= 20
+                    self.dir = self.dir % 360
+            self.deltaXball = self.deltaXball + 2.0*math.cos(self.balldir)
+            self.deltaYball = self.deltaYball + 2.0*math.sin(self.balldir)
+
+            if 0 <= (pow((deltaXball - deltaXman), 2) + pow(deltaYball-deltaYman, 2)):
+                if (pow((deltaXball - deltaXman), 2) + pow(deltaYball-deltaYman, 2)) <= pow(30,2):
+                    self.score += 1
+
 
     def __init__(self):
 
@@ -131,6 +148,12 @@ class Scene:
         self.deltaYman = 100
         self.scaleman = 1.0
         self.stepSize = 4;
+        self.idletime = time.time()
+        self.deltaXball = 0
+        self.deltaYball = 0
+        self.balltime = time.time()
+        self.balldir = 0
+        self.score = 0
 
 
         # Initialize the environment
@@ -169,6 +192,9 @@ class Scene:
 
         for component in objects.stickFigure[self.dir][self.stage]:
             component[0](self.deltaXman,self.deltaYman,self.scaleman,*component[1])
+
+        color(1,0,0)
+        circle(self.deltaXball, self.deltaYball,1,400,400,0,15,30,True)
 
         glFlush()
 
