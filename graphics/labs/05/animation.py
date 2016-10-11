@@ -138,8 +138,8 @@ class Scene:
             self.deltaXball = self.deltaXball + 10.0*math.cos(self.balldir)
             self.deltaYball = self.deltaYball + 10.0*math.sin(self.balldir)
 
-            if (15-(self.scaleman*15)**2) <= (((300+self.deltaXball)-(50+self.deltaXman))**2 + ((300+self.deltaYball)-(80+self.deltaYman))**2):
-                if (((300+self.deltaXball)-(50+self.deltaXman))**2 + ((300+self.deltaYball)-(80+self.deltaYman))**2) <= (15+(self.scaleman*15)**2):
+            if 0 <= (((300+self.deltaXball)-(50+self.deltaXman))**2 + ((300+self.deltaYball)-(80+self.deltaYman))**2):
+                if (((300+self.deltaXball)-(50+self.deltaXman))**2 + ((300+self.deltaYball)-(80+self.deltaYman))**2) <= 30**2:
                     self.score += 1
                     self.balldir += 180
             self.balltime += .005
