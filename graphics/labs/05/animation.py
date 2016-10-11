@@ -32,8 +32,8 @@ def drange(start, stop, step):
 
 def circle(deltaX, deltaY, scale, x, y, z, r, numberOfVertices, fill=False):
     if fill:
-        glBegin(GL_TRIANGLE_FAN)
-        glVertex3f(X, Y, 0.0)
+        glBegin(GL_POLYGON)
+        #glVertex3f(scale*(deltaX+x), scale*(deltaY+y), 0.0)
     else:
         glBegin(GL_LINE_LOOP)
     theta=0
@@ -121,22 +121,29 @@ class Scene:
             print ("['time', "+str(time.time())+"]")
             if self.dir == "front":
                 self.stage = (self.stage + 1) % 3
-                self.idletime = time.time()
-                glutPostRedisplay()
+            self.idletime = time.time()
+            glutPostRedisplay()
+
         if time.time() > self.balltime+0.005:
             if random.random() > 0.9:
                 if random.random() > 0.5:
-                    self.dir += 20
-                    self.dir = self.dir % 360
+                    self.balldir += 20
                 else:
-                    self.dir -= 20
-                    self.dir = self.dir % 360
-            self.deltaXball = self.deltaXball + 2.0*math.cos(self.balldir)
-            self.deltaYball = self.deltaYball + 2.0*math.sin(self.balldir)
+                    self.balldir -= 20
+            if 40 > (300+self.deltaXball) or (300+self.deltaXball) > 560:
+                self.balldir += 180
+            if 40 > (300+self.deltaYball) or (300+self.deltaYball) > 435:
+                self.balldir += 180
 
-            if 0 <= (pow((deltaXball - deltaXman), 2) + pow(deltaYball-deltaYman, 2)):
-                if (pow((deltaXball - deltaXman), 2) + pow(deltaYball-deltaYman, 2)) <= pow(30,2):
+            self.deltaXball = self.deltaXball + 10.0*math.cos(self.balldir)
+            self.deltaYball = self.deltaYball + 10.0*math.sin(self.balldir)
+
+            if (15-(self.scaleman*15)**2) <= (((300+self.deltaXball)-(50+self.deltaXman))**2 + ((300+self.deltaYball)-(80+self.deltaYman))**2):
+                if (((300+self.deltaXball)-(50+self.deltaXman))**2 + ((300+self.deltaYball)-(80+self.deltaYman))**2) <= (15+(self.scaleman*15)**2):
                     self.score += 1
+                    self.balldir += 180
+            self.balltime += .005
+            glutPostRedisplay()
 
 
     def __init__(self):
@@ -149,9 +156,9 @@ class Scene:
         self.scaleman = 1.0
         self.stepSize = 4;
         self.idletime = time.time()
+        self.balltime = time.time()
         self.deltaXball = 0
         self.deltaYball = 0
-        self.balltime = time.time()
         self.balldir = 0
         self.score = 0
 
@@ -188,13 +195,14 @@ class Scene:
         glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
 
         box(0, 0, 1.0, 25, 25, 575, 450, 0)
-        text(0, 0, 1.0, 190, 470, 0, GLUT_BITMAP_TIMES_ROMAN_24, "Our Game Experience")
+        text(0, 0, 1.0, 130, 470, 0, GLUT_BITMAP_TIMES_ROMAN_24, "Our Game Experience - Score "+str(self.score)+"")
 
         for component in objects.stickFigure[self.dir][self.stage]:
             component[0](self.deltaXman,self.deltaYman,self.scaleman,*component[1])
 
-        color(1,0,0)
-        circle(self.deltaXball, self.deltaYball,1,400,400,0,15,30,True)
+        color(0,0,0,1,0,0)
+        circle(self.deltaXball, self.deltaYball,1,300,300,0,15,30,True)
+        color(0,0,0,1,1,1)
 
         glFlush()
 
