@@ -1,8 +1,7 @@
 /* SI 413 Fall 2013
  * Lab 6
  * Parser for pat that just shows the parse tree
- * YOUR NAME HERE
- * PARTNER NAME HERE
+ * Brandon Pullig
  */
 
 %code requires {

@@ -4,10 +4,12 @@ import numpy as np
 
 class Board:
 
+    #create board full of empty spots
     def __init__(self):
         self.b = np.ndarray(shape=(6,7), dtype=(str,11))
         self.b.fill("\033[1;32;40m*")
 
+    #print board
     def __repr__(self):
         for i in range(6):
             for j in range(7):
@@ -16,6 +18,8 @@ class Board:
         print ("\033[1;32;40m1234567")
         return ""
 
+    #attempts to place a piece into the board. if successful, it will return the row in which it landed
+    #if not successful, it will return false
     def play_piece(self, column, token):
         for i in range(5,-1,-1):
             try:
@@ -33,12 +37,14 @@ class Board:
 
 class Game:
 
+    #class definition to hold the board and keep track of the turn, input, and if the game is still running
     def __init__(self):
         self.b = Board()
         self.turn = 'B'
         self.input = ''
         self.over = False
 
+    #prints the current board and saves the next input from the human
     def next_move(self):
         print (self.b)
 
@@ -52,6 +58,7 @@ class Game:
                 self.input = 10
             self.input = int(self.input) - 1
 
+    #
     def play_turn(self):
         outcome = self.b.play_piece(self.input, self.turn)
         if outcome is not False:
@@ -61,6 +68,7 @@ class Game:
             self.next_move()
             self.play_turn()
 
+    #check all verticals, horizontals, and diagonals for 4 in a row
     def check_win(self, row):
         '''check board state for a winning combination. there are only 25 possible straights that can contain 4 in a row'''
         num_in_a_row = 0
@@ -164,12 +172,14 @@ class Game:
 
         return False
 
+    #change who is playing; if B, then R. if R, then B
     def change_player(self):
         if self.turn is 'B':
             self.turn = 'R'
         else:
             self.turn = 'B'
 
+    #print who the winner is
     def print_winner(self):
         if self.turn is 'B':
             print("Black Wins!")
@@ -178,10 +188,11 @@ class Game:
 
 
 
-
+#if running from the terminal, start the game
 if __name__ == '__main__':
     curGame = Game()
 
+    #the game is just a cycle of changing players, reading input, and playing the piece
     while curGame.over is not True:
         curGame.change_player()
         curGame.next_move()

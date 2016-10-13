@@ -1,8 +1,7 @@
 /* SI 413 Fall 2015
  * Lab 6
  * Scanner specification for the pat language (part 2)
- * YOUR NAME HERE
- * PARTNER NAME HERE
+ * Brandon Pullig
  */
 %{
 #include <iostream>
