@@ -43,7 +43,7 @@ class Board:
 class Game:
 
     #class definition to hold the board and keep track of the turn, input, and if the game is still running
-    def __init__(self, depth, first):
+    def __init__(self, depth, first, debug=False):
         self.b = Board()
         self.bcopy = Board()
         if first is 'h':
@@ -53,6 +53,7 @@ class Game:
         self.input = ''
         self.over = False
         self.depth = int(depth)
+        self.debug = debug
 
     def copy(self):
         self.bcopy.b = np.copy(self.b.b)
@@ -78,7 +79,7 @@ class Game:
     def play_turn(self):
         outcome = self.b.play_piece(self.input, self.turn)
         if outcome is not False:
-            self.over,junkB,junkR = self.check_win()
+            self.over,junkB,junkR,jB,jR = self.check_win()
         else:
             print ("Invalid move! Please try again!")
             self.next_move()
@@ -90,9 +91,12 @@ class Game:
 
         max_niar_B = 0
         max_niar_R = 0
+        two_niar_B = 0
+        two_niar_R = 0
         num_in_a_row = 0
         token_counted = '\033[1;32;40m*'
         cur_token = ''
+        last_play_token = ''
         board = None
 
         if eval:
@@ -102,12 +106,7 @@ class Game:
 
         #check all verticals
         for col in range (7):
-            for row in range(6):
-
-                # if eval:
-                #     cur_token = self.bcopy.b[row][col]
-                # else:
-                #     cur_token = self.b.b[row][col]
+            for row in range(5,-1,-1):
 
                 cur_token = board[row][col]
 
@@ -115,20 +114,43 @@ class Game:
                     if cur_token == token_counted:
                         num_in_a_row = num_in_a_row + 1
                         if token_counted == '\033[1;30;40mB':
-                            if num_in_a_row == 3:
+                            if num_in_a_row == 1 and last_play_token == '\033[1;30;40mB':
+                                two_niar_B += 1
+                            elif num_in_a_row == 2 and last_play_token == '\033[1;30;40mB':
+                                max_niar_B += 1
+                            elif num_in_a_row == 2:
+                                two_niar_B += 1
+                            elif num_in_a_row == 3:
                                 max_niar_B += 1
                         else:
-                            if num_in_a_row == 3:
+                            if num_in_a_row == 1 and last_play_token == '\033[1;31;41mR':
+                                two_niar_R += 1
+                            elif num_in_a_row == 2 and last_play_token == '\033[1;31;41mR':
+                                max_niar_R += 1
+                            if num_in_a_row == 2:
+                                two_niar_R += 1
+                            elif num_in_a_row == 3:
                                 max_niar_R += 1
                     else:
+                        if token_counted == '\033[1;30;40mB':
+                            if num_in_a_row == 2:
+                                two_niar_B -= 1
+                            elif num_in_a_row == 3:
+                                max_niar_B -= 1
+                        else:
+                            if num_in_a_row == 2:
+                                two_niar_R -= 1
+                            elif num_in_a_row == 3:
+                                max_niar_R -= 1
                         num_in_a_row = 1
                         token_counted = cur_token
                 else:
                     num_in_a_row = 0
+                    last_play_token = token_counted
                     token_counted = '\033[1;32;40m*'
 
                 if num_in_a_row == 4:
-                    return True,max_niar_B,max_niar_R
+                    return True,max_niar_B,max_niar_R,two_niar_B,two_niar_R
 
             num_in_a_row = 0
             token_counted = '\033[1;32;40m*'
@@ -138,66 +160,102 @@ class Game:
         for row in range (6):
             for col in range(7):
 
-                # if eval:
-                #     cur_token = self.bcopy.b[row][col]
-                # else:
-                #     cur_token = self.b.b[row][col]
                 cur_token = board[row][col]
-
 
                 if cur_token != '\033[1;32;40m*':
                     if cur_token == token_counted:
                         num_in_a_row = num_in_a_row + 1
                         if token_counted == '\033[1;30;40mB':
-                            if num_in_a_row == 3:
+                            if num_in_a_row == 1 and last_play_token == '\033[1;30;40mB':
+                                two_niar_B += 1
+                            elif num_in_a_row == 2 and last_play_token == '\033[1;30;40mB':
+                                max_niar_B += 1
+                            elif num_in_a_row == 2:
+                                two_niar_B += 1
+                            elif num_in_a_row == 3:
                                 max_niar_B += 1
                         else:
-                            if num_in_a_row == 3:
+                            if num_in_a_row == 1 and last_play_token == '\033[1;31;41mR':
+                                two_niar_R += 1
+                            elif num_in_a_row == 2 and last_play_token == '\033[1;31;41mR':
+                                max_niar_R += 1
+                            if num_in_a_row == 2:
+                                two_niar_R += 1
+                            elif num_in_a_row == 3:
                                 max_niar_R += 1
                     else:
+                        if token_counted == '\033[1;30;40mB':
+                            if num_in_a_row == 2:
+                                two_niar_B -= 1
+                            elif num_in_a_row == 3:
+                                max_niar_B -= 1
+                        else:
+                            if num_in_a_row == 2:
+                                two_niar_R -= 1
+                            elif num_in_a_row == 3:
+                                max_niar_R -= 1
                         num_in_a_row = 1
                         token_counted = cur_token
                 else:
                     num_in_a_row = 0
+                    last_play_token = token_counted
                     token_counted = '\033[1;32;40m*'
 
                 if num_in_a_row == 4:
-                    return True,max_niar_B,max_niar_R
+                    return True,max_niar_B,max_niar_R,two_niar_B,two_niar_R
 
             num_in_a_row = 0
             token_counted = '\033[1;32;40m*'
             cur_token = ''
 
         #check all left slanted diagonals
-        ranges = [range(2,6), range(1,6), range(6), range(6), range(5), range(4)]
+        ranges = [range(5,1,-1), range(5,0,-1), range(5,-1,-1), range(5,-1,-1), range(4,-1,-1), range(3,-1,-1)]
         for cur_range,j in zip(ranges,range(2,-4,-1)):
             for i in cur_range:
 
-                # if eval:
-                #     cur_token = self.bcopy.b[row][col]
-                # else:
-                #     cur_token = self.b.b[row][col]
                 cur_token = board[i][i-j]
-
 
                 if cur_token != '\033[1;32;40m*':
                     if cur_token == token_counted:
                         num_in_a_row = num_in_a_row + 1
                         if token_counted == '\033[1;30;40mB':
-                            if num_in_a_row == 3:
+                            if num_in_a_row == 1 and last_play_token == '\033[1;30;40mB':
+                                two_niar_B += 1
+                            elif num_in_a_row == 2 and last_play_token == '\033[1;30;40mB':
+                                max_niar_B += 1
+                            elif num_in_a_row == 2:
+                                two_niar_B += 1
+                            elif num_in_a_row == 3:
                                 max_niar_B += 1
                         else:
-                            if num_in_a_row == 3:
+                            if num_in_a_row == 1 and last_play_token == '\033[1;31;41mR':
+                                two_niar_R += 1
+                            elif num_in_a_row == 2 and last_play_token == '\033[1;31;41mR':
+                                max_niar_R += 1
+                            if num_in_a_row == 2:
+                                two_niar_R += 1
+                            elif num_in_a_row == 3:
                                 max_niar_R += 1
                     else:
+                        if token_counted == '\033[1;30;40mB':
+                            if num_in_a_row == 2:
+                                two_niar_B -= 1
+                            elif num_in_a_row == 3:
+                                max_niar_B -= 1
+                        else:
+                            if num_in_a_row == 2:
+                                two_niar_R -= 1
+                            elif num_in_a_row == 3:
+                                max_niar_R -= 1
                         num_in_a_row = 1
                         token_counted = cur_token
                 else:
                     num_in_a_row = 0
+                    last_play_token = token_counted
                     token_counted = '\033[1;32;40m*'
 
                 if num_in_a_row == 4:
-                    return True,max_niar_B,max_niar_R
+                    return True,max_niar_B,max_niar_R,two_niar_B,two_niar_R
 
             num_in_a_row = 0
             token_counted = '\033[1;32;40m*'
@@ -209,10 +267,6 @@ class Game:
         for rows,cols in zip(xranges,yranges):
             for i,j in zip(rows,cols):
 
-                # if eval:
-                #     cur_token = self.bcopy.b[row][col]
-                # else:
-                #     cur_token = self.b.b[row][col]
                 cur_token = board[i][j]
 
 
@@ -220,26 +274,49 @@ class Game:
                     if cur_token == token_counted:
                         num_in_a_row = num_in_a_row + 1
                         if token_counted == '\033[1;30;40mB':
-                            if num_in_a_row == 3:
+                            if num_in_a_row == 1 and last_play_token == '\033[1;30;40mB':
+                                two_niar_B += 1
+                            elif num_in_a_row == 2 and last_play_token == '\033[1;30;40mB':
+                                max_niar_B += 1
+                            elif num_in_a_row == 2:
+                                two_niar_B += 1
+                            elif num_in_a_row == 3:
                                 max_niar_B += 1
                         else:
-                            if num_in_a_row == 3:
+                            if num_in_a_row == 1 and last_play_token == '\033[1;31;41mR':
+                                two_niar_R += 1
+                            elif num_in_a_row == 2 and last_play_token == '\033[1;31;41mR':
+                                max_niar_R += 1
+                            if num_in_a_row == 2:
+                                two_niar_R += 1
+                            elif num_in_a_row == 3:
                                 max_niar_R += 1
                     else:
+                        if token_counted == '\033[1;30;40mB':
+                            if num_in_a_row == 2:
+                                two_niar_B -= 1
+                            elif num_in_a_row == 3:
+                                max_niar_B -= 1
+                        else:
+                            if num_in_a_row == 2:
+                                two_niar_R -= 1
+                            elif num_in_a_row == 3:
+                                max_niar_R -= 1
                         num_in_a_row = 1
                         token_counted = cur_token
                 else:
                     num_in_a_row = 0
+                    last_play_token = token_counted
                     token_counted = '\033[1;32;40m*'
 
                 if num_in_a_row == 4:
-                    return True,max_niar_B,max_niar_R
+                    return True,max_niar_B,max_niar_R,two_niar_B,two_niar_R
 
             num_in_a_row = 0
             token_counted = '\033[1;32;40m*'
             cur_token = ''
 
-        return False,max_niar_B,max_niar_R
+        return False,max_niar_B,max_niar_R,two_niar_B,two_niar_R
 
     #change who is playing; if B, then R. if R, then B
     def change_player(self):
@@ -257,23 +334,29 @@ class Game:
 
     def eval(self, turn):
         #will check if the opposite person won because it was changes since last play
-        over, max_niar_B, max_niar_R = self.check_win(eval=True)
-        print(over,end='')
-        print(max_niar_B,end='')
-        print(max_niar_R)
+        over, max_niar_B, max_niar_R, two_niar_B, two_niar_R = self.check_win(eval=True)
+
+        if self.debug:
+            print (self.bcopy)
 
         if over:
             if turn is 'B':
-                return -10000
+                if self.debug:
+                    print("Eval = -100000000")
+                    a = input()
+                return -100000000
             else:
-                return 10000
+                if self.debug:
+                    print("Eval = 100000000")
+                    a = input()
+                return 100000000
         else:
-            if max_niar_B > max_niar_R:
-                return 500
-            elif max_niar_R > max_niar_B:
-                return -500
-            else:
-                return 0
+            score =  (20*max_niar_B+1)**4 - (20*max_niar_R)**4
+            score += (20*two_niar_B+1)**3 - (20*two_niar_R)**3
+            if self.debug:
+                print ("Eval = "+str(score))
+                a = input()
+            return score
 
     #inspiration taken from stackoverflow regarding alphaBeta pruning.
     #http://stackoverflow.com/questions/12569392/alpha-beta-algorithm-extracting-move
@@ -300,8 +383,8 @@ class Game:
         return alpha
 
     def rootAlphaBeta(self):
-        max_eval = -1000000
-        alpha = 1000000
+        max_eval = -float("inf")
+        alpha = float("inf")
         best_move = 0
 
         self.copy()
@@ -313,7 +396,7 @@ class Game:
 
         for col in moves:
             self.bcopy.play_piece(col, 'B')
-            alpha = -self.alphaBeta(self.depth-1, -alpha, alpha, 'R')
+            alpha = -self.alphaBeta(self.depth-1, -float("inf"), alpha, 'R')
             self.bcopy.undo(col)
 
             if alpha > max_eval:
@@ -324,15 +407,17 @@ class Game:
 
 #if running from the terminal, start the game
 if __name__ == '__main__':
-    if len(sys.argv) is not 2:
+    if len(sys.argv) < 2:
         print ("usage: python3 connect4.py <depth>")
         sys.exit(1)
     elif sys.argv[1].isdigit():
         print ("Will the Human or Computer play first? (h/c)")
         play = input()
         if play is 'h' or play is 'c':
-            curGame = Game(sys.argv[1], play)
-
+            if len(sys.argv) > 2:
+                curGame = Game(sys.argv[1], play, debug=True)
+            else:
+                curGame = Game(sys.argv[1], play)
             #the game is just a cycle of changing players, reading input, and playing the piece
             while curGame.over is not True:
                 curGame.change_player()

@@ -69,7 +69,7 @@ class Game:
 
         #check all verticals
         for col in range (7):
-            for row in range(6):
+            for row in range(5,-1,-1):
 
                 cur_token = self.b.b[row][col]
 
@@ -114,7 +114,8 @@ class Game:
             cur_token = ''
 
         #check all left slanted diagonals
-        ranges = [range(2,6), range(1,6), range(6), range(6), range(5), range(4)]
+        #ranges = [range(2,6), range(1,6), range(6), range(6), range(5), range(4)]
+        ranges = [range(5,1,-1), range(5,0,-1), range(5,-1,-1), range(5,-1,-1), range(4,-1,-1), range(3,-1,-1)]
         for cur_range,j in zip(ranges,range(2,-4,-1)):
             for i in cur_range:
 
