@@ -40,7 +40,7 @@
 extern int yydebug;
 #endif
 /* "%code requires" blocks.  */
-#line 8 "pat2.ypp" /* yacc.c:1909  */
+#line 7 "pat2.ypp" /* yacc.c:1909  */
 
 
 #include <cstdlib>
@@ -54,7 +54,7 @@ using namespace std;
 // This says that semantic values of tokens should be ParseTree pointers.
 #define YYSTYPE vector<string>*
 
-int yylex(); 
+int yylex();
 extern colorout resout;
 extern colorout errout;
 
@@ -68,12 +68,13 @@ extern colorout errout;
   {
     STOP = 258,
     FOLD = 259,
-    COLON = 260,
-    REV = 261,
-    SYM = 262,
-    NAME = 263,
-    LB = 264,
-    RB = 265
+    SYM = 260,
+    NAME = 261,
+    LB = 262,
+    RB = 263,
+    CATTOKEN = 264,
+    REV = 265,
+    COLON = 266
   };
 #endif
 

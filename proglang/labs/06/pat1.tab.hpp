@@ -40,7 +40,7 @@
 extern int yydebug;
 #endif
 /* "%code requires" blocks.  */
-#line 8 "pat1.ypp" /* yacc.c:1909  */
+#line 7 "pat1.ypp" /* yacc.c:1909  */
 
 
 #include <cstdlib>

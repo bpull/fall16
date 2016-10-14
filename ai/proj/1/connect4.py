@@ -64,7 +64,7 @@ class Game:
     def check_win(self, row):
         '''check board state for a winning combination. there are only 25 possible straights that can contain 4 in a row'''
         num_in_a_row = 0
-        token_counted = '*'
+        token_counted = '\033[1;32;40m*'
         cur_token = ''
 
         #check all verticals
@@ -81,7 +81,7 @@ class Game:
                         token_counted = cur_token
                 else:
                     num_in_a_row = 0
-                    token_counted = '*'
+                    token_counted = '\033[1;32;40m*'
 
                 if num_in_a_row is 4:
                     return True

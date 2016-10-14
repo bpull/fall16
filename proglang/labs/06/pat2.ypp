@@ -25,7 +25,7 @@ extern colorout errout;
 
 %code {
 
-map<string,int> T;
+  map< string,vector<string> > T;
 
 // These helper functions provided at no cost by Dr Roche.
 
@@ -106,19 +106,19 @@ bool done = false;
 
 %%
 
-S: seq STOP              { YYACCEPT; }
+S: seq STOP              { resout << $1 << endl; YYACCEPT; }
 |                        { done = true;; }
 
-seq:    seq seq          { resout << concat($1, $2); }    %prec CATTOKEN
-|       LB seq RB        { resout << "[" << $2 << "]"; }
-|       seq FOLD seq     { resout << fold($1, $3); }
-|       seq COLON NAME   { int i=0; while($3[i]){$3[i]=tolower($3[i]);i++;} T[$3] = $1; }
-|       SYM              { $$ = $1 }
-|       seq REV          { resout << rev($1); }
-|       NAME             { int i=0; while($1[i]){$1[i]=tolower($1[i]);i++;}
-                            if (T.find($1) == T.end())
+seq:    seq seq          { $$ = concat($1, $2); }    %prec CATTOKEN
+|       LB seq RB        { $$ = $2; }
+|       seq FOLD seq     { $$ = fold($1, $3); }
+|       seq COLON NAME   { string name = $3->at(0); T[name] = *$1; }
+|       SYM              { $$ = $1; }
+|       seq REV          { $$ =  rev($1); }
+|       NAME             {  string name = $1->at(0);
+                            if (T.find(name) == T.end())
                             {errout << "Variable name not defined!" << endl;exit(1);}
-                         else{$$ = T[$1];}}
+                         else{$$ = &T[name];}}
 
 %%
 int main()

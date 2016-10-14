@@ -25,11 +25,8 @@ class colorbuf : public std::streambuf {
   std::streambuf *dest;
   bool tty;
   char magic[7];
-  const bool* block;
  public:
-  colorbuf (int fd, char color, const bool* b = NULL) 
-    :block(b)
-  {
+  colorbuf (int fd, char color) {
     filedes = fd;
     if (filedes == 1) dest = std::cout.rdbuf();
     else if (filedes == 2) dest = std::cerr.rdbuf();
@@ -63,7 +60,6 @@ class colorbuf : public std::streambuf {
 
  protected:
   virtual int overflow(int ch) {
-    if (block && *block) return 1;
     if (tty) dest->sputn(magic, 7);
     dest->sputc(ch);
     if (tty) dest->sputn("\033[0m", 4);
@@ -75,8 +71,8 @@ class colorout : public std::ostream {
  private:
   colorbuf buf;
  public:
-  colorout(int fd, int cc, const bool* block = NULL)
-    :std::ostream(&buf), buf(fd,cc,block)
+  colorout(int fd, int cc)
+    :std::ostream(&buf), buf(fd,cc)
     { }
 };
 
