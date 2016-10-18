@@ -405,7 +405,9 @@ class Game:
                 a = input()
             return score
 
-    def alphaBeta(self, depth, turn):
+    #inspiration taken from stackoverflow regarding alphaBeta pruning.
+    #http://stackoverflow.com/questions/12569392/alpha-beta-algorithm-extracting-move
+    def alphaBeta(self, depth, alpha, beta, turn):
         if depth == 0:
             return self.eval(turn)
 
@@ -424,10 +426,58 @@ class Game:
 
         return alpha
 
-    def rootAlphaBeta(self):
-        max_eval = float("-inf")
-        alpha = float("-inf")
+    def ab_min(self, depth, alpha, beta):
+        if depth == 0:
+            return self.eval('B')
+
         best_move = 4
+
+        moves = []
+        for i in range(7):
+            if self.bcopy.b[0][i] == '\033[1;32;40m*':
+                moves.append(i)
+
+        for col in moves:
+            self.bcopy.play_piece(col, 'R')
+            cur_val = self.ab_max(depth-1, alpha, beta)
+            self.bcopy.undo(col)
+
+            if cur_val < beta:
+                beta = cur_val
+                best_move = col
+            if beta <= alpha:
+                return beta
+
+        return beta
+
+    def ab_max(self, depth, alpha, beta):
+        if depth == 0:
+            return self.eval('R')
+
+        best_move = 4
+
+        moves = []
+        for i in range(7):
+            if self.bcopy.b[0][i] == '\033[1;32;40m*':
+                moves.append(i)
+
+        for col in moves:
+            self.bcopy.play_piece(col, 'B')
+            cur_val = self.ab_min(depth-1, alpha, beta)
+            self.bcopy.undo(col)
+
+            if cur_val > alpha:
+                alpha = cur_val
+                best_move = col
+            if beta <= alpha:
+                return alpha
+
+        return alpha
+
+
+    def rootAlphaBeta(self):
+        alpha = float('-inf')
+        best_move = -1
 
         self.copy()
 
@@ -438,12 +488,14 @@ class Game:
 
         for col in moves:
             self.bcopy.play_piece(col, 'B')
-            alpha = -self.alphaBeta(self.depth-1,'R')
+            cur = self.ab_min(self.depth-1, float('-inf'), float('inf'))
             self.bcopy.undo(col)
 
-            if alpha > max_eval:
-                max_eval = alpha
+
+            if cur > alpha:
+                alpha = cur
                 best_move = col
+
 
         return best_move
 
