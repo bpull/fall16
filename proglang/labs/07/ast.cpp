@@ -8,7 +8,7 @@
 
 SymbolTable ST; // The actual declaration of the global symbol table
 
-/* Adds this node and all children to the output stream in DOT format. 
+/* Adds this node and all children to the output stream in DOT format.
  * nextnode is the index of the next node to add. */
 void AST::addToDot(ostream& out, int& nextnode) {
   int root = nextnode;
@@ -32,7 +32,7 @@ void AST::writeDot(const char* fname) {
 }
 
 // ArithOp constructor
-ArithOp::ArithOp(Exp* l, Oper o, Exp* r) { 
+ArithOp::ArithOp(Exp* l, Oper o, Exp* r) {
   op = o;
   left = l;
   right = r;
@@ -56,7 +56,7 @@ Value ArithOp::eval() {
     case ADD: return l + r;
     case SUB: return l - r;
     case MUL: return l * r;
-    case DIV: 
+    case DIV:
       if (r != 0) return l / r;
       else if (!error) {
         error = true;
@@ -65,6 +65,45 @@ Value ArithOp::eval() {
       return Value();
     default:  return Value(); // shouldn't get here...
   }
+}
+
+Value NegOp::eval() {
+    int num = right->eval().num();
+    return num * -1;
+}
+
+Value CompOp::eval() {
+    int l = left->eval().num();
+    int r = right->eval().num();
+    switch(op) {
+        case LT:  return l < r;
+        case GT:  return l > r;
+        case LE:  return l <= r;
+        case GE:  return l >= r;
+        case EQ:  return l == r;
+        case NE:  return l != r;
+        default:  return Value(); //shouldn't get here..
+    }
+}
+
+Value BoolExp::eval() {
+    if (val) return true;
+    return false;
+}
+
+Value BoolOp::eval() {
+    bool l = left->eval().tf();
+    bool r = right->eval().tf();
+    switch(op) {
+        case AND: return (l && r);
+        case OR:  return (l || r);
+        default: return Value(); //shouldn't get here
+    }
+}
+
+Value NotOp::eval() {
+    bool r = right->eval().tf();
+    return (r != true);
 }
 
 // Constructor for CompOp

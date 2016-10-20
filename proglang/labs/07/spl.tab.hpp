@@ -49,7 +49,7 @@ using namespace std;
 
 #include "ast.hpp"
 
-int yylex(); 
+int yylex();
 
 
 #line 56 "spl.tab.hpp" /* yacc.c:1909  */

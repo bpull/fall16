@@ -39,7 +39,7 @@ extern bool showPrompt;
 enum Oper {
   ADD, SUB,
   MUL, DIV,
-  LT, GT, LE, GE, 
+  LT, GT, LE, GE,
   EQ, NE,
   AND, OR, NOT
 };
@@ -73,7 +73,7 @@ class AST;
  */
 class AST {
   private:
-    /* Adds this node and all children to the output stream in DOT format. 
+    /* Adds this node and all children to the output stream in DOT format.
      * nextnode is the index of the next node to add. */
     void addToDot(ostream& out, int& nextnode);
 
@@ -109,7 +109,7 @@ class Exp :public AST {
      * return the resulting value that gets computed. */
     virtual Value eval() {
       if (!error) {
-        errout << "eval() not yet implemented for " 
+        errout << "eval() not yet implemented for "
                << nodeLabel << " nodes!" << endl;
         error = true;
       }
@@ -124,7 +124,7 @@ class Id :public Exp {
 
   public:
     // Constructor from a C-style string
-    Id(const char* v) { 
+    Id(const char* v) {
       val = v;
       nodeLabel = "Exp:Id:" + val;
     }
@@ -139,7 +139,7 @@ class Num :public Exp {
     int val;
 
   public:
-    Num(int v) { 
+    Num(int v) {
       val = v;
       // Converting integers to strings is a little annoying...
       ostringstream label;
@@ -157,12 +157,14 @@ class BoolExp :public Exp {
     bool val;
 
   public:
-    BoolExp(bool v) { 
+    BoolExp(bool v) {
       val = v;
       nodeLabel = "Exp:Bool:";
       if (v) nodeLabel += "true";
       else nodeLabel += "false";
     }
+
+    Value eval();
 };
 
 /* A binary opration for arithmetic, like + or *. */
@@ -187,6 +189,8 @@ class CompOp :public Exp {
 
   public:
     CompOp(Exp* l, Oper o, Exp* r);
+
+    Value eval();
 };
 
 /* A binary operation for boolean logic, like "and". */
@@ -198,6 +202,8 @@ class BoolOp :public Exp {
 
   public:
     BoolOp(Exp* l, Oper o, Exp* r);
+
+    Value eval();
 };
 
 /* This class represents a unary negation operation. */
@@ -206,11 +212,13 @@ class NegOp :public Exp {
     Exp* right;
 
   public:
-    NegOp(Exp* r) { 
+    NegOp(Exp* r) {
       nodeLabel = "Exp:NegOp";
       right = r;
       ASTchild(right);
     }
+
+    Value eval();
 };
 
 /* This class represents a unary "not" operation. */
@@ -219,11 +227,13 @@ class NotOp :public Exp {
     Exp* right;
 
   public:
-    NotOp(Exp* r) { 
+    NotOp(Exp* r) {
       nodeLabel = "Exp:NotOp";
       right = r;
       ASTchild(right);
     }
+
+    Value eval();
 };
 
 /* A read expression. */
@@ -268,8 +278,8 @@ class Stmt :public AST {
 
     // Getter and setter for the next statement in sequence.
     Stmt* getNext() { return next; }
-    void setNext(Stmt* nextStmt) { 
-      children.back() = nextStmt; 
+    void setNext(Stmt* nextStmt) {
+      children.back() = nextStmt;
       next = nextStmt;
     }
 
@@ -281,7 +291,7 @@ class Stmt :public AST {
      * says to do. */
     virtual void exec() {
       if (!error) {
-        errout << "exec() not yet implemented for " 
+        errout << "exec() not yet implemented for "
                << nodeLabel << " nodes!" << endl;
         error = true;
       }
@@ -291,7 +301,7 @@ class Stmt :public AST {
 /* This class is necessary to terminate a sequence of statements. */
 class NullStmt :public Stmt {
   public:
-    NullStmt() :Stmt(NULL) { 
+    NullStmt() :Stmt(NULL) {
       nodeLabel = "Stmt:Null";
     }
 
@@ -308,7 +318,7 @@ class Block :public Stmt {
     Stmt* body;
 
   public:
-    Block(Stmt* b) { 
+    Block(Stmt* b) {
       nodeLabel = "Stmt:Block";
       body = b;
       ASTchild(body);
@@ -323,7 +333,7 @@ class IfStmt :public Stmt {
     Stmt* elseblock;
 
   public:
-    IfStmt(Exp* e, Stmt* ib, Stmt* eb) { 
+    IfStmt(Exp* e, Stmt* ib, Stmt* eb) {
       nodeLabel = "Stmt:If";
       clause = e;
       ifblock = ib;
@@ -339,9 +349,9 @@ class WhileStmt :public Stmt {
   private:
     Exp* clause;
     Stmt* body;
-   
+
   public:
-    WhileStmt(Exp* c, Stmt* b) { 
+    WhileStmt(Exp* c, Stmt* b) {
       nodeLabel = "Stmt:While";
       clause = c;
       body = b;
@@ -358,7 +368,7 @@ class NewStmt :public Stmt {
     Exp* rhs;
 
   public:
-    NewStmt(Id* l, Exp* r) { 
+    NewStmt(Id* l, Exp* r) {
       nodeLabel = "Stmt:New";
       lhs = l;
       rhs = r;
@@ -372,9 +382,9 @@ class Asn :public Stmt {
   private:
     Id* lhs;
     Exp* rhs;
-   
+
   public:
-    Asn(Id* l, Exp* r) { 
+    Asn(Id* l, Exp* r) {
       nodeLabel = "Stmt:Asn";
       lhs = l;
       rhs = r;
@@ -389,7 +399,7 @@ class Write :public Stmt {
     Exp* val;
 
   public:
-    Write(Exp* v) { 
+    Write(Exp* v) {
       nodeLabel = "Stmt:Write";
       val = v;
       ASTchild(val);
@@ -398,8 +408,8 @@ class Write :public Stmt {
     void exec() {
       Value res = val->eval();
       if (!error) {
-        res.writeTo(resout); 
-        resout << endl; 
+        res.writeTo(resout);
+        resout << endl;
       }
       getNext()->exec();
     }
@@ -415,7 +425,7 @@ class Lambda :public Exp {
     void writeLabel(ostream& out) { out << "lambda:exp" << flush; }
 
   public:
-    Lambda(Id* v, Stmt* b) { 
+    Lambda(Id* v, Stmt* b) {
       nodeLabel = "Exp:Lambda";
       var = v;
       body = b;
@@ -435,9 +445,9 @@ class Funcall :public Exp {
   private:
     Exp* funexp;
     Exp* arg;
-  
+
   public:
-    Funcall(Exp* f, Exp* a) { 
+    Funcall(Exp* f, Exp* a) {
       nodeLabel = "Exp:Funcall";
       funexp = f;
       arg = a;
