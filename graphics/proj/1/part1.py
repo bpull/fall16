@@ -28,8 +28,10 @@ class Scene:
         self.keys = key.KeyStateHandler()
 
         # Create the Background
-        self.background = pyglet.resource.image("background/level1.png")
+        self.background = pyglet.resource.image(self.level.background)
         self.background_x = 0
+
+        self.sound = pyglet.media.load(self.level.music)
 
         self.keys_pressed = {'jump':False, 'left':False, 'right':False, 'attack':False, 'throw':False, 'sprint':False}
 

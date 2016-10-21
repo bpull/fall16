@@ -1,21 +1,7 @@
 digraph AST {
 	n1 [label="Stmt:Write"];
-	n2 [label="Exp:BoolOp:and"];
-	n3 [label="Exp:CompOp:!="];
-	n4 [label="Exp:Id:x"];
-	n3 -> n4;
-	n5 [label="Exp:Id:y"];
-	n3 -> n5;
-	n2 -> n3;
-	n6 [label="Exp:NotOp"];
-	n7 [label="Exp:CompOp:<="];
-	n8 [label="Exp:Id:x"];
-	n7 -> n8;
-	n9 [label="Exp:Id:y"];
-	n7 -> n9;
-	n6 -> n7;
-	n2 -> n6;
+	n2 [label="Exp:Id:var"];
 	n1 -> n2;
-	n10 [label="Stmt:Null"];
-	n1 -> n10;
+	n3 [label="Stmt:Null"];
+	n1 -> n3;
 }
