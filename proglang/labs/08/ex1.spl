@@ -1,0 +1,11 @@
+{
+   new sum := 0;
+   new input := read;
+
+   while input != 0 {
+    sum := sum + input;
+    input := read;
+   }
+
+   write sum;
+}
