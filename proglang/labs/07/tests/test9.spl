@@ -1,0 +1,5 @@
+new x := 6 + 3;
+new y := 2;
+write x != y and not x <= y;
+;
+true

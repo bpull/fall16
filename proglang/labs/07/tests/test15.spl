@@ -1,0 +1,7 @@
+new a := 21;
+new b := 45;
+new c := -a + b;
+new d := -b * c;
+write d;
+;
+-1080

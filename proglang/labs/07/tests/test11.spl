@@ -1,0 +1,6 @@
+new a := 12;
+new b := 10;
+new c := a - b;
+write c;
+;
+2

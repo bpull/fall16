@@ -131,6 +131,10 @@ class Id :public Exp {
 
     // Returns a reference to the stored string value.
     string& getVal() { return val; }
+
+    Value eval() {
+        return ST.lookup(val);
+    }
 };
 
 /* A literal number in the program. */
@@ -375,6 +379,12 @@ class NewStmt :public Stmt {
       ASTchild(lhs);
       ASTchild(rhs);
     }
+
+    void exec() {
+        Value res = rhs->eval().num();
+        string l = lhs->getVal();
+        ST.bind(l, res);
+    }
 };
 
 /* An assignment statement. This represents a RE-binding in the symbol table. */
@@ -390,6 +400,12 @@ class Asn :public Stmt {
       rhs = r;
       ASTchild(lhs);
       ASTchild(rhs);
+    }
+
+    void exec() {
+        Value res = rhs->eval().num();
+        string l = lhs->getVal();
+        ST.rebind(l, res);
     }
 };
 

@@ -45,14 +45,14 @@ class SymbolTable {
 
     // Creates a new name-value binding
     void bind(string name, Value val = Value()) {
-      bindings[name] = val;
-      // YOU HAVE TO WRITE THE ERROR CHECKING!
+        if (bindings.count(name) == 0) bindings[name] = val;
+        else {errout << "ERROR: Variable " << name << " already bound!" << endl; error = true;}
     }
 
     // Re-defines the value bound to the given name.
     void rebind(string name, Value val) {
-      bindings[name] = val;
-      // YOU HAVE TO WRITE THE ERROR CHECKING!
+      if (bindings.count(name) > 0) bindings[name] = val;
+      else {errout << "ERROR: Can't rebind " << name << "; not yet bound!" << endl; error = true;}
     }
 };
 
