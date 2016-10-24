@@ -46,6 +46,7 @@ class Scene:
             self.window.clear()
             self.background.blit(self.background_x,0,height=height)
             self.level.drawBoard(self.level.level)
+            self.level.drawBoard(self.level.goals)
 
         @self.window.event
         def on_key_press(symbol, modifiers):
