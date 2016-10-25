@@ -32,6 +32,7 @@ class Scene:
         self.background_x = 0
 
         self.sound = pyglet.media.load(self.level.music)
+        self.sound.play()
 
         self.keys_pressed = {'jump':False, 'left':False, 'right':False, 'attack':False, 'throw':False, 'sprint':False}
 
@@ -46,6 +47,7 @@ class Scene:
             self.window.clear()
             self.background.blit(self.background_x,0,height=height)
             self.level.drawBoard(self.level.level)
+            self.level.drawBoard(self.level.goals)
 
         @self.window.event
         def on_key_press(symbol, modifiers):
