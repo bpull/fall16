@@ -65,11 +65,12 @@ if         {return IF;}
 ifelse     {return IFELSE;}
 while      {return WHILE;}
 read       {return READ;}
+write_     {return WRITEN;}
 write      {return WRITE;}
 lambda     {return LAMBDA;}
 new        {return NEW;}
 [a-zA-Z0-9_]+ {yylval.id = new Id(yytext); return ID;}
-
+"\'".*"\'" {yylval.word = new Word(yytext); return WORD;}
 <<EOF>>  { return 0; }
 [ \t\n]+ { }
 "#".*    { }

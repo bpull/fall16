@@ -76,12 +76,14 @@ int yylex();
     WHILE = 272,
     READ = 273,
     WRITE = 274,
-    NEW = 275,
-    ASN = 276,
-    STOP = 277,
-    ID = 278,
-    NUM = 279,
-    BOOL = 280
+    WRITEN = 275,
+    NEW = 276,
+    ASN = 277,
+    STOP = 278,
+    ID = 279,
+    WORD = 280,
+    NUM = 281,
+    BOOL = 282
   };
 #endif
 
@@ -97,8 +99,9 @@ union YYSTYPE
   Exp* exp;
   Id* id;
   Oper op;
+  Word* word;
 
-#line 102 "spl.tab.hpp" /* yacc.c:1909  */
+#line 105 "spl.tab.hpp" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;
