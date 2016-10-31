@@ -58,6 +58,7 @@ class AST;
   class Exp;
     class Id;
     class Num;
+    class Word;
     class BoolExp;
     class ArithOp;
     class CompOp;
@@ -153,6 +154,24 @@ class Num :public Exp {
 
     // To evaluate, just return the number!
     Value eval() { return val; }
+};
+
+class Word :public Exp {
+  private:
+    string txt;
+
+  public:
+    Word(const char* t) {
+      txt = t;
+      txt = txt.substr(1, txt.size() - 2);
+      nodeLabel = "Exp:Word:" + txt;
+    }
+
+    string& getVal() { return txt; }
+
+    Value eval() {
+        return Value(txt.c_str());
+    }
 };
 
 /* A literal boolean value like "true" or "false" */
@@ -445,19 +464,24 @@ class Asn :public Stmt {
 class Write :public Stmt {
   private:
     Exp* val;
+    bool newline;
 
   public:
-    Write(Exp* v) {
+    Write(Exp* v, bool t) {
       nodeLabel = "Stmt:Write";
       val = v;
+      newline = t;
       ASTchild(val);
     }
 
     void exec() {
       Value res = val->eval();
       if (!error) {
-        res.writeTo(resout);
-        resout << endl;
+        if (newline){
+            res.writeTo(resout);
+            resout << endl;
+        }
+        else {res.writeTo(resout);}
       }
       getNext()->exec();
     }
