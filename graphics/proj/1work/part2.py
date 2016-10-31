@@ -5,7 +5,7 @@ from pyglet.window import mouse, key
 from pyglet.gl import glEnable, glBlendFunc, GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA, GL_BLEND
 import imp
 import time
-
+import math
 import sys
 sys.dont_write_bytecode = True
 
@@ -22,12 +22,17 @@ class Player:
         self.sprite.scale = 0.15
         self.fast = False
         self.idle = True
-        self.time = 0
         self.att = False
+        self.jumping = False
+        self.time = 0
+        self.steps = 0
+        self.stepJump = 30
+        self.lastDelta = 0
+        self.fallingSpeed = 1.0
         self.sounds = sounds
 
   #controls the left and right movement
-    def motion(self, direct):
+    def motion(self):
         if self.dir == "right":
             if self.fast:
                 self.x += 9
@@ -44,26 +49,48 @@ class Player:
 
     #controls the sword swing
     def attack(self):
-        self.sounds["attack"].play()
-        self.time = time.time()
-        self.startAnim = pyglet.image.Animation.from_image_sequence(self.imgs["attack"], 0.05, False)
-        if self.dir == "left":
-            self.startAnim = self.startAnim.get_transform(flip_x=True)
-        self.sprite = pyglet.sprite.Sprite(self.startAnim, x=self.x, y=self.y-7)
-        self.sprite.scale = 0.15
-        self.power = 3
-        self.att = True
+        if not self.att:
+            self.sounds["attack"].play()
+            self.time = time.time()
+            self.startAnim = pyglet.image.Animation.from_image_sequence(self.imgs["attack"], 0.05, False)
+            if self.dir == "left":
+                self.startAnim = self.startAnim.get_transform(flip_x=True)
+            self.sprite = pyglet.sprite.Sprite(self.startAnim, x=self.x, y=self.y-7)
+            self.sprite.scale = 0.15
+            self.power = 3
+            self.att = True
 
    #animation for throwing weapon
     def throw(self):
-        self.sounds["fire"].play()
-        self.time = time.time()
-        self.startAnim = pyglet.image.Animation.from_image_sequence(self.imgs["throw"], 0.05, False)
-        if self.dir == "left":
-            self.startAnim = self.startAnim.get_transform(flip_x=True)
-        self.sprite = pyglet.sprite.Sprite(self.startAnim, x=self.x, y=self.y)
-        self.sprite.scale = 0.15
-        self.att = True
+        if not self.att:
+            self.sounds["fire"].play()
+            self.time = time.time()
+            self.startAnim = pyglet.image.Animation.from_image_sequence(self.imgs["throw"], 0.05, False)
+            if self.dir == "left":
+                self.startAnim = self.startAnim.get_transform(flip_x=True)
+            self.sprite = pyglet.sprite.Sprite(self.startAnim, x=self.x, y=self.y)
+            self.sprite.scale = 0.15
+            self.att = True
+
+    def jump(self):
+        if self.stepJump < 16:
+            self.lastDelta = math.sin(math.radians(self.stepJump*90.0/15.0))*160 - math.sin(math.radians((self.stepJump-1)*90.0/15.0))*160
+            print self.stepJump
+            print self.lastDelta
+            self.y += self.lastDelta
+        else:
+            self.jumping = False
+            if self.fallingSpeed < 45:
+                self.fallingSpeed *= 1.1
+            else:
+                self.fallingSpeed = 45
+            print self.stepJump
+            print self.fallingSpeed
+            self.y -= self.fallingSpeed
+
+        self.stepJump += 1
+        self.sprite.y = self.y
+        self.sprite.scale = .15
 
     def idleAct(self):
         if self.att and time.time() > self.time+0.5:
@@ -88,27 +115,43 @@ class Player:
             self.fast=True
         else:
             self.fast=False
-        if actions["jump"]:
+        if actions["attack"]:
+            self.attack()
+        elif actions["throw"]:
+            self.throw()
+        elif actions["jump"] or self.stepJump < 30:
+            if self.idle == True:
+                self.sounds["jump"].play()
+                self.startAnim = pyglet.image.Animation.from_image_sequence(self.imgs["jump"], 0.05, False)
+                if self.dir == "left":
+                    self.startAnim = self.startAnim.get_transform(flip_x=True)
+                self.sprite = pyglet.sprite.Sprite(self.startAnim, x=self.x, y=self.y)
+                self.stepJump = 1
+                self.lastDelta = 0
+                self.jumping = True
+                self.idle = False
+                self.fallingSpeed = .909
             self.jump()
         elif actions["left"]:
             if self.idle == True or self.dir == "right":
+                self.steps = 10
                 self.startAnim = pyglet.image.Animation.from_image_sequence(self.imgs["run"], 0.05, True)
                 self.dir = "left"
                 self.startAnim = self.startAnim.get_transform(flip_x=True)
                 self.sprite = pyglet.sprite.Sprite(self.startAnim, x=self.x, y=self.y-2)
                 self.idle = False
-            self.motion("left")
+            self.motion()
         elif actions["right"]:
             if self.idle == True or self.dir == "left":
                 self.startAnim = pyglet.image.Animation.from_image_sequence(self.imgs["run"], 0.05, True)
+                self.steps = 10
                 self.dir = "right"
                 self.sprite = pyglet.sprite.Sprite(self.startAnim, x=self.x, y=self.y-2)
                 self.idle = False
-            self.motion("right")
-        elif actions["attack"]:
-            self.attack()
-        elif actions["throw"]:
-            self.throw()
+            self.motion()
+        elif self.steps > 0:
+            self.steps -= 1
+            self.motion()
         else:
             print("idle called")
             self.idleAct()
@@ -137,8 +180,8 @@ class Scene:
         self.background_x = 0
 
         #Background music
-        #self.music = pyglet.media.load(self.level.music)
-        #self.music.play()
+        self.music = pyglet.media.load(self.level.music)
+        self.music.play()
 
         #dictionary of hero sounds
         self.heroSounds = {"fire":pyglet.media.load(self.level.heroSoundFire, streaming=False)}
