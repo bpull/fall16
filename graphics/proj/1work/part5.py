@@ -1,5 +1,4 @@
-#Brandon Pullig 175148
-#SI460 2017
+# pyglet event handler demo
 
 import pyglet
 from pyglet.window import mouse, key
@@ -13,19 +12,13 @@ sys.dont_write_bytecode = True
 
 #Our players
 class Player:
-    def __init__(self, startRow, startCol, images, sounds, typePlay):
-        #x and y hold pixel value of location
+    def __init__(self, startRow, startCol, images, typePlay, sounds=None):
         self.x = (startCol+1)*50
         self.y = (startRow-2)*50
-
         self.dir = "right"
-
-        #specifies what type of player (ie hero, enemy)
         self.typePlayer = typePlay
         self.power = 0
         self.speed = 3
-
-        #setting respective power levels
         if self.typePlayer == "hero":
             self.power = 1
         elif self.typePlayer == "e1":
@@ -37,19 +30,18 @@ class Player:
         elif self.typePlayer == "weapon":
             self.speed = 5
             self.power = 3
-
-        #images hold all the sprites necessary for this object
         self.imgs = images
-        self.sounds = sounds
-
-        #start the animated list
-        self.startAnim = pyglet.image.Animation.from_image_sequence(self.imgs["idle"], 0.05, True)
-        if self.typePlayer == "e1" or self.typePlayer == "e2":
-            self.startAnim = pyglet.image.Animation.from_image_sequence(self.imgs["run"], 0.05, True)
-        self.sprite = pyglet.sprite.Sprite(self.startAnim, x=self.x, y=self.y)
-        self.sprite.scale = 0.15
-
-        #modifiers that affect the player and his current options
+        self.sprite = None
+        if self.typePlayer is not "weapon":
+            self.startAnim = pyglet.image.Animation.from_image_sequence(self.imgs["idle"], 0.05, True)
+            if self.typePlayer == "e1" or self.typePlayer == "e2":
+                self.startAnim = pyglet.image.Animation.from_image_sequence(self.imgs["run"], 0.05, True)
+            self.sprite = pyglet.sprite.Sprite(self.startAnim, x=self.x, y=self.y)
+            self.sprite.scale = 0.15
+        else:
+            self.startAnim = pyglet.image.Animation.from_image_sequence(self.imgs["move"], 0.05, False)
+            self.sprite = pyglet.sprite.Sprite(self.startAnim, x=startRow*50, y=self.y+30)
+            self.sprite.scale = .15
         self.fast = False
         self.idle = True
         self.att = False
@@ -64,8 +56,8 @@ class Player:
         self.collisionWall = False
         self.about2Fall = False
         self.died = False
-        self.won = False
         self.checked = False
+        self.sounds = sounds
 
   #controls the left and right movement
     def motion(self):
@@ -85,7 +77,6 @@ class Player:
 
     #controls the sword swing
     def attack(self):
-        #if not currently attacking...
         if not self.att:
             self.sounds["attack"].play()
             self.time = time.time()
@@ -98,7 +89,7 @@ class Player:
             self.att = True
 
    #animation for throwing weapon
-    def throw(self):
+    def throw(self, level, cols):
         if not self.att:
             self.sounds["fire"].play()
             self.time = time.time()
@@ -109,7 +100,26 @@ class Player:
             self.sprite.scale = 0.15
             self.att = True
 
-    #splits the jump into 2 halves; first 15 is going up and the next 15 is the start downwards
+    def flying(self, keys, level, cols, heroX, heroY):
+        if keys['throw']:
+            self.x = heroX
+            self.y = heroY
+            self.y+=30
+            self.startAnim = pyglet.image.Animation.from_image_sequence(self.imgs["move"], 0.05, False)
+            if self.dir == "left":
+                self.startAnim = self.startAnim.get_transform(flip_x=True)
+            self.sprite = pyglet.sprite.Sprite(self.startAnim, x=self.x, y=self.y)
+            self.sprite.scale = 0.15
+            self.sprite.y = self.y
+            self.steps = 200
+            self.checkCollision(level, cols)
+            while self.steps > 0 and not self.collisionWall:
+                print self.x
+                print self.y
+                self.motion()
+                self.steps-=self.speed
+                self.checkCollision(level, cols)
+
     def jump(self):
         if self.stepJump < 16:
             self.lastDelta = math.sin(math.radians(self.stepJump*90.0/15.0))*160 - math.sin(math.radians((self.stepJump-1)*90.0/15.0))*160
@@ -133,7 +143,6 @@ class Player:
         self.sprite.y = self.y
         self.sprite.scale = .15
 
-    #how to act when no input is entered
     def idleAct(self):
         if self.att and time.time() > self.time+0.5:
             self.startAnim = pyglet.image.Animation.from_image_sequence(self.imgs["idle"], 0.05, True)
@@ -151,14 +160,12 @@ class Player:
             self.sprite.scale = 0.15
             self.idle = True
 
-    #this checks the vertical collisions with the ground as well as the horizontal collisions with walls and edges
     def checkCollision(self,level,cols):
         row = int(math.floor((self.sprite.y) / 50))
         col = int(math.floor(self.sprite.x / 50))
         # print row
         # print col
 
-        #check if falling
         if row not in level or col not in level[row]:
             self.collisionGround = False
             if self.fallingSpeed < 45:
@@ -167,21 +174,18 @@ class Player:
                 self.fallingSpeed = 45
             self.sprite.y -= self.fallingSpeed
             self.y = self.sprite.y
-        #otherwise, we are on the ground
         else:
             self.collisionGround = True
             self.fallingSpeed = 1.0
             self.sprite.y = (row+1)*50-1
             self.y = self.sprite.y
 
-        #this is the death pit check
         if row <= -1:
             self.died = True
             self.fallingSpeed = 0
             self.sprite.y = (row+1)*50
             self.y = self.sprite.y
 
-        #this is checking horizontal collisions with walls
         if row+1 in level and col+1 in level[row+1] and self.dir == "right":
             self.collisionWall = True
             if self.fast:
@@ -234,7 +238,6 @@ class Player:
 
         self.motion()
 
-    #this will check if the character is dead; if so, play the animation and music once each
     def checkDead(self):
         if self.died and not self.checked:
             self.startAnim = pyglet.image.Animation.from_image_sequence(self.imgs["dead"], 0.05, False)
@@ -245,23 +248,11 @@ class Player:
             self.sounds["death"].play()
             self.checked = True
 
-    #this checks if our current location is the same as the snowman
-    def checkWin(self, goal):
-        row = int(math.floor((self.sprite.y) / 50))+1
-        col = int(math.floor(self.sprite.x / 50))
 
-        if row in goal and col in goal[row]:
-            self.sounds["win"].play()
-            self.won = True
-
-    #the meat of the player class. It is the controller for all other method definitions.
-    #it takes in the actions (or keys pressed dictionary) and determines what move should
-    #be next to act
-    def action(self,actions,level,cols,goal):
+    def action(self,actions,level,cols):
         self.checkCollision(level,cols)
         self.checkDead()
-        if not self.died and not self.won:
-            self.checkWin(goal)
+        if not self.died:
             if actions["sprint"]:
                 self.fast=True
             else:
@@ -269,7 +260,7 @@ class Player:
             if actions["attack"]:
                 self.attack()
             elif actions["throw"]:
-                self.throw()
+                self.throw(level, cols)
             if actions["jump"] or self.stepJump < 31:
                 if self.jumping == False:
                     self.sounds["jump"].play()
@@ -316,9 +307,12 @@ class Player:
 class Scene:
     # Move objects between keyboard input
     def movement(self, dt):
-        self.hero.action(self.keys_pressed,self.level.level,self.level.cols, self.level.goals)
+        self.hero.action(self.keys_pressed,self.level.level,self.level.cols)
         for badguy in self.badguys:
             badguy.creep(self.level.level, self.level.cols)
+        self.knife.flying(self.keys_pressed,self.level.level,self.level.cols, self.hero.x, self.hero.y)
+        if (self.timer+.5) < time.time():
+            self.throwing = False
 
     # Initialize and run our environment
     def __init__(self, width=800, height=600, caption="Would you like to play a game?"):
@@ -332,6 +326,7 @@ class Scene:
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)
 
         self.keys = key.KeyStateHandler()
+        self.timer = 0
 
         # Create the Background
         self.background = pyglet.resource.image(self.level.background)
@@ -374,7 +369,7 @@ class Scene:
 
         self.SPRITES.update({"hero":{"run":runImages, "jump":jumpImages, "idle":idleImages, "dead":deadImages, "throw":throwImages, "attack":attackImages}})
 
-        #get enemy pictures
+        #get hero pictures
         runImages = []
         idleImages = []
         deadImages = []
@@ -396,7 +391,7 @@ class Scene:
 
         self.SPRITES.update({"e1":{"run":runImages, "idle":idleImages, "dead":deadImages, "attack":attackImages}})
 
-        #get enemy-2 pictures
+        #get hero pictures
         runImages = []
         idleImages = []
         deadImages = []
@@ -418,19 +413,19 @@ class Scene:
 
         self.SPRITES.update({"e2":{"run":runImages, "idle":idleImages, "dead":deadImages, "attack":attackImages}})
 
-        #get knife images
         runImages = []
         for i in range(10):
             runImages.append(pyglet.image.load("sprites/weapon/Kunai ("+str(i+1)+").png"))
 
         self.SPRITES.update({"weapon":{"move":runImages}})
 
-        #create the hero and all of the bad guys
-        self.hero = Player(self.level.playerStartRow, self.level.playerStartCol, self.SPRITES["hero"], self.heroSounds, "hero")
+        self.hero = Player(self.level.playerStartRow, self.level.playerStartCol, self.SPRITES["hero"], "hero", self.heroSounds)
         self.badguys = []
         for badguy in self.level.enemies:
-            self.badguys.append(Player(badguy[0], badguy[1], self.SPRITES[badguy[2]], self.enemySounds, badguy[2]))
+            self.badguys.append(Player(badguy[0], badguy[1], self.SPRITES[badguy[2]], badguy[2], self.enemySounds))
 
+        self.knife = Player(self.level.playerStartRow, self.level.playerStartCol, self.SPRITES["weapon"], "weapon")
+        self.throwing = False
 
         # Schedule player movements
         pyglet.clock.schedule_interval(self.movement, .02)
@@ -447,6 +442,10 @@ class Scene:
             self.hero.sprite.draw()
             for badguy in self.badguys:
                 badguy.sprite.draw()
+            if self.keys_pressed['throw'] or self.throwing:
+                self.throwing = True
+                self.timer = time.time()
+                self.knife.sprite.draw()
 
         @self.window.event
         def on_key_press(symbol, modifiers):
