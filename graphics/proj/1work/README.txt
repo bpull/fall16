@@ -3,4 +3,6 @@ v. player collisions. Other than those two missing features, the game is complet
 and die all with their respective sounds and animation timings. Even the winning square is triggered when walked over and the
 winning sound is played. Again, the only missing features are throwing knives, registering hits.
 
-<usage> python part4.py level1 
+<usage> python part4.py level1 i
+
+Part 5 does not work

@@ -120,6 +120,13 @@ class Exp :public AST {
       }
       return Value();
     }
+
+    virtual int suCount(__attribute__((unused)) int lor)
+    {
+        int a = lor;
+        cout << "suCount not implemented for " << nodeLabel << endl;
+        return -10;
+    }
 };
 
 /* An identifier, i.e. variable or function name. */
@@ -138,6 +145,12 @@ class Id :public Exp {
     string& getVal() { return val; }
 
     Value eval() { return ST.lookup(val); }
+
+    int suCount(__attribute__((unused)) int lor)
+    {
+        if (lor){ return 1; }
+        else { return 0; }
+    }
 };
 
 /* A literal number in the program. */
@@ -156,6 +169,11 @@ class Num :public Exp {
 
     // To evaluate, just return the number!
     Value eval() { return val; }
+    int suCount(__attribute__((unused)) int lor)
+    {
+        int a = lor;
+        return 0;
+    }
 };
 
 /* A literal boolean value like "true" or "false" */
@@ -172,6 +190,11 @@ class BoolExp :public Exp {
     }
 
     Value eval() { return val; }
+    int suCount(__attribute__((unused)) int lor)
+    {
+        int a = lor;
+        return 0;
+    }
 };
 
 /* A binary opration for arithmetic, like + or *. */
@@ -185,6 +208,16 @@ class ArithOp :public Exp {
     ArithOp(Exp* l, Oper o, Exp* r);
 
     Value eval();
+
+    int suCount(__attribute__((unused)) int lor)
+    {
+        int lef = left->suCount(1);
+        int righ = right->suCount(0);
+
+        if (lef == righ) return lef+1;
+        else {if (lef < righ) return righ;
+          else return lef;}
+    }
 };
 
 /* A binary operation for comparison, like < or !=. */
@@ -204,6 +237,16 @@ class CompOp :public Exp {
       else if (l == r) return op == LE || op == EQ || op == GE;
       else             return op == GT || op == GE || op == NE;
     }
+
+    int suCount(__attribute__((unused)) int lor)
+    {
+    int lef = left->suCount(1);
+    int righ = right->suCount(0);
+
+    if (lef == righ) return lef+1;
+    else {if (lef < righ) return righ;
+      else return lef;}
+    }
 };
 
 /* A binary operation for boolean logic, like "and". */
@@ -222,6 +265,15 @@ class BoolOp :public Exp {
       else if (op == AND && !a) return false;
       else return right->eval().tf();
     }
+    int suCount(__attribute__((unused)) int lor)
+    {
+        int lef = left->suCount(1);
+        int righ = right->suCount(0);
+
+        if (lef == righ) return lef+1;
+        else {if (lef < righ) return righ;
+          else return lef;}
+    }
 };
 
 /* This class represents a unary negation operation. */
@@ -237,6 +289,11 @@ class NegOp :public Exp {
     }
 
     Value eval() { return - right->eval().num(); }
+    int suCount(__attribute__((unused)) int lor)
+    {
+        int a = lor;
+        return 0;
+    }
 };
 
 /* This class represents a unary "not" operation. */
@@ -252,6 +309,10 @@ class NotOp :public Exp {
     }
 
     Value eval() { return ! right->eval().tf(); }
+    int suCount(__attribute__((unused)) int lor)
+    {
+        return right->suCount(0);
+    }
 };
 
 /* A read expression. */
@@ -264,6 +325,11 @@ class Read :public Exp {
       if (showPrompt) cerr << "read> ";
       cin >> v;
       return v;
+    }
+    int suCount(__attribute__((unused)) int lor)
+    {
+        int a = lor;
+        return 1;
     }
 };
 
@@ -322,15 +388,9 @@ class Stmt :public AST {
       }
     }
 
-    void suTraverse() {
-
-            if(next->hasNext()){
-                getNext()->suTraverse();
-            }
-            else{
-                cout << "suTrav aint no implement for" << nodeLabel << endl;
-            }
-        }
+    virtual void suTraverse() {
+        cout << "suTraverse is not implemented for " << nodeLabel << endl;
+     }
 
 };
 
@@ -343,6 +403,7 @@ class NullStmt :public Stmt {
 
     // Nothing to execute!
     void exec() { }
+    void suTraverse() { }
 };
 
 /* This is a statement for a block of code, i.e., code enclosed
@@ -363,6 +424,13 @@ class Block :public Stmt {
     void exec() {
       body->exec();
       getNext()->exec();
+    }
+
+    void suTraverse() {
+        int regis = 0;
+        cout << "Need " << regis << " registers for " << nodeLabel << endl;
+        body->suTraverse();
+        getNext()->suTraverse();
     }
 };
 
@@ -390,6 +458,15 @@ class IfStmt :public Stmt {
       else elseblock->exec();
       getNext()->exec();
     }
+
+    void suTraverse() {
+        int regis = 0;
+        regis += clause->suCount(1);
+        cout << "Need " << regis << " registers for " << nodeLabel << endl;
+        ifblock->suTraverse();
+        elseblock->suTraverse();
+        getNext()->suTraverse();
+    }
 };
 
 /* Class for while statements. */
@@ -415,6 +492,14 @@ class WhileStmt :public Stmt {
       }
       getNext()->exec();
     }
+
+    void suTraverse() {
+        int regis = 0;
+        regis += clause->suCount(1);
+        cout << "Need " << regis << " registers for " << nodeLabel << endl;
+         body->suTraverse();
+        getNext()->suTraverse();
+    }
 };
 
 /* A "new" statement creates a new binding of the variable to the
@@ -438,6 +523,15 @@ class NewStmt :public Stmt {
       if (!error) ST.bind(lhs->getVal(), res);
       getNext()->exec();
     }
+
+    void suTraverse() {
+        int left = lhs->suCount(1);
+        int right = rhs->suCount(0);
+
+        if (left == right) cout << "Need " << left+1 << " registers for " << nodeLabel << endl;
+        else cout << "Need " << left << " registers for " << nodeLabel << endl;
+        getNext()->suTraverse();
+    }
 };
 
 /* An assignment statement. This represents a RE-binding in the symbol table. */
@@ -459,6 +553,14 @@ class Asn :public Stmt {
       Value res = rhs->eval();
       if (!error) ST.rebind(lhs->getVal(), res);
       getNext()->exec();
+    }
+    void suTraverse() {
+        int left = lhs->suCount(1);
+        int right = rhs->suCount(0);
+
+        if (left == right) cout << "Need " << left+1 << " registers for " << nodeLabel << endl;
+        else cout << "Need " << left << " registers for " << nodeLabel << endl;
+        getNext()->suTraverse();
     }
 };
 
@@ -504,6 +606,12 @@ class Write :public Stmt {
       getNext()->exec();
 
     } // exec
+
+    void suTraverse() {
+        int regis = val->suCount(1);
+        cout << "Need " << regis << " registers for " << nodeLabel << endl;
+        getNext()->suTraverse();
+    }
 };
 
 /* A lambda expression consists of a parameter name and a body. */
