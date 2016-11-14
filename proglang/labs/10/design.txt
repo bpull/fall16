@@ -1,0 +1,50 @@
+SPL Construct               OPCODE
+---------------------------------------
+new var := ...              STOR $R M1
+
+var := ...                  STOR $R M1
+
+read                        IIN $R
+                            STOR $R M1
+
+write expr                  OUT $R / OUT CON
+
+Arith Ops:
+  *                         MUL $R $R
+  /                         DIV $R $R
+  +                         ADD $R $R
+  -                         SUB $R $R
+  %                         MOD $R $R
+
+Logical Ops:
+  <                         LOAD $R M1
+                            SUB $R $M2
+                            BNEG $R label
+  >                         LOAD $R M1
+                            SUB $R $M2
+                            BPOS $R label
+  =                         LOAD $R M1
+                            SUB $R $M2
+                            BZRO $R label
+  !=                        LOAD $R M1
+                            SUB $R $M2
+                            BNZ $R label
+  <=                        LOAD $R M1
+                            SUB $R $M2
+                            BNEG $R label
+                            BZRO $R label
+  >=                        LOAD $R M1
+                            SUB $R $M2
+                            BPOS $R label
+                            BZRO $R label
+
+while expr {body}:          label body
+                            BNZ $R label
+if expr {ifbody}            label condition
+                            ifbody
+                            BNZ $R label
+ifelse expr {ifbody} {elsebody}  label ifbody
+                                 label2 elsebody
+                                 BNZ $R label
+                                 BZRO $R label2
+{block}                     just DO it.
