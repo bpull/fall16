@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 # Load in Required libraries
-import math, numpy, time
+import math, numpy, time, makeTopoMap
 
 # Our required libraries!
 from OpenGL.GL import *
@@ -17,8 +17,8 @@ class Scene:
         glutPostRedisplay()
 
     def motion(self, x, y):
-        self.angle -= (math.pi/180)*(self.lastX - x)
-        self.up    -= (math.pi/180)*(self.lastY - y)
+        self.angle += (math.pi/180)*(self.lastX - x)
+        self.up    += (math.pi/180)*(self.lastY - y)
         print ("[(Xangle, Yangle), ("+str(self.angle)+", "+str(self.up)+")]")
 
         self.lastX = x
@@ -44,11 +44,11 @@ class Scene:
 
 
     def __init__(self):
-        self.width = 400
-        self.height = 400
+        self.width = 800
+        self.height = 800
         self.timeStep = 0
         self.timeStepSize = 0.02
-        self.angle = 0.0
+        self.angle = -1.5708
         self.up = 0.0
         self.length = 5.0
         self.radius = 30.0
@@ -56,12 +56,17 @@ class Scene:
         self.stepSizeY = 5
         self.lastX = 0
         self.lastY = 0
+        self.threshold = 6.5
+        self.rows = 10
+        self.cols = 10
+        self.M = makeTopoMap.get_matrix(seed=331, rows=self.rows, cols=self.cols)
+
         glutInit(sys.argv)
         glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGB|GLUT_DEPTH)
         #glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB|GLUT_DEPTH)
         glutInitWindowPosition(100,50)
         glutInitWindowSize(self.width, self.height)
-        glutCreateWindow("Lab 08 - Part 4")
+        glutCreateWindow("Lab 10 - Part 1")
         glutDisplayFunc(self.display)
         glMatrixMode(GL_PROJECTION)
         glLoadIdentity()
@@ -79,42 +84,47 @@ class Scene:
         glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
 
         glPushMatrix()
-        gluLookAt(60*math.cos(self.angle)*math.cos(self.up), 60*math.sin(self.up), 60*math.sin(self.angle)*math.cos(self.up), 0.0, 0.0, 0.0, 0.0, 1.0, 0.0)
+        gluLookAt((self.rows+10)*math.cos(self.angle)*math.cos(self.up), (self.rows+10)*math.sin(self.up), (self.rows+10)*math.sin(self.angle)*math.cos(self.up), 0.0, 0.0, 0.0, 0.0, -1.0, 0.0)
 
 
-        #start drawing sphere math
-        glColor3f(1.0, 1.0, 1.0)
-        glBegin(GL_POINTS)
+        for row in range(self.rows-1):
+            for col in range(self.cols-1):
 
-        for angleX in range(0,360,self.stepSizeX):
-            for angleY in range(0, 360, self.stepSizeY):
-                radX = angleX * math.pi / 180
-                radY = angleY * math.pi / 180
-                x = self.radius*math.cos(radX)*math.sin(radY)
-                y = self.radius*math.sin(radX)*math.sin(radY)
-                z = self.radius*math.cos(radY)
-                glVertex3f(x,y,z)
+                glColor3f(1,1,1)
+                glBegin(GL_LINE_LOOP')
 
-        glEnd()
+                x = col - (self.cols/2)
+                y = row - (self.rows/2)
+                glVertex3f(x, y, -self.M[row][col])
 
-        # ############begin right face##############
-        glColor3f(1,0,0)
-        glBegin(GL_TRIANGLES)
-        glVertex3f(10, 10, -10)
-        glVertex3f(10, -10, -10)
-        glVertex3f(10, -10, 10)
-        glEnd()
+                x = (col+1) - (self.cols/2)
+                y = row     - (self.rows/2)
+                glVertex3f(x, y, -self.M[row][col+1])
 
-        glColor3f(1,0,0)
-        glBegin(GL_TRIANGLES)
-        glVertex3f(10, 10, -10)
-        glVertex3f(10, 10, 10)
-        glVertex3f(10, -10, 10)
-        glEnd()
 
-        glColor3f(1,1,1)
-        glutWireCube(20)
-        #end drawing sphere
+                x = col     - (self.cols/2)
+                y = (row+1) - (self.rows/2)
+                glVertex3f(x, y, -self.M[row+1][col])
+
+                glEnd()
+                glBegin(GL_LINE_LOOP)
+
+                x = (col+1) - (self.cols/2)
+                y = (row+1) - (self.rows/2)
+                glVertex3f(x, y, -self.M[row+1][col+1])
+
+                x = col     - (self.cols/2)
+                y = (row+1) - (self.rows/2)
+                glVertex3f(x, y, -self.M[row+1][col])
+
+                x = (col+1) - (self.cols/2)
+                y = row     - (self.rows/2)
+                glVertex3f(x, y, -self.M[row][col+1])
+
+                glEnd()
+
+        #end drawing
+
         glPopMatrix()
 
         glutSwapBuffers()
