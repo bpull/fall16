@@ -84,14 +84,14 @@ class Scene:
         glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
 
         glPushMatrix()
-        gluLookAt((self.rows+10)*math.cos(self.angle)*math.cos(self.up), (self.rows+10)*math.sin(self.up), (self.rows+10)*math.sin(self.angle)*math.cos(self.up), 0.0, 0.0, 0.0, 0.0, -1.0, 0.0)
+        gluLookAt((self.rows+20)*math.cos(self.angle)*math.cos(self.up), (self.rows+20)*math.sin(self.up), (self.rows+20)*math.sin(self.angle)*math.cos(self.up), 0.0, 0.0, 0.0, 0.0, -1.0, 0.0)
 
 
         for row in range(self.rows-1):
             for col in range(self.cols-1):
 
                 glColor3f(1,1,1)
-                glBegin(GL_LINE_LOOP')
+                glBegin(GL_LINE_LOOP)
 
                 x = col - (self.cols/2)
                 y = row - (self.rows/2)

@@ -48,6 +48,8 @@ enum Oper {
   WWINL, WNONL
 };
 
+enum Vlor { LVALUE, RVALUE };
+
 // These are forward declarations for the classes defined below.
 // They show the class hierarchy.
 class AST;
@@ -126,6 +128,13 @@ class Exp :public AST {
         int a = lor;
         cout << "suCount not implemented for " << nodeLabel << endl;
         return -10;
+    }
+
+    virtual int genCode(__attribute__((unused)) Vlor lor)
+    {
+        errout << "genCode() not yet implemented for "
+               << nodeLabel << " nodes!" << endl;
+        return 1;
     }
 };
 
@@ -395,6 +404,14 @@ class Stmt :public AST {
      virtual void comment() {
          cout << "comment is not implemented for " << nodeLabel << endl;
      }
+
+     virtual void mkCode() {
+         errout << "mkCode() not yet implemented for "
+                << nodeLabel << " nodes!" << endl;
+            if (getNext() != NULL) {
+                getNext()->mkCode();
+            }
+        }
 
 };
 
@@ -723,5 +740,18 @@ class Debug :public Stmt {
 
     void comment() { cout << "DEBUG" << endl; getNext()->comment();}
 };
+
+// This class is for monotonically increasing integers
+// each request bumps it up one; useful for making unique labels
+class MonoNum {
+  private:
+      int num;
+  public:
+      MonoNum() {
+        num = 0;
+      }
+      int getone() { return num++; }
+};
+
 
 #endif //AST_HPP

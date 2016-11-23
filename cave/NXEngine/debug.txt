@@ -39,27 +39,27 @@ StageBossManager::SetType(0)
 0100:5   0001
 0100:8  TEXT  '\n'
 0100:11   0000
-ANP: Obj 01d962e0 (OBJ_INTRO_DOCTOR(298)): setting state: 10 and dir: LEFT
+ANP: Obj 015ebd90 (OBJ_INTRO_DOCTOR(298)): setting state: 10 and dir: LEFT
 0100:18   0097
 0100:21  TEXT  '\n'
 0100:24   0000
-ANP: Obj 01d962e0 (OBJ_INTRO_DOCTOR(298)): setting state: 1 and dir: LEFT
+ANP: Obj 015ebd90 (OBJ_INTRO_DOCTOR(298)): setting state: 1 and dir: LEFT
 0100:31   0050
 0100:34  TEXT  '\n'
 0100:37   0000
-ANP: Obj 01d962e0 (OBJ_INTRO_DOCTOR(298)): setting state: 20 and dir: LEFT
+ANP: Obj 015ebd90 (OBJ_INTRO_DOCTOR(298)): setting state: 20 and dir: LEFT
 0100:44   0064
 0100:47  TEXT  '\n'
 0100:50   0000
-ANP: Obj 01d962e0 (OBJ_INTRO_DOCTOR(298)): setting state: 1 and dir: LEFT
+ANP: Obj 015ebd90 (OBJ_INTRO_DOCTOR(298)): setting state: 1 and dir: LEFT
 0100:57   0016
 0100:60  TEXT  '\n'
 0100:63   0000
-ANP: Obj 01d962e0 (OBJ_INTRO_DOCTOR(298)): setting state: 30 and dir: LEFT
+ANP: Obj 015ebd90 (OBJ_INTRO_DOCTOR(298)): setting state: 30 and dir: LEFT
 0100:70   0050
 0100:73  TEXT  '\n'
 0100:76   0000
-ANP: Obj 01d962e0 (OBJ_INTRO_DOCTOR(298)): setting state: 40 and dir: LEFT
+ANP: Obj 015ebd90 (OBJ_INTRO_DOCTOR(298)): setting state: 40 and dir: LEFT
 0100:83   0097
 0100:86  TEXT  '\n'
 0100:89   0001
@@ -76,110 +76,7 @@ load_pxa: reading in data/Stage/0.pxa
 load_entities: reading in data/Stage/0.pxe
 tsc_load: loading 'data/Stage/0.tsc' to page 1
 StageBossManager::SetType(0)
- >> music(0)
-Setting tick function to type 1 param 0
-= Beginning new game =
- >> Entering stage 13: 'Start Point'.
-load_map: level size 21x16
-load_map: 'data/Stage/Start.pxm' loaded OK! - 21x16
-load_pxa: reading in data/Stage/Cave.pxa
-load_entities: reading in data/Stage/Start.pxe
-tsc_load: loading 'data/Stage/Start.tsc' to page 1
-StageBossManager::SetType(0)
--- Starting on-entry script 200
-  - Started script 0200
-0200:0  002c <KEY 
-0200:1   0091
-0200:6  003f <PRI 
-0200:7   0000
-0200:10  0039 <MSG 
-0200:11  TEXT  '\nFrom somewhere, a transmission...'
-0200:47  003d <NOD 
-0200:48  0009 <CLO 
-0200:49   0430
-0200:52   0000
-******* Executing <TRA to stage 18
-  - Stopped script 0200
- >> Entering stage 18: 'Shelter'.
-load_map: level size 21x16
-load_map: 'data/Stage/Shelt.pxm' loaded OK! - 21x16
-load_pxa: reading in data/Stage/Store.pxa
-load_entities: reading in data/Stage/Shelt.pxe
-tsc_load: loading 'data/Stage/Shelt.tsc' to page 1
-StageBossManager::SetType(0)
--- Starting on-entry script 500
-  - Started script 0500
-0500:0  002c <KEY 
-0500:1   0021
- >> music(21)
-./org/access.org: Org-02 detected
-0500:4   0004
-0500:7  TEXT  '\n'
-0500:10  0039 <MSG 
-0500:11  0053 <TUR 
-0500:12  TEXT  'Connecting to network...'
-0500:38   0050
-0500:41  TEXT  '\n'
-0500:44  0053 <TUR 
-0500:45  TEXT  'Logged on.'
-0500:57   0050
-0500:60  TEXT  '\n'
-0500:63  0053 <TUR 
-0500:64  TEXT  'Executing chat algorithm.'
-0500:91   0100
-0500:94  000a <CLR 
-0500:95  0039 <MSG 
-0500:96  TEXT  'Sue?'
-0500:102  003d <NOD 
-0500:103  TEXT  '\nYou there?'
-0500:116  003d <NOD 
-0500:117  TEXT  '\nIt's me.'
-0500:128  003d <NOD 
-0500:129  TEXT  '\nKazuma!'
-0500:139  003d <NOD 
-0500:140  TEXT  '\nI managed to get away somehow,\nbut I've gotten lost...'
-0500:197  003d <NOD 
-0500:198  TEXT  '\nI've found a shelter, but there's\nnothing here.'
-0500:248  003d <NOD 
-0500:249  TEXT  '\nIf you can hear me,\nplease answer!'
-0500:286  003d <NOD 
-0500:287  000a <CLR 
-0500:288  TEXT  '...Please?'
-0500:300  003d <NOD 
-0500:301  TEXT  '\n'
-0500:304   0004
-0500:307   0005
-0500:310   0008
-******* Executing <TRA to stage 13
-  - Stopped script 0500
- >> Entering stage 13: 'Start Point'.
-load_map: level size 21x16
-load_map: 'data/Stage/Start.pxm' loaded OK! - 21x16
-load_pxa: reading in data/Stage/Cave.pxa
-load_entities: reading in data/Stage/Start.pxe
- -- Disappearing object 200 ([Type 0]) because flag 430 is set
-tsc_load: loading 'data/Stage/Start.tsc' to page 1
-StageBossManager::SetType(0)
--- Starting on-entry script 91
-  - Started script 0091
-0091:0  0032 <MNA 
-0091:1   0008
- >> music(8)
-./org/gestation.org: Org-02 detected
-0091:4   0001
-0091:7  0014 <END 
-  - Stopped script 0091
-Game minimized or lost focus--pausing...
-Focus regained, resuming play...
-  - Started script 0016
-0016:0  003f <PRI 
-0016:1  0039 <MSG 
-0016:2  TEXT  '\nDo you want to save?'
-0016:25   0000
-0016:28   0431
-0016:31  0050 <SVP 
 Loading profile from profile.dat...
- error << profile_load: unable to open 'profile.dat' >>
 Loading profile from profile2.dat...
  error << profile_load: unable to open 'profile2.dat' >>
 Loading profile from profile3.dat...
@@ -188,29 +85,31 @@ Loading profile from profile4.dat...
  error << profile_load: unable to open 'profile4.dat' >>
 Loading profile from profile5.dat...
  error << profile_load: unable to open 'profile5.dat' >>
-game_save: writing savefile 0
 Writing settings...
-0016:32  000a <CLR 
-0016:33  TEXT  'Game saved.'
-0016:46  003d <NOD 
-0016:47  0014 <END 
-  - Stopped script 0016
-  - Started script 0017
-0017:0  003f <PRI 
-0017:1   0018
-0017:6  TEXT  '\n'
-0017:9   1000
-0017:12   0020
-0017:15  0000 <AE+ 
-0017:16  0039 <MSG 
-0017:17  TEXT  '\nHealth refilled.'
-0017:36  003d <NOD 
-0017:37  0014 <END 
-  - Stopped script 0017
+ >> music(0)
+Setting tick function to type 1 param 0
+= Loading game =
+game_load: loading savefile 0
+Loading profile from profile.dat...
+ >> Entering stage 13: 'Start Point'.
+load_map: level size 21x16
+load_map: 'data/Stage/Start.pxm' loaded OK! - 21x16
+load_pxa: reading in data/Stage/Cave.pxa
+load_entities: reading in data/Stage/Start.pxe
+ -- Disappearing object 200 ([Type 0]) because flag 430 is set
+tsc_load: loading 'data/Stage/Start.tsc' to page 1
+ >> music(8)
+./org/gestation.org: Org-02 detected
+Replay::OnGameStarting()
+ error << LoadHeader: can't open file 'replay/rep7.dat' >>
+begin_record_next: starting record to slot 7
+begin_record('replay/rep7.dat')
+ error << profile_save: unable to open replay/rep7.dat >>
+StageBossManager::SetType(0)
   - Started script 0100
 0100:0  003f <PRI 
 0100:1   0000
-CNP: Obj 01e86670 changing from OBJ_DOOR(18) to [Type 0], new dir = LEFT
+CNP: Obj 0163b7a0 changing from OBJ_DOOR(18) to [Type 0], new dir = LEFT
 0100:8  TEXT  '\n'
 0100:11   0011
 0100:14   0001
@@ -223,8 +122,9 @@ load_map: level size 60x45
 load_map: 'data/Stage/Cave.pxm' loaded OK! - 60x45
 load_pxa: reading in data/Stage/Cave.pxa
 load_entities: reading in data/Stage/Cave.pxe
-onspawn_spike_small: spike 0255ff00 embedded in wall, deleting
-onspawn_spike_small: spike 025602f0 embedded in wall, deleting
+onspawn_spike_small: spike 01eb8ac0 embedded in wall, deleting
+onspawn_spike_small: spike 01eb8c10 embedded in wall, deleting
+ -- Disappearing object 400 (OBJ_LIFE_CAPSULE(32)) because flag 304 is set
 tsc_load: loading 'data/Stage/Cave.tsc' to page 1
 StageBossManager::SetType(0)
 -- Starting on-entry script 91
@@ -282,7 +182,7 @@ StageBossManager::SetType(0)
   - Started script 0100
 0100:0  003f <PRI 
 0100:1   0000
-CNP: Obj 01e86670 changing from OBJ_DOOR(18) to [Type 0], new dir = LEFT
+CNP: Obj 0163b7a0 changing from OBJ_DOOR(18) to [Type 0], new dir = LEFT
 0100:8  TEXT  '\n'
 0100:11   0011
 0100:14   0001
@@ -295,8 +195,9 @@ load_map: level size 60x45
 load_map: 'data/Stage/Cave.pxm' loaded OK! - 60x45
 load_pxa: reading in data/Stage/Cave.pxa
 load_entities: reading in data/Stage/Cave.pxe
-onspawn_spike_small: spike 026094f0 embedded in wall, deleting
-onspawn_spike_small: spike 02609640 embedded in wall, deleting
+onspawn_spike_small: spike 01ca4ce0 embedded in wall, deleting
+onspawn_spike_small: spike 01eb78d0 embedded in wall, deleting
+ -- Disappearing object 400 (OBJ_LIFE_CAPSULE(32)) because flag 304 is set
 tsc_load: loading 'data/Stage/Cave.tsc' to page 1
 StageBossManager::SetType(0)
 -- Starting on-entry script 91
@@ -306,11 +207,1454 @@ StageBossManager::SetType(0)
 0091:4   0001
 0091:7  0014 <END 
   - Stopped script 0091
+  - Started script 0102
+0102:0  003f <PRI 
+0102:1   0104
+0102:6   0103
+JumpScript: moving to script #0103 page 1
+0103:0  003f <PRI 
+0103:1   0002
+0103:4  TEXT  '\n'
+0103:7   0302
+0103:10   1641
+0103:13   1642
+0103:16  TEXT  '\n'
+0103:19   0002
+0103:22   0000
+******* Executing <TRA to stage 18
+  - Stopped script 0103
+ >> Entering stage 18: 'Shelter'.
+load_map: level size 21x16
+load_map: 'data/Stage/Shelt.pxm' loaded OK! - 21x16
+load_pxa: reading in data/Stage/Store.pxa
+load_entities: reading in data/Stage/Shelt.pxe
+tsc_load: loading 'data/Stage/Shelt.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 502
+  - Started script 0502
+0502:0  002c <KEY 
+0502:1  0026 <HMC 
+0502:2   0021
+ >> music(21)
+./org/access.org: Org-02 detected
+0502:5   0004
+0502:8  TEXT  '\n'
+0502:11  0039 <MSG 
+0502:12  TEXT  'Suuuuue!'
+0502:22  003d <NOD 
+0502:23  TEXT  '\nAnswer me!'
+0502:36  003d <NOD 
+0502:37  TEXT  '\nI'm so hungry...'
+0502:56  003d <NOD 
+0502:57  TEXT  '\nThere's nothing to eat and I've\nbeen reduced to feeding on\ncockroaches.'
+0502:131  003d <NOD 
+0502:132  TEXT  '\n...Ha-ha. That was a joke.\nHa-ha.'
+0502:168  003d <NOD 
+0502:169  000a <CLR 
+0502:170  TEXT  '...If I have to, though,\nI really will...'
+0502:213  003d <NOD 
+0502:214   0004
+0502:217  0049 <SMC 
+0502:218   0006
+******* Executing <TRA to stage 11
+  - Stopped script 0502
+ >> Entering stage 11: 'Mimiga Village'.
+load_map: level size 60x60
+load_map: 'data/Stage/Mimi.pxm' loaded OK! - 60x60
+load_pxa: reading in data/Stage/Mimi.pxa
+load_entities: reading in data/Stage/Mimi.pxe
+tsc_load: loading 'data/Stage/Mimi.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 302
+  - Started script 0302
+0302:0  002c <KEY 
+0302:1   0320
+0302:4   0321
+0302:7   0016
+ error << FindObjectByID2: ID2 0302 found: type [Type 0]; coords: (224, 528) >>
+0302:12  0032 <MNA 
+0302:13   0004
+0302:16   0000
+ >> music(0)
+0302:19   0100
+0302:22  TEXT  '\n'
+0302:25  0039 <MSG 
+0302:26   0007
+0302:29  TEXT  'Hand over the key!'
+0302:49  003d <NOD 
+0302:50  000a <CLR 
+0302:51   0008
+0302:54  TEXT  'No! I won't!'
+0302:68  003d <NOD 
+0302:69  000a <CLR 
+0302:70   0007
+0302:73  TEXT  'Are you trying to\nprotect Sue?'
+0302:105  003d <NOD 
+0302:106  TEXT  '\nShe's a stranger!\nShe's not one of us!'
+0302:147  003d <NOD 
+0302:148  000a <CLR 
+0302:149   0006
+0302:152  TEXT  'Sue's a good person.'
+0302:174  003d <NOD 
+0302:175  TEXT  '\nI'd never betray her!'
+0302:199  003d <NOD 
+0302:200  000a <CLR 
+0302:201   0007
+0302:204  TEXT  'Toroko...'
+0302:215  003d <NOD 
+0302:216  TEXT  '\nWhen the Doctor comes,\nyou know he'll take\nsomeone away again...'
+0302:283  003d <NOD 
+0302:284  TEXT  '\nIf we don't turn Sue\nover, it might be you\nhe takes instead.'
+0302:347  003d <NOD 
+0302:348  000a <CLR 
+0302:349   0006
+0302:352  TEXT  'But... But...'
+0302:367  003d <NOD 
+0302:368  000a <CLR 
+0302:369   0007
+0302:372  TEXT  'The key, Toroko!'
+0302:390  003d <NOD 
+0302:391  TEXT  '\n'
+0302:394   0000
+0302:397  0009 <CLO 
+0302:398  TEXT  '\n'
+0302:401   0022
+0302:406  TEXT  '\n'
+0302:409   0075
+0302:412  0026 <HMC 
+0302:413   0002
+CNP: Obj 01eb9840 changing from [Type 0] to OBJ_NPC_PLAYER(150), new dir = RIGHT
+0302:420   0002
+ANP: Obj 01eb9840 (OBJ_NPC_PLAYER(150)): setting state: 10 and dir: RIGHT
+0302:427   0030
+0302:430  TEXT  '\n'
+0302:433  0039 <MSG 
+0302:434  TEXT  '?!'
+0302:438  003d <NOD 
+Game minimized or lost focus--pausing...
+Focus regained, resuming play...
+Game minimized or lost focus--pausing...
+Focus regained, resuming play...
+0302:439  0009 <CLO 
+0302:440  TEXT  '\n'
+0302:443   0010
+0302:446  TEXT  '\n'
+0302:449   0002
+ANP: Obj 01eb79c0 (OBJ_TOROKO(60)): setting state: 6 and dir: RIGHT
+0302:456  TEXT  '\n'
+0302:459   0000
+ANP: Obj 01eb7b10 (OBJ_KING(61)): setting state: 6 and dir: LEFT
+0302:466  TEXT  '\n'
+0302:469   0100
+Game minimized or lost focus--pausing...
+Focus regained, resuming play...
+Game minimized or lost focus--pausing...
+Focus regained, resuming play...
+0302:472  TEXT  '\n'
+0302:475   0002
+ANP: Obj 01eb79c0 (OBJ_TOROKO(60)): setting state: 6 and dir: RIGHT
+0302:482  TEXT  '\n'
+0302:485   0080
+0302:488  TEXT  '\n'
+0302:491   0300
+DNP: 01eb79c0 (OBJ_TOROKO(60)) deleted
+0302:494  TEXT  '\n'
+0302:497   0009
+ >> music(9)
+./org/town.org: Org-02 detected
+0302:500  TEXT  '\n'
+0302:503   0016
+0302:506  0049 <SMC 
+0302:507   0309
+DNP: 01eb9840 (OBJ_NPC_PLAYER(150)) deleted
+0302:510  0014 <END 
+  - Stopped script 0302
+Game minimized or lost focus--pausing...
+Focus regained, resuming play...
+Game minimized or lost focus--pausing...
+Focus regained, resuming play...
+  - Started script 0311
+0311:0  002c <KEY 
+0311:1  0039 <MSG 
+0311:2  TEXT  '*chomp chomp*'
+0311:17  003d <NOD 
+0311:18  000a <CLR 
+0311:19  TEXT  '!'
+0311:22  003d <NOD 
+0311:23  0009 <CLO 
+0311:24  TEXT  '\n'
+0311:27   0000
+0311:30   0004
+ANP: Obj 01eb9450 (OBJ_MAHIN(79)): setting state: 2 and dir: FACE_PLAYER
+0311:37   0030
+0311:40   0000
+0311:43  TEXT  '\n'
+0311:46   0313
+0311:51  TEXT  '\n'
+0311:54   0312
+0311:59  TEXT  '\n'
+0311:62   0314
+0311:67  TEXT  '\n'
+0311:70  0039 <MSG 
+0311:71  TEXT  'Oh! You startled me...'
+0311:95  003d <NOD 
+0311:96  000a <CLR 
+0311:97  TEXT  'Sue?'
+0311:103  003d <NOD 
+0311:104  TEXT  '\nOh, right.'
+0311:117  003d <NOD 
+0311:118  000a <CLR 
+0311:119  TEXT  'The girl in Arthur's house, right?'
+0311:155  003d <NOD 
+0311:156  TEXT  '\nShe's living with Toroko.'
+0311:184  003d <NOD 
+0311:185  000a <CLR 
+0311:186  TEXT  'Sweet girl, that.'
+0311:205  003d <NOD 
+0311:206  TEXT  '\nSays she's searching for a\n"Sky Dragon"...'
+0311:251  003d <NOD 
+0311:252  TEXT  '\nDragons that soar the skies...\nDo those kinda things really\nexist?'
+0311:321  003d <NOD 
+0311:322   0002
+ANP: Obj 01eb9450 (OBJ_MAHIN(79)): setting state: 0 and dir: RIGHT
+0311:329  0014 <END 
+  - Stopped script 0311
+  - Started script 0109
+0109:0  003f <PRI 
+0109:1   0004
+0109:4   0009
+******* Executing <TRA to stage 20
+  - Stopped script 0109
+ >> Entering stage 20: 'Save Point'.
+load_map: level size 21x16
+load_map: 'data/Stage/MiBox.pxm' loaded OK! - 21x16
+load_pxa: reading in data/Stage/Mimi.pxa
+load_entities: reading in data/Stage/MiBox.pxe
+tsc_load: loading 'data/Stage/MiBox.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0  0032 <MNA 
+0094:1   0004
+0094:4  0014 <END 
+  - Stopped script 0094
+  - Started script 0016
+0016:0  003f <PRI 
+0016:1  0039 <MSG 
+0016:2  TEXT  '\nDo you want to save?'
+0016:25   0000
+0016:28   0431
+0016:31  0050 <SVP 
+Loading profile from profile.dat...
+Loading profile from profile2.dat...
+ error << profile_load: unable to open 'profile2.dat' >>
+Loading profile from profile3.dat...
+ error << profile_load: unable to open 'profile3.dat' >>
+Loading profile from profile4.dat...
+ error << profile_load: unable to open 'profile4.dat' >>
+Loading profile from profile5.dat...
+ error << profile_load: unable to open 'profile5.dat' >>
+game_save: writing savefile 0
+Writing settings...
+0016:32  000a <CLR 
+0016:33  TEXT  'Game saved.'
+0016:46  003d <NOD 
+0016:47  0014 <END 
+  - Stopped script 0016
+  - Started script 0100
+0100:0  003f <PRI 
+0100:1   0004
+0100:4   0034
+******* Executing <TRA to stage 11
+  - Stopped script 0100
+ >> Entering stage 11: 'Mimiga Village'.
+load_map: level size 60x60
+load_map: 'data/Stage/Mimi.pxm' loaded OK! - 60x60
+load_pxa: reading in data/Stage/Mimi.pxa
+load_entities: reading in data/Stage/Mimi.pxe
+ -- Disappearing object 300 (OBJ_TOROKO(60)) because flag 320 is set
+ -- Disappearing object 301 (OBJ_KING(61)) because flag 320 is set
+ -- Appearing object 301 (OBJ_KING(61)) because flag 321 is set
+tsc_load: loading 'data/Stage/Mimi.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0  0032 <MNA 
+0094:1   0099
+0094:6   0009
+0094:9   0004
+0094:12  0014 <END 
+  - Stopped script 0094
+  - Started script 0301
+0301:0  002c <KEY 
+0301:1   0305
+0301:6   0320
+0301:9   0323
+0301:12  TEXT  '\n'
+0301:15  0039 <MSG 
+0301:16  TEXT  '.....'
+0301:23  003d <NOD 
+0301:24  0009 <CLO 
+0301:25  TEXT  '\n'
+0301:28   0000
+0301:31   0050
+0301:34   0000
+0301:37   0002
+CNP: Obj 01c9a170 changing from OBJ_KING(61) to OBJ_KING(61), new dir = RIGHT
+0301:44   0008
+0301:47   0004
+CNP: Obj 01c9a170 changing from OBJ_KING(61) to OBJ_KING(61), new dir = FACE_PLAYER
+0301:54  TEXT  '\n'
+0301:57  0039 <MSG 
+0301:58   0007
+0301:61  TEXT  'What? You're not an enemy?'
+0301:89  003d <NOD 
+0301:90  TEXT  '\nI thought for sure it\nwas them...'
+0301:126  003d <NOD 
+0301:127  000a <CLR 
+0301:128  TEXT  'I'm King.'
+0301:139  003d <NOD 
+0301:140  TEXT  '\nI'm the number-one in\nthis village.'
+0301:178  003d <NOD 
+0301:179  TEXT  '\nNot that that means\na whole lot, with only\nsix of us left.'
+0301:240  003d <NOD 
+0301:241  000a <CLR 
+0301:242  TEXT  'Well, seven counting Sue.'
+0301:269  003d <NOD 
+0301:270  000a <CLR 
+0301:271  TEXT  'She's not one of us,\nthough.'
+0301:301  003d <NOD 
+0301:302  TEXT  '\nShe's just an outsider\nwho showed up recently.'
+0301:351  003d <NOD 
+0301:352  0014 <END 
+  - Stopped script 0301
+  - Started script 0103
+0103:0  003f <PRI 
+0103:1   0000
+0103:4   0014
+******* Executing <TRA to stage 15
+  - Stopped script 0103
+ >> Entering stage 15: 'Reservoir'.
+load_map: level size 40x20
+load_map: 'data/Stage/Pool.pxm' loaded OK! - 40x20
+load_pxa: reading in data/Stage/Mimi.pxa
+load_entities: reading in data/Stage/Pool.pxe
+tsc_load: loading 'data/Stage/Pool.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 90
+  - Started script 0090
+0090:0  0032 <MNA 
+0090:1   0095
+0090:6   0009
+0090:9   0000
+0090:12  0014 <END 
+  - Stopped script 0090
+HVTrigger 0400 (01c98fe0) activated
+  - Started script 0400
+0400:0   0401
+0400:5  0014 <END 
+  - Stopped script 0400
+HVTrigger 0400 (01c98fe0) activated
+  - Started script 0400
+0400:0   0401
+0400:5  0014 <END 
+  - Stopped script 0400
+HVTrigger 0400 (01c98fe0) activated
+  - Started script 0400
+0400:0   0401
+0400:5  0014 <END 
+  - Stopped script 0400
+HVTrigger 0400 (01c98fe0) activated
+  - Started script 0400
+0400:0   0401
+0400:5  0014 <END 
+  - Stopped script 0400
+HVTrigger 0400 (01c98fe0) activated
+  - Started script 0400
+0400:0   0401
+0400:5  0014 <END 
+  - Stopped script 0400
+HVTrigger 0400 (01c98fe0) activated
+  - Started script 0400
+0400:0   0401
+0400:5  0014 <END 
+  - Stopped script 0400
+HVTrigger 0400 (01c98fe0) activated
+  - Started script 0400
+0400:0   0401
+0400:5  0014 <END 
+  - Stopped script 0400
+HVTrigger 0400 (01c98fe0) activated
+  - Started script 0400
+0400:0   0401
+0400:5  0014 <END 
+  - Stopped script 0400
+HVTrigger 0400 (01c98fe0) activated
+  - Started script 0400
+0400:0   0401
+0400:5  0014 <END 
+  - Stopped script 0400
+HVTrigger 0400 (01c98fe0) activated
+  - Started script 0400
+0400:0   0401
+0400:5  0014 <END 
+  - Stopped script 0400
+  - Started script 0300
+0300:0  003f <PRI 
+0300:1  TEXT  '\n'
+0300:4   0370
+0300:7   0326
+0300:10   0371
+0300:13   0321
+0300:16   0362
+0300:19  TEXT  '\n\n'
+0300:23   0300
+DNP: 01c9f9b0 (OBJ_HIDDEN_SPARKLE(70)) deleted
+0300:26  TEXT  '\n'
+0300:29  0039 <MSG 
+0300:30  TEXT  'Something gleams in the dirt...'
+0300:63  003d <NOD 
+0300:64  000a <CLR 
+0300:65   0010
+ >> music(10)
+./org/fanfale1.org: Org-02 detected
+0300:68   1004
+0300:71   0004
+0300:74  TEXT  '\nGot the =Silver Locket=.'
+0300:101   0160
+0300:104  003d <NOD 
+0300:105   0000
+CNP: Obj 0154b4f0 changing from [Type 0] to OBJ_TOROKO(60), new dir = LEFT
+0300:112  0009 <CLO 
+0300:113  TEXT  '\n'
+0300:116  0042 <RMU 
+ >> music(9)
+./org/town.org: Org-02 detected
+0300:117  0014 <END 
+  - Stopped script 0300
+  - Started script 0200
+0200:0  002c <KEY 
+0200:1  0039 <MSG 
+0200:2  TEXT  'Sue?'
+0200:8  003d <NOD 
+0200:9  000a <CLR 
+0200:10  TEXT  'Yeah, I know her.'
+0200:29  003d <NOD 
+0200:30  TEXT  '\nThat's the cute girl who stays\ncooped up in Arthur's house\nall the time, right?'
+0200:112  003d <NOD 
+0200:113  TEXT  '\nShe showed up here not too\nlong ago.'
+0200:152  003d <NOD 
+0200:153  TEXT  '\nWe found her washed up right\nhere in the reservoir.'
+0200:207  003d <NOD 
+0200:208  TEXT  '\nShe doesn't seem to like us\nmuch...'
+0200:246  003d <NOD 
+0200:247  TEXT  '\nI don't know why, since she's\na Mimiga just like us.'
+0200:302  003d <NOD 
+0200:303  0014 <END 
+  - Stopped script 0200
+HVTrigger 0400 (01c98fe0) activated
+  - Started script 0400
+0400:0   0401
+JumpScript: moving to script #0401 page 1
+0401:0  002c <KEY 
+0401:1   0002
+0401:4   0400
+DNP: 01c98fe0 (OBJ_HVTRIGGER(46)) deleted
+0401:7  0039 <MSG 
+0401:8   0006
+0401:11  TEXT  'Ah!'
+0401:16  003d <NOD 
+0401:17  0009 <CLO 
+0401:18  TEXT  '\n'
+0401:21   0002
+ANP: Obj 0154b4f0 (OBJ_TOROKO(60)): setting state: 6 and dir: RIGHT
+0401:28   0078
+0401:31   0402
+DNP: 0154b4f0 (OBJ_TOROKO(60)) deleted
+0401:34   0371
+0401:37  0014 <END 
+  - Stopped script 0401
+  - Started script 0100
+0100:0   0101
+JumpScript: moving to script #0101 page 1
+0101:0  003f <PRI 
+0101:1   0002
+0101:4   0038
+******* Executing <TRA to stage 11
+  - Stopped script 0101
+ >> Entering stage 11: 'Mimiga Village'.
+load_map: level size 60x60
+load_map: 'data/Stage/Mimi.pxm' loaded OK! - 60x60
+load_pxa: reading in data/Stage/Mimi.pxa
+load_entities: reading in data/Stage/Mimi.pxe
+ -- Disappearing object 300 (OBJ_TOROKO(60)) because flag 320 is set
+ -- Disappearing object 301 (OBJ_KING(61)) because flag 320 is set
+ -- Appearing object 306 (OBJ_KING(61)) because flag 326 is set
+ -- Appearing object 307 (OBJ_TOROKO(60)) because flag 371 is set
+tsc_load: loading 'data/Stage/Mimi.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 308
+  - Started script 0308
+0308:0  002c <KEY 
+0308:1   0002
+0308:4   0002
+0308:7   0000
+ >> music(0)
+0308:10   0020
+0308:13  TEXT  '\n'
+0308:16  0039 <MSG 
+0308:17   0007
+0308:20  TEXT  'Give me the key!'
+0308:38  003d <NOD 
+0308:39  000a <CLR 
+0308:40   0008
+0308:43  TEXT  'No!'
+0308:48  003d <NOD 
+0308:49  0009 <CLO 
+0308:50  TEXT  '\n'
+0308:53   0002
+ANP: Obj 01c9a2c0 (OBJ_TOROKO(60)): setting state: 6 and dir: RIGHT
+0308:60   0060
+0308:63  TEXT  '\n'
+0308:66   0002
+ANP: Obj 01c9a170 (OBJ_KING(61)): setting state: 6 and dir: RIGHT
+0308:73   0016
+0308:76   0100
+0308:79   0307
+DNP: 01c9a2c0 (OBJ_TOROKO(60)) deleted
+0308:82   0371
+0308:85   0009
+ >> music(9)
+./org/town.org: Org-02 detected
+0308:88  0014 <END 
+  - Stopped script 0308
+  - Started script 0306
+0306:0  002c <KEY 
+0306:1  0039 <MSG 
+0306:2   0007
+0306:5  TEXT  'Grrrrr!'
+0306:14  003d <NOD 
+0306:15  000a <CLR 
+0306:16  TEXT  'Toroko!'
+0306:25  003d <NOD 
+0306:26  TEXT  '\nYou're not getting away\nthat easily!'
+0306:65  003d <NOD 
+0306:66  0014 <END 
+  - Stopped script 0306
+  - Started script 0107
+0107:0  003f <PRI 
+0107:1   0011
+0107:4   0000
+CNP: Obj 0163b7a0 changing from OBJ_DOOR(18) to [Type 0], new dir = LEFT
+0107:11   0004
+0107:14   0010
+******* Executing <TRA to stage 19
+  - Stopped script 0107
+ >> Entering stage 19: 'Assembly Hall'.
+load_map: level size 21x16
+load_map: 'data/Stage/Comu.pxm' loaded OK! - 21x16
+load_pxa: reading in data/Stage/Pens.pxa
+load_entities: reading in data/Stage/Comu.pxe
+tsc_load: loading 'data/Stage/Comu.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0  0032 <MNA 
+0094:1   0099
+0094:6   0009
+0094:9   0004
+0094:12  0014 <END 
+  - Stopped script 0094
+  - Started script 0300
+0300:0   0301
+0300:5  TEXT  '\n'
+0300:8  002c <KEY 
+0300:9  0039 <MSG 
+0300:10  TEXT  '*Crackle* *Snap!*'
+0300:29  003d <NOD 
+0300:30   0000
+0300:35  000a <CLR 
+0300:36  TEXT  'You see something lying\nbeyond the flames.'
+0300:80  003d <NOD 
+0300:81  0014 <END 
+  - Stopped script 0300
+  - Started script 0100
+0100:0  003f <PRI 
+0100:1   0011
+0100:4   0100
+DNP: 015ebd90 (OBJ_DOOR(18)) deleted
+0100:7   0004
+0100:10   0034
+******* Executing <TRA to stage 11
+  - Stopped script 0100
+ >> Entering stage 11: 'Mimiga Village'.
+load_map: level size 60x60
+load_map: 'data/Stage/Mimi.pxm' loaded OK! - 60x60
+load_pxa: reading in data/Stage/Mimi.pxa
+load_entities: reading in data/Stage/Mimi.pxe
+ -- Disappearing object 300 (OBJ_TOROKO(60)) because flag 320 is set
+ -- Disappearing object 301 (OBJ_KING(61)) because flag 320 is set
+ -- Appearing object 306 (OBJ_KING(61)) because flag 326 is set
+tsc_load: loading 'data/Stage/Mimi.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0  0032 <MNA 
+0094:1   0099
+0094:6   0009
+0094:9   0004
+0094:12  0014 <END 
+  - Stopped script 0094
+  - Started script 0200
+0200:0  003f <PRI 
+0200:1   0201
+0200:6   0322
+0200:9   0022
+0200:12   0000
+CNP: Obj 01eb7870 changing from OBJ_CHEST_CLOSED(15) to OBJ_CHEST_OPEN(21), new dir = LEFT
+0200:19  TEXT  '\n'
+0200:22  0039 <MSG 
+0200:23  TEXT  'Opened the chest.'
+0200:42  003d <NOD 
+0200:43   1002
+0200:46   0002
+0200:49   0002
+0200:52  000a <CLR 
+0200:53  TEXT  '\n'
+0200:56   0010
+ >> music(10)
+./org/fanfale1.org: Org-02 detected
+0200:59  TEXT  'Got the =Map System=!'
+0200:82   0160
+0200:85  003d <NOD 
+0200:86  0042 <RMU 
+ >> music(9)
+./org/town.org: Org-02 detected
+0200:87   0201
+JumpScript: moving to script #0201 page 1
+0201:0  003f <PRI 
+0201:1  0039 <MSG 
+0201:2  TEXT  'Something's written here...'
+0201:31  003d <NOD 
+0201:32  000a <CLR 
+0201:33  0053 <TUR 
+0201:34  TEXT  'So long as you retain your spirit\nof exploration, surely you shall\nfind your way out. This I believe.'
+0201:137  003d <NOD 
+0201:138  0014 <END 
+  - Stopped script 0201
+  - Started script 0105
+0105:0  002c <KEY 
+0105:1   0106
+0105:6   0011
+0105:9   0002
+ANP: Obj 016455f0 (OBJ_DOOR(18)): setting state: 0 and dir: RIGHT
+0105:16   0106
+JumpScript: moving to script #0106 page 1
+0106:0  002c <KEY 
+0106:1   0004
+0106:4   0009
+******* Executing <TRA to stage 14
+  - Stopped script 0106
+ >> Entering stage 14: 'Shack'.
+load_map: level size 21x16
+load_map: 'data/Stage/Barr.pxm' loaded OK! - 21x16
+load_pxa: reading in data/Stage/Mimi.pxa
+load_entities: reading in data/Stage/Barr.pxe
+tsc_load: loading 'data/Stage/Barr.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0  0032 <MNA 
+0094:1   0008
+ >> music(8)
+./org/gestation.org: Org-02 detected
+0094:4   0004
+0094:7  0014 <END 
+  - Stopped script 0094
+HVTrigger 0290 (0163b7a0) activated
+  - Started script 0290
+0290:0   0291
+JumpScript: moving to script #0291 page 1
+0291:0   0000
+0291:5  003f <PRI 
+0291:6  0039 <MSG 
+0291:7   0008
+0291:10  TEXT  'Why, you!!'
+0291:22  003d <NOD 
+0291:23   0290
+DNP: 0163b7a0 (OBJ_HVTRIGGER(46)) deleted
+0291:26   0002
+CNP: Obj 01c9f9b0 changing from [Type 0] to OBJ_TOROKO_SHACK(63), new dir = RIGHT
+0291:33  0014 <END 
+  - Stopped script 0291
+  - Started script 1000
+1000:0  002c <KEY 
+1000:1   0360
+1000:4   0361
+1000:7   0440
+1000:10   0326
+1000:13  0039 <MSG 
+1000:14  TEXT  'Eeeeeek!'
+1000:24  003d <NOD 
+1000:25  000a <CLR 
+1000:26  TEXT  'Save me, save me!!'
+1000:46  003d <NOD 
+1000:47  000a <CLR 
+1000:48  TEXT  '.....'
+1000:55  003d <NOD 
+1000:56  TEXT  'Huh?'
+1000:62  003d <NOD 
+1000:63   0002
+1000:66   0030
+1000:69   0002
+1000:72   0004
+CNP: Obj 01c9f9b0 changing from OBJ_TOROKO_SHACK(63) to OBJ_TOROKO(60), new dir = FACE_PLAYER
+1000:79  000a <CLR 
+1000:80   0006
+1000:83  TEXT  'You're...you're not\nwith the Doctor?'
+1000:121  003d <NOD 
+1000:122  000a <CLR 
+1000:123  TEXT  'Oh! I'm sorry.'
+1000:139  003d <NOD 
+1000:140  TEXT  '\nYou had me worried.\nThe Doctor's such a\nmean guy.'
+1000:192  003d <NOD 
+1000:193  TEXT  '\nPopping up in our village\nand taking us away,'
+1000:241  003d <NOD 
+1000:242  TEXT  '\nsometimes even killing\nus...'
+1000:273  003d <NOD 
+1000:274  000a <CLR 
+1000:275  TEXT  'Like my brother.\nHe killed my brother.'
+1000:315  003d <NOD 
+1000:316  000a <CLR 
+1000:317  TEXT  'Oh!'
+1000:322  003d <NOD 
+1000:323  TEXT  '\nThat pendant!'
+1000:339   1004
+1000:342  003d <NOD 
+1000:343  000a <CLR 
+1000:344  TEXT  'You found it for me?'
+1000:366  003d <NOD 
+1000:367  TEXT  '\nSue gave that to me!'
+1000:390  003d <NOD 
+1000:391  000a <CLR 
+1000:392  TEXT  '.....'
+1000:399  003d <NOD 
+1000:400  000a <CLR 
+1000:401  TEXT  'Well... I shouldn't have\nit anymore.'
+1000:439  003d <NOD 
+1000:440  TEXT  '\n'
+1000:443   0000
+1000:446  TEXT  'King gets his ears all\nin a tangle when he sees\nSue and I getting along...'
+1000:522  003d <NOD 
+1000:523  TEXT  '\nYou can have it.'
+1000:542  003d <NOD 
+1000:543  0009 <CLO 
+1000:544  TEXT  '\n'
+1000:547   0000
+1000:550   0000
+ >> music(0)
+1000:553  TEXT  '\n'
+1000:556   0030
+1000:559   0026
+1000:562  TEXT  '\n'
+1000:565   0000
+ANP: Obj 01c9f9b0 (OBJ_TOROKO(60)): setting state: 8 and dir: LEFT
+1000:572  TEXT  '\n'
+1000:575   0000
+ANP: Obj 015ebd90 (OBJ_DOOR(18)): setting state: 1 and dir: LEFT
+1000:582  TEXT  '\n'
+1000:585   0010
+1000:588  TEXT  '\n'
+1000:591   0000
+1000:594  TEXT  '\n'
+1000:597   0000
+CNP: Obj 01c9f9b0 changing from OBJ_TOROKO(60) to OBJ_TOROKO(60), new dir = LEFT
+1000:604  TEXT  '\n'
+1000:607   0100
+1000:610  TEXT  '\n'
+1000:613   0030
+1000:616   0026
+1000:619  TEXT  '\n'
+1000:622   0000
+ANP: Obj 01c9f9b0 (OBJ_TOROKO(60)): setting state: 8 and dir: LEFT
+1000:629  TEXT  '\n'
+1000:632   0000
+ANP: Obj 015ebd90 (OBJ_DOOR(18)): setting state: 1 and dir: LEFT
+1000:639  TEXT  '\n'
+1000:642   0070
+1000:645  TEXT  '\n'
+1000:648   0030
+1000:651   0026
+1000:654  TEXT  '\n'
+1000:657   0000
+ANP: Obj 01c9f9b0 (OBJ_TOROKO(60)): setting state: 8 and dir: LEFT
+1000:664  TEXT  '\n'
+1000:667   0002
+CNP: Obj 0161c920 changing from [Type 0] to OBJ_BALROG_BUST_IN(19), new dir = RIGHT
+1000:674  TEXT  '\n'
+1000:677   0002
+CNP: Obj 015ebd90 changing from OBJ_DOOR(18) to OBJ_DOOR(18), new dir = RIGHT
+1000:684  TEXT  '\n'
+1000:687   0080
+1000:694  TEXT  '\n'
+1000:697   0081
+1000:704  TEXT  '\n'
+1000:707   0082
+1000:714  TEXT  '\n'
+1000:717   0096
+1000:724  TEXT  '\n'
+1000:727   0097
+1000:734  TEXT  '\n'
+1000:737   0098
+1000:744  TEXT  '\n\n\n'
+1000:749  0039 <MSG 
+1000:750  TEXT  'Huzzah!'
+1000:759   0050
+1000:762   0002
+CNP: Obj 0161c920 changing from OBJ_BALROG_BUST_IN(19) to OBJ_BALROG(12), new dir = RIGHT
+1000:769   0002
+ANP: Obj 0161c920 (OBJ_BALROG(12)): setting state: 30 and dir: RIGHT
+1000:776  000a <CLR 
+1000:777  002c <KEY 
+1000:778   0011
+ >> music(11)
+./org/balrog.org: Org-02 detected
+1000:781   0014
+1000:784  TEXT  'There you are!'
+1000:800  003d <NOD 
+1000:801  000a <CLR 
+1000:802   0005
+1000:805  TEXT  'You can't hide, no no!'
+1000:829  003d <NOD 
+1000:830  TEXT  '\nI've got the nose of a\nbloodhound!'
+1000:867  003d <NOD 
+1000:868   0000
+1000:871  000a <CLR 
+1000:872  TEXT  'Indeed you do.'
+1000:888  003d <NOD 
+1000:889  TEXT  '\n'
+1000:892   0002
+CNP: Obj 01eb75c0 changing from [Type 0] to OBJ_MISERY_FLOAT(67), new dir = RIGHT
+1000:899   0100
+1000:902   0002
+ANP: Obj 01eb75c0 (OBJ_MISERY_FLOAT(67)): setting state: 13 and dir: RIGHT
+1000:909   0050
+1000:912   0000
+ANP: Obj 01c9f9b0 (OBJ_TOROKO(60)): setting state: 8 and dir: LEFT
+1000:919  0039 <MSG 
+1000:920   0015
+1000:923  TEXT  'The nose, and I dare\nsay the brain as well.'
+1000:968  003d <NOD 
+1000:969  000a <CLR 
+1000:970   0005
+1000:973  TEXT  'Misery!'
+1000:982  003d <NOD 
+1000:983  000a <CLR 
+1000:984  TEXT  'I found her first!'
+1000:1004  003d <NOD 
+1000:1005  000a <CLR 
+1000:1006   0008
+1000:1009  TEXT  'You--you guys're with\nthe Doctor, aren't you!'
+1000:1056  003d <NOD 
+1000:1057  000a <CLR 
+1000:1058   0015
+1000:1061  TEXT  '.....'
+1000:1068  003d <NOD 
+1000:1069  000a <CLR 
+1000:1070   0016
+1000:1073  TEXT  'So you're Sue, eh?\nThe Doctor has called\nfor you.'
+1000:1124  003d <NOD 
+1000:1125  TEXT  '\nCome along, now.'
+1000:1144  003d <NOD 
+1000:1145  000a <CLR 
+1000:1146   0006
+1000:1149  TEXT  'Uh...what?'
+1000:1161  003d <NOD 
+1000:1162  000a <CLR 
+1000:1163  TEXT  '\nI'm not Sue.'
+1000:1178  003d <NOD 
+1000:1179   0000
+1000:1182  0009 <CLO 
+1000:1183  TEXT  '\n'
+1000:1186   0002
+ANP: Obj 01eb75c0 (OBJ_MISERY_FLOAT(67)): setting state: 15 and dir: RIGHT
+1000:1193   0110
+ error << FindObjectByID2: ID2 1000 found: type OBJ_TOROKO(60); coords: (223, 144) >>
+Computed toss values xi: 0x3f4, 0x96
+Target x/y: 0x1be00, 0x12180
+ error << FindObjectByID2: ID2 1000 found: type OBJ_TOROKO(60); coords: (223, 144) >>
+1000:1196  TEXT  '\n'
+1000:1199  003f <PRI 
+1000:1200  0039 <MSG 
+1000:1201   0008
+1000:1204  TEXT  'Eyaah!'
+1000:1212  003d <NOD 
+1000:1213   0015
+1000:1216  000a <CLR 
+1000:1217  TEXT  'Balrog.'
+1000:1226  003d <NOD 
+1000:1227  TEXT  '\nI leave the rest to you.'
+1000:1254  003d <NOD 
+1000:1255  0009 <CLO 
+1000:1256  TEXT  '\n'
+1000:1259   0002
+ANP: Obj 01eb75c0 (OBJ_MISERY_FLOAT(67)): setting state: 20 and dir: RIGHT
+1000:1266   0000
+1000:1269  0009 <CLO 
+1000:1270  TEXT  '\n'
+1000:1273  002c <KEY 
+1000:1274   0050
+1000:1277  0039 <MSG 
+1000:1278   0008
+1000:1281  TEXT  'No, wait, you've got the\nwrong--!'
+1000:1316  003d <NOD 
+1000:1317   0000
+1000:1320  0009 <CLO 
+1000:1321  TEXT  '\n'
+1000:1324   0050
+1000:1327  TEXT  '\n'
+1000:1330   0005
+1000:1333  0039 <MSG 
+1000:1334  TEXT  'Not AGAIN!'
+1000:1346  003d <NOD 
+1000:1347  TEXT  '\nI always have to clean up!'
+1000:1376  003d <NOD 
+1000:1377  TEXT  '\nAnd here I found her\nFIRST!'
+1000:1407  003d <NOD 
+1000:1408  000a <CLR 
+1000:1409  TEXT  '.....'
+1000:1416  003d <NOD 
+1000:1417  000a <CLR 
+1000:1418  TEXT  'So what's your deal?'
+1000:1440  003d <NOD 
+1000:1441  TEXT  '\nYou gonna fight me with\nthat thing?'
+1000:1479   1001
+1000:1482   0002
+ANP: Obj 0161c920 (OBJ_BALROG(12)): setting state: 30 and dir: RIGHT
+1000:1489  000a <CLR 
+1000:1490  TEXT  '\n'
+1000:1493   0014
+1000:1496  TEXT  'I knew it!'
+1000:1508  003d <NOD 
+1000:1509  0009 <CLO 
+1000:1510  TEXT  '\n'
+1000:1513   0361
+1000:1516   0004
+ >> music(4)
+./org/gravity.org: Org-02 detected
+1000:1519   0002
+CNP: Obj 0161c920 changing from OBJ_BALROG(12) to OBJ_BALROG_BOSS_RUNNING(68), new dir = RIGHT
+1000:1526   0400
+ error << FindObjectByID2: ID2 0400 found: type OBJ_BALROG_BOSS_RUNNING(68); coords: (68, 136) >>
+1000:1529  0014 <END 
+  - Stopped script 1000
+ForceSamplePos: WARNING: !!! truncated channel 6 from 15185 to 15168 samples !!!
+  - Started script 0400
+0400:0  002c <KEY 
+0400:1   0361
+0400:4   0362
+0400:7  TEXT  '\n'
+0400:10  0049 <SMC 
+0400:11   0000
+CNP: Obj 0161c920 changing from OBJ_BALROG_BOSS_RUNNING(68) to OBJ_BALROG(12), new dir = LEFT
+0400:18   0004
+ANP: Obj 0161c920 (OBJ_BALROG(12)): setting state: 20 and dir: FACE_PLAYER
+0400:25   0140
+0400:28  TEXT  '\n'
+0400:31  003f <PRI 
+0400:32  0039 <MSG 
+0400:33   0005
+0400:36  TEXT  'Just you wait!'
+0400:52  003d <NOD 
+0400:53   0000
+0400:56  002c <KEY 
+0400:57  0009 <CLO 
+0400:58  TEXT  '\n'
+0400:61   0100
+0400:64   0015
+ >> music(15)
+./org/fanfale2.org: Org-02 detected
+0400:67  TEXT  '\n'
+0400:70  0039 <MSG 
+0400:71  TEXT  '\nFought off Balrog!'
+0400:92   0140
+0400:95  003d <NOD 
+0400:96  TEXT  '\n'
+0400:99   0045
+0400:102   0000
+CNP: Obj 01ebeda0 changing from [Type 0] to OBJ_XP(1), new dir = LEFT
+0400:109   0004
+0400:112  TEXT  '\n'
+0400:115   0045
+0400:118   0000
+CNP: Obj 01c98fe0 changing from [Type 0] to OBJ_XP(1), new dir = LEFT
+0400:125   0004
+0400:128  TEXT  '\n'
+0400:131   0045
+0400:134   0000
+CNP: Obj 01eb7b30 changing from [Type 0] to OBJ_XP(1), new dir = LEFT
+0400:141   0004
+0400:144  TEXT  '\n'
+0400:147   0045
+0400:150   0000
+CNP: Obj 01eb8820 changing from [Type 0] to OBJ_XP(1), new dir = LEFT
+0400:157   0004
+0400:160  TEXT  '\n'
+0400:163   0045
+0400:166   0000
+CNP: Obj 01eb7720 changing from [Type 0] to OBJ_XP(1), new dir = LEFT
+0400:173  TEXT  '\n'
+0400:176   0008
+ >> music(8)
+./org/gestation.org: Org-02 detected
+0400:179  0014 <END 
+  - Stopped script 0400
+  - Started script 0100
+0100:0   0103
+0100:5  TEXT  '\n'
+0100:8   0101
+0100:13  TEXT  '\n'
+0100:16   0102
+JumpScript: moving to script #0102 page 1
+0102:0  002c <KEY 
+0102:1   0004
+0102:4   0052
+******* Executing <TRA to stage 11
+  - Stopped script 0102
+ >> Entering stage 11: 'Mimiga Village'.
+load_map: level size 60x60
+load_map: 'data/Stage/Mimi.pxm' loaded OK! - 60x60
+load_pxa: reading in data/Stage/Mimi.pxa
+load_entities: reading in data/Stage/Mimi.pxe
+ -- Appearing object 105 (OBJ_DOOR_BUSTED(41)) because flag 360 is set
+ -- Disappearing object 105 (OBJ_DOOR(18)) because flag 360 is set
+ -- Disappearing object 200 (OBJ_CHEST_CLOSED(15)) because flag 322 is set
+ -- Appearing object 201 (OBJ_CHEST_OPEN(21)) because flag 322 is set
+ -- Disappearing object 300 (OBJ_TOROKO(60)) because flag 320 is set
+ -- Disappearing object 301 (OBJ_KING(61)) because flag 320 is set
+tsc_load: loading 'data/Stage/Mimi.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0  0032 <MNA 
+0094:1   0099
+0094:6   0009
+ >> music(9)
+./org/town.org: Org-02 detected
+0094:9   0004
+0094:12  0014 <END 
+  - Stopped script 0094
+  - Started script 0504
+0504:0  002c <KEY 
+0504:1  0039 <MSG 
+0504:2  0053 <TUR 
+0504:3  TEXT  '\n              Arthur's House'
+0504:34  003d <NOD 
+0504:35  0014 <END 
+  - Stopped script 0504
+  - Started script 0100
+0100:0  003f <PRI 
+0100:1   0102
+0100:6  TEXT  '\n'
+0100:9   0101
+0100:14  TEXT  '\n'
+0100:17  0039 <MSG 
+0100:18  TEXT  'Locked.'
+0100:27  003d <NOD 
+0100:28  0014 <END 
+  - Stopped script 0100
+  - Started script 0311
+0311:0  002c <KEY 
+0311:1  0039 <MSG 
+0311:2  TEXT  '*chomp chomp*'
+0311:17  003d <NOD 
+0311:18  000a <CLR 
+0311:19  TEXT  '!'
+0311:22  003d <NOD 
+0311:23  0009 <CLO 
+0311:24  TEXT  '\n'
+0311:27   0000
+0311:30   0004
+ANP: Obj 01eb8cb0 (OBJ_MAHIN(79)): setting state: 2 and dir: FACE_PLAYER
+0311:37   0030
+0311:40   0000
+0311:43  TEXT  '\n'
+0311:46   0313
+0311:51  TEXT  '\n'
+0311:54   0312
+0311:59  TEXT  '\n'
+0311:62   0314
+JumpScript: moving to script #0314 page 1
+0314:0  002c <KEY 
+0314:1  0039 <MSG 
+0314:2  TEXT  'What?'
+0314:9  003d <NOD 
+0314:10  TEXT  '\nToroko's been kidnapped?'
+0314:37  003d <NOD 
+0314:38  000a <CLR 
+0314:39  TEXT  'Well, that's no good.'
+0314:62  003d <NOD 
+0314:63  TEXT  '\nNow the only girl left in the\nvillage is Sue...'
+0314:113  003d <NOD 
+0314:114   0002
+ANP: Obj 01eb8cb0 (OBJ_MAHIN(79)): setting state: 0 and dir: RIGHT
+0314:121  0014 <END 
+  - Stopped script 0314
+  - Started script 0109
+0109:0  003f <PRI 
+0109:1   0004
+0109:4   0009
+******* Executing <TRA to stage 20
+  - Stopped script 0109
+ >> Entering stage 20: 'Save Point'.
+load_map: level size 21x16
+load_map: 'data/Stage/MiBox.pxm' loaded OK! - 21x16
+load_pxa: reading in data/Stage/Mimi.pxa
+load_entities: reading in data/Stage/MiBox.pxe
+tsc_load: loading 'data/Stage/MiBox.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0  0032 <MNA 
+0094:1   0004
+0094:4  0014 <END 
+  - Stopped script 0094
+  - Started script 0017
+0017:0  003f <PRI 
+0017:1   0018
+0017:6  TEXT  '\n'
+0017:9   1000
+0017:12   0020
+0017:15  0000 <AE+ 
+0017:16  0039 <MSG 
+0017:17  TEXT  '\nHealth refilled.'
+0017:36  003d <NOD 
+0017:37  0014 <END 
+  - Stopped script 0017
+  - Started script 0016
+0016:0  003f <PRI 
+0016:1  0039 <MSG 
+0016:2  TEXT  '\nDo you want to save?'
+0016:25   0000
+0016:28   0431
+0016:31  0050 <SVP 
+Loading profile from profile.dat...
+Loading profile from profile2.dat...
+ error << profile_load: unable to open 'profile2.dat' >>
+Loading profile from profile3.dat...
+ error << profile_load: unable to open 'profile3.dat' >>
+Loading profile from profile4.dat...
+ error << profile_load: unable to open 'profile4.dat' >>
+Loading profile from profile5.dat...
+ error << profile_load: unable to open 'profile5.dat' >>
+game_save: writing savefile 0
+Writing settings...
+0016:32  000a <CLR 
+0016:33  TEXT  'Game saved.'
+0016:46  003d <NOD 
+0016:47  0014 <END 
+  - Stopped script 0016
+  - Started script 0100
+0100:0  003f <PRI 
+0100:1   0004
+0100:4   0034
+******* Executing <TRA to stage 11
+  - Stopped script 0100
+ >> Entering stage 11: 'Mimiga Village'.
+load_map: level size 60x60
+load_map: 'data/Stage/Mimi.pxm' loaded OK! - 60x60
+load_pxa: reading in data/Stage/Mimi.pxa
+load_entities: reading in data/Stage/Mimi.pxe
+ -- Appearing object 105 (OBJ_DOOR_BUSTED(41)) because flag 360 is set
+ -- Disappearing object 105 (OBJ_DOOR(18)) because flag 360 is set
+ -- Disappearing object 200 (OBJ_CHEST_CLOSED(15)) because flag 322 is set
+ -- Appearing object 201 (OBJ_CHEST_OPEN(21)) because flag 322 is set
+ -- Disappearing object 300 (OBJ_TOROKO(60)) because flag 320 is set
+ -- Disappearing object 301 (OBJ_KING(61)) because flag 320 is set
+tsc_load: loading 'data/Stage/Mimi.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0  0032 <MNA 
+0094:1   0099
+0094:6   0009
+0094:9   0004
+0094:12  0014 <END 
+  - Stopped script 0094
+  - Started script 0104
+0104:0   0112
+0104:5  TEXT  '\n'
+0104:8   0111
+JumpScript: moving to script #0111 page 1
+0111:0  002c <KEY 
+0111:1   0327
+0111:4   0443
+0111:7  0039 <MSG 
+0111:8   0009
+0111:11  TEXT  'What?!'
+0111:19  003d <NOD 
+0111:20  TEXT  '\nToroko's been kidnapped?'
+0111:47  003d <NOD 
+0111:48  TEXT  '\nOh, no!'
+0111:58  003d <NOD 
+0111:59  TEXT  '\nI've got to tell King\nright away!'
+0111:95  003d <NOD 
+0111:96  0009 <CLO 
+0111:97  TEXT  '\n'
+0111:100   0000
+0111:103  TEXT  '\n'
+0111:106   0000
+ANP: Obj 01eb7ee0 (OBJ_JACK(74)): setting state: 8 and dir: LEFT
+0111:113   0208
+0111:116  TEXT  '\n'
+0111:119   0002
+ANP: Obj 01eb7ee0 (OBJ_JACK(74)): setting state: 0 and dir: RIGHT
+0111:126   0010
+0111:129  TEXT  '\n'
+0111:132   0011
+0111:135   0002
+ANP: Obj 016455f0 (OBJ_DOOR(18)): setting state: 0 and dir: RIGHT
+0111:142   0030
+0111:145  TEXT  '\n'
+0111:148   0111
+DNP: 01eb7ee0 (OBJ_JACK(74)) deleted
+0111:151  TEXT  '\n'
+0111:154   0011
+0111:157   0000
+ANP: Obj 016455f0 (OBJ_DOOR(18)): setting state: 0 and dir: LEFT
+0111:164  0014 <END 
+  - Stopped script 0111
+  - Started script 0107
+0107:0  003f <PRI 
+0107:1   0011
+0107:4   0000
+CNP: Obj 016455f0 changing from OBJ_DOOR(18) to [Type 0], new dir = LEFT
+0107:11   0004
+0107:14   0010
+******* Executing <TRA to stage 19
+  - Stopped script 0107
+ >> Entering stage 19: 'Assembly Hall'.
+load_map: level size 21x16
+load_map: 'data/Stage/Comu.pxm' loaded OK! - 21x16
+load_pxa: reading in data/Stage/Pens.pxa
+load_entities: reading in data/Stage/Comu.pxe
+ -- Appearing object 200 (OBJ_KING(61)) because flag 440 is set
+ -- Appearing object 210 (OBJ_JACK(74)) because flag 443 is set
+tsc_load: loading 'data/Stage/Comu.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0  0032 <MNA 
+0094:1   0099
+0094:6   0009
+0094:9   0004
+0094:12  0014 <END 
+  - Stopped script 0094
+  - Started script 0200
+0200:0   0201
+JumpScript: moving to script #0201 page 1
+0201:0  002c <KEY 
+0201:1  0039 <MSG 
+0201:2   0007
+0201:5  TEXT  'Toroko...\nI can't believe it...'
+0201:38  003d <NOD 
+0201:39  TEXT  '\nToroko's elder brother,\nArthur, was a fabulous\nwarrior.'
+0201:97  003d <NOD 
+0201:98  TEXT  '\nBut he was killed by \none of the Doctor's\ngoons.'
+0201:149  003d <NOD 
+0201:150  TEXT  '\nAnd now, I...I couldn't\nprotect her...'
+0201:191  003d <NOD 
+0201:192  0014 <END 
+  - Stopped script 0201
+  - Started script 0210
+0210:0  002c <KEY 
+0210:1  0039 <MSG 
+0210:2   0009
+0210:5  TEXT  'There are two keys to\nArthur's house.'
+0210:44  003d <NOD 
+0210:45  TEXT  '\nToroko has one of them.'
+0210:71  003d <NOD 
+0210:72  TEXT  '\nThe other is hidden in\nthe Mimiga graveyard.'
+0210:119  003d <NOD 
+0210:120  0014 <END 
+  - Stopped script 0210
+  - Started script 0100
+0100:0  003f <PRI 
+0100:1   0011
+0100:4   0100
+DNP: 0163b7a0 (OBJ_DOOR(18)) deleted
+0100:7   0004
+0100:10   0034
+******* Executing <TRA to stage 11
+  - Stopped script 0100
+ >> Entering stage 11: 'Mimiga Village'.
+load_map: level size 60x60
+load_map: 'data/Stage/Mimi.pxm' loaded OK! - 60x60
+load_pxa: reading in data/Stage/Mimi.pxa
+load_entities: reading in data/Stage/Mimi.pxe
+ -- Appearing object 105 (OBJ_DOOR_BUSTED(41)) because flag 360 is set
+ -- Disappearing object 105 (OBJ_DOOR(18)) because flag 360 is set
+ -- Disappearing object 200 (OBJ_CHEST_CLOSED(15)) because flag 322 is set
+ -- Appearing object 201 (OBJ_CHEST_OPEN(21)) because flag 322 is set
+ -- Disappearing object 111 (OBJ_JACK(74)) because flag 327 is set
+ -- Disappearing object 300 (OBJ_TOROKO(60)) because flag 320 is set
+ -- Disappearing object 301 (OBJ_KING(61)) because flag 320 is set
+tsc_load: loading 'data/Stage/Mimi.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0  0032 <MNA 
+0094:1   0099
+0094:6   0009
+0094:9   0004
+0094:12  0014 <END 
+  - Stopped script 0094
+  - Started script 0104
+0104:0   0112
+JumpScript: moving to script #0112 page 1
+0112:0  003f <PRI 
+0112:1   0002
+0112:4   0012
+******* Executing <TRA to stage 16
+  - Stopped script 0112
+ >> Entering stage 16: 'Graveyard'.
+load_map: level size 40x20
+load_map: 'data/Stage/Cemet.pxm' loaded OK! - 40x20
+load_pxa: reading in data/Stage/Mimi.pxa
+load_entities: reading in data/Stage/Cemet.pxe
+tsc_load: loading 'data/Stage/Cemet.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 92
+  - Started script 0092
+0092:0  0032 <MNA 
+0092:1   0012
+ >> music(12)
+./org/cemetary.org: Org-02 detected
+0092:4   0002
+0092:7  0014 <END 
+  - Stopped script 0092
+  - Started script 0300
+0300:0   0000
+CNP: Obj 01c9f9b0 changing from OBJ_HIDDEN_SPARKLE(70) to [Type 0], new dir = LEFT
+0300:7  TEXT  '\n'
+0300:10  003f <PRI 
+0300:11  0039 <MSG 
+0300:12  TEXT  'Arthur's grave.'
+0300:29  003d <NOD 
+0300:30  TEXT  '\nThere's writing on the\ntombstone:'
+0300:66  003d <NOD 
+0300:67  000a <CLR 
+0300:68  0039 <MSG 
+0300:69  0053 <TUR 
+0300:70  TEXT  'Here sleeps the noble Arthur,\ntrue hero to the Mimigas.'
+0300:127  003d <NOD 
+0300:128   0000
+0300:133  000a <CLR 
+0300:134  0039 <MSG 
+0300:135   0390
+0300:138  TEXT  '\n'
+0300:141   0010
+ >> music(10)
+./org/fanfale1.org: Org-02 detected
+0300:144   1001
+0300:147   0001
+0300:150  TEXT  'Found =Arthur's Key=!'
+0300:173   0160
+0300:176  003d <NOD 
+0300:177  0009 <CLO 
+0300:178  TEXT  '\n'
+0300:181  0042 <RMU 
+ >> music(12)
+./org/cemetary.org: Org-02 detected
+0300:182  0014 <END 
+  - Stopped script 0300
+  - Started script 0100
+0100:0  003f <PRI 
+0100:1   0000
+0100:4   0033
+******* Executing <TRA to stage 11
+  - Stopped script 0100
+ >> Entering stage 11: 'Mimiga Village'.
+load_map: level size 60x60
+load_map: 'data/Stage/Mimi.pxm' loaded OK! - 60x60
+load_pxa: reading in data/Stage/Mimi.pxa
+load_entities: reading in data/Stage/Mimi.pxe
+ -- Appearing object 105 (OBJ_DOOR_BUSTED(41)) because flag 360 is set
+ -- Disappearing object 105 (OBJ_DOOR(18)) because flag 360 is set
+ -- Disappearing object 200 (OBJ_CHEST_CLOSED(15)) because flag 322 is set
+ -- Appearing object 201 (OBJ_CHEST_OPEN(21)) because flag 322 is set
+ -- Disappearing object 111 (OBJ_JACK(74)) because flag 327 is set
+ -- Disappearing object 300 (OBJ_TOROKO(60)) because flag 320 is set
+ -- Disappearing object 301 (OBJ_KING(61)) because flag 320 is set
+tsc_load: loading 'data/Stage/Mimi.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 90
+  - Started script 0090
+0090:0  0032 <MNA 
+0090:1   0095
+0090:6   0009
+ >> music(9)
+./org/town.org: Org-02 detected
+0090:9   0000
+0090:12  0014 <END 
+  - Stopped script 0090
+  - Started script 0501
+0501:0  002c <KEY 
+0501:1  0039 <MSG 
+0501:2  0053 <TUR 
+0501:3  TEXT  '\n              Yamashita Farm'
+0501:34  003d <NOD 
+0501:35  0014 <END 
+  - Stopped script 0501
+  - Started script 0108
+0108:0  003f <PRI 
+0108:1   0002
+0108:4   0011
+******* Executing <TRA to stage 17
+  - Stopped script 0108
+ >> Entering stage 17: 'Yamashita Farm'.
+load_map: level size 40x16
+load_map: 'data/Stage/Plant.pxm' loaded OK! - 40x16
+load_pxa: reading in data/Stage/Mimi.pxa
+load_entities: reading in data/Stage/Plant.pxe
+tsc_load: loading 'data/Stage/Plant.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 92
+  - Started script 0092
+0092:0  0032 <MNA 
+0092:1   0097
+0092:6   0013
+ >> music(13)
+./org/plant.org: Org-02 detected
+0092:9   0002
+0092:12  0014 <END 
+  - Stopped script 0092
+  - Started script 0200
+0200:0  002c <KEY 
+0200:1  0039 <MSG 
+0200:2  TEXT  'This is our farm.\nWe raise flowers here.'
+0200:44  003d <NOD 
+0200:45  TEXT  '\nMy job is to watch over the farm.'
+0200:81  003d <NOD 
+0200:82  000a <CLR 
+0200:83  TEXT  'We Mimigas depend on these flowers\nfor sustenance.'
+0200:135  003d <NOD 
+0200:136  000a <CLR 
+0200:137  TEXT  'Red flowers, though, are bad news.'
+0200:173  003d <NOD 
+0200:174  000a <CLR 
+0200:175  TEXT  'If you eat a red flower,\nthey say your blood starts to\nboil, and soon you fall over dead!'
+0200:266  003d <NOD 
+0200:267  000a <CLR 
+0200:268  TEXT  'Good thing we don't have any\nof those growing here.'
+0200:321  003d <NOD 
+0200:322  0014 <END 
+  - Stopped script 0200
   - Started script 0400
 0400:0  003f <PRI 
 0400:1   0022
 0400:4   0400
-DNP: 0260c7f0 (OBJ_LIFE_CAPSULE(32)) deleted
+DNP: 01eb8ee0 (OBJ_LIFE_CAPSULE(32)) deleted
 0400:7   0016
  >> music(16)
 ./org/fanfale3.org: Org-02 detected
@@ -321,107 +1665,1997 @@ DNP: 0260c7f0 (OBJ_LIFE_CAPSULE(32)) deleted
 0400:40   0160
 0400:43  003d <NOD 
 0400:44  0042 <RMU 
- >> music(8)
-./org/gestation.org: Org-02 detected
+ >> music(13)
+./org/plant.org: Org-02 detected
 0400:45   0003
 0400:48  TEXT  '\nMax health increased by 3!'
 0400:77  003d <NOD 
 0400:78  0014 <END 
   - Stopped script 0400
-  - Started script 0110
-0110:0  002c <KEY 
-0110:1   0004
-0110:4   0009
-******* Executing <TRA to stage 90
-  - Stopped script 0110
- >> Entering stage 90: 'Hermit Gunsmith'.
-load_map: level size 21x16
-load_map: 'data/Stage/Pole.pxm' loaded OK! - 21x16
-load_pxa: reading in data/Stage/Cave.pxa
-load_entities: reading in data/Stage/Pole.pxe
-tsc_load: loading 'data/Stage/Pole.tsc' to page 1
+  - Started script 0100
+0100:0  003f <PRI 
+0100:1   0000
+0100:4   0021
+******* Executing <TRA to stage 11
+  - Stopped script 0100
+ >> Entering stage 11: 'Mimiga Village'.
+load_map: level size 60x60
+load_map: 'data/Stage/Mimi.pxm' loaded OK! - 60x60
+load_pxa: reading in data/Stage/Mimi.pxa
+load_entities: reading in data/Stage/Mimi.pxe
+ -- Appearing object 105 (OBJ_DOOR_BUSTED(41)) because flag 360 is set
+ -- Disappearing object 105 (OBJ_DOOR(18)) because flag 360 is set
+ -- Disappearing object 200 (OBJ_CHEST_CLOSED(15)) because flag 322 is set
+ -- Appearing object 201 (OBJ_CHEST_OPEN(21)) because flag 322 is set
+ -- Disappearing object 111 (OBJ_JACK(74)) because flag 327 is set
+ -- Disappearing object 300 (OBJ_TOROKO(60)) because flag 320 is set
+ -- Disappearing object 301 (OBJ_KING(61)) because flag 320 is set
+tsc_load: loading 'data/Stage/Mimi.tsc' to page 1
 StageBossManager::SetType(0)
--- Starting on-entry script 92
-  - Started script 0092
-0092:0  0032 <MNA 
-0092:1   0008
-0092:4   0002
-0092:7  0014 <END 
-  - Stopped script 0092
-  - Started script 0300
-0300:0  002c <KEY 
-0300:1  0039 <MSG 
-0300:2  TEXT  '*snore*'
-0300:11  003d <NOD 
-0300:12  0014 <END 
-  - Stopped script 0300
+-- Starting on-entry script 90
+  - Started script 0090
+0090:0  0032 <MNA 
+0090:1   0095
+0090:6   0009
+ >> music(9)
+./org/town.org: Org-02 detected
+0090:9   0000
+0090:12  0014 <END 
+  - Stopped script 0090
+  - Started script 0100
+0100:0  003f <PRI 
+0100:1   0102
+0100:6  TEXT  '\n'
+0100:9   0101
+JumpScript: moving to script #0101 page 1
+0101:0   0022
+0101:3   1001
+0101:6   0324
+0101:9   0441
+0101:12  TEXT  '\n'
+0101:15  0039 <MSG 
+0101:16  TEXT  'Used =Arthur's Key=.'
+0101:38  003d <NOD 
+0101:39   0000
+0101:42  0009 <CLO 
+0101:43   0102
+JumpScript: moving to script #0102 page 1
+0102:0   0011
+0102:3   0000
+CNP: Obj 01c9f9b0 changing from OBJ_DOOR(18) to [Type 0], new dir = LEFT
+0102:10   0004
+0102:13   0008
+******* Executing <TRA to stage 1
+  - Stopped script 0102
+ >> Entering stage 1: 'Arthur's House'.
+load_map: level size 21x16
+load_map: 'data/Stage/Pens1.pxm' loaded OK! - 21x16
+load_pxa: reading in data/Stage/Pens.pxa
+load_entities: reading in data/Stage/Pens1.pxe
+ -- Disappearing object 00 (OBJ_KAZUMA_AT_COMPUTER(62)) because flag 0 is set
+tsc_load: loading 'data/Stage/Pens1.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0  0032 <MNA 
+0094:1   0095
+0094:6   0002
+ >> music(2)
+./org/safety.org: Org-02 detected
+0094:9   0004
+0094:12  0014 <END 
+  - Stopped script 0094
+  - Started script 0017
+0017:0  003f <PRI 
+0017:1   0018
+0017:6  TEXT  '\n'
+0017:9   1000
+0017:12   0020
+0017:15  0000 <AE+ 
+0017:16  0039 <MSG 
+0017:17  TEXT  '\nHealth refilled.'
+0017:36  003d <NOD 
+0017:37  0014 <END 
+  - Stopped script 0017
+  - Started script 0016
+0016:0  003f <PRI 
+0016:1  0039 <MSG 
+0016:2  TEXT  '\nDo you want to save?'
+0016:25   0000
+0016:28   0431
+0016:31  0050 <SVP 
+Loading profile from profile.dat...
+Loading profile from profile2.dat...
+ error << profile_load: unable to open 'profile2.dat' >>
+Loading profile from profile3.dat...
+ error << profile_load: unable to open 'profile3.dat' >>
+Loading profile from profile4.dat...
+ error << profile_load: unable to open 'profile4.dat' >>
+Loading profile from profile5.dat...
+ error << profile_load: unable to open 'profile5.dat' >>
+game_save: writing savefile 0
+Writing settings...
+0016:32  000a <CLR 
+0016:33  TEXT  'Game saved.'
+0016:46  003d <NOD 
+0016:47  0014 <END 
+  - Stopped script 0016
+  - Started script 0016
+0016:0  003f <PRI 
+0016:1  0039 <MSG 
+0016:2  TEXT  '\nDo you want to save?'
+0016:25   0000
+0016:28   0431
+0016:31  0050 <SVP 
+Loading profile from profile.dat...
+Loading profile from profile2.dat...
+ error << profile_load: unable to open 'profile2.dat' >>
+Loading profile from profile3.dat...
+ error << profile_load: unable to open 'profile3.dat' >>
+Loading profile from profile4.dat...
+ error << profile_load: unable to open 'profile4.dat' >>
+Loading profile from profile5.dat...
+ error << profile_load: unable to open 'profile5.dat' >>
+game_save: writing savefile 0
+Writing settings...
+0016:32  000a <CLR 
+0016:33  TEXT  'Game saved.'
+0016:46  003d <NOD 
+0016:47  0014 <END 
+  - Stopped script 0016
+  - Started script 0200
+0200:0   0205
+0200:5  TEXT  '\n'
+0200:8   0204
+0200:13  TEXT  '\n'
+0200:16   0203
+0200:21  TEXT  '\n'
+0200:24   0202
+0200:29  TEXT  '\n'
+0200:32   0201
+0200:37  TEXT  '\n'
+0200:40  002c <KEY 
+0200:41  0039 <MSG 
+0200:42  TEXT  'Words light up the screen...'
+0200:72  003d <NOD 
+0200:73  000a <CLR 
+0200:74  0053 <TUR 
+0200:75  TEXT  '"...If I have to, though,\nI really will..."'
+0200:120  003d <NOD 
+0200:121   0000
+0200:126  000a <CLR 
+0200:127  0039 <MSG 
+0200:128  TEXT  'Do you want to permit\nteleportation to the Egg Corridor?'
+0200:186   0000
+0200:189  000a <CLR 
+0200:190  TEXT  'Permission granted to access Egg\nCorridor.'
+0200:234  003d <NOD 
+0200:235   0153
+0200:238   6001
+0200:243  0014 <END 
+  - Stopped script 0200
+  - Started script 0019
+0019:0  002c <KEY 
+0019:1  0039 <MSG 
+0019:2  TEXT  '\nDo you want to rest?'
+0019:25   0000
+0019:28   0004
+0019:31   0000
+ >> music(0)
+0019:34   0020
+0019:37  000a <CLR 
+0019:38  TEXT  '.....'
+0019:45  003d <NOD 
+0019:46  0009 <CLO 
+0019:47  TEXT  '\n'
+0019:50   0050
+0019:53  TEXT  '\n'
+0019:56   1000
+0019:59   0020
+0019:62   0002
+0019:65  0039 <MSG 
+0019:66  TEXT  '\nHealth restored.'
+0019:85  003d <NOD 
+0019:86  0009 <CLO 
+0019:87  0042 <RMU 
+ >> music(2)
+./org/safety.org: Org-02 detected
+0019:88   0004
+0019:91  0014 <END 
+  - Stopped script 0019
+  - Started script 0210
+0210:0  002c <KEY 
+0210:1  0039 <MSG 
+0210:2  TEXT  'Flowers...?'
+0210:15  003d <NOD 
+0210:16  0014 <END 
+  - Stopped script 0210
+  - Started script 0210
+0210:0  002c <KEY 
+0210:1  0039 <MSG 
+0210:2  TEXT  'Flowers...?'
+0210:15  003d <NOD 
+0210:16  0014 <END 
+  - Stopped script 0210
+  - Started script 0500
+0500:0  002c <KEY 
+0500:1  0039 <MSG 
+0500:2  TEXT  'A teleporter.'
+0500:17  003d <NOD 
+0500:18  0048 <SLP 
+JumpScript: moving to script #1001 page 3
+1001:0  002c <KEY 
+1001:1  0039 <MSG 
+1001:2  0053 <TUR 
+1001:3  TEXT  'Egg Corridor'
+1001:17   9999
+StageSelect: starting activation script 6001
+JumpScript: moving to script #6001 page 1
+6001:0  003f <PRI 
+6001:1  0039 <MSG 
+6001:2  TEXT  'Do you want to go to the\nEgg Corridor?'
+6001:42   0000
+6001:45  0009 <CLO 
+6001:46  TEXT  '\n'
+6001:49  002c <KEY 
+6001:50   0002
+CNP: Obj 01ebeda0 changing from [Type 0] to OBJ_PTELOUT(111), new dir = RIGHT
+6001:57  0026 <HMC 
+6001:58   0060
+6001:61   0000
+ANP: Obj 01c9f9b0 (OBJ_TELEPORTER(22)): setting state: 1 and dir: LEFT
+6001:68  TEXT  '\n'
+6001:71   0100
+6001:74   0004
+6001:77   6011
+6001:82   0006
+******* Executing <TRA to stage 2
+  - Stopped script 6001
+ >> Entering stage 2: 'Egg Corridor'.
+load_map: level size 300x16
+load_map: 'data/Stage/Eggs.pxm' loaded OK! - 300x16
+load_pxa: reading in data/Stage/Eggs.pxa
+load_entities: reading in data/Stage/Eggs.pxe
+tsc_load: loading 'data/Stage/Eggs.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 99
+  - Started script 0099
+0099:0  002c <KEY 
+0099:1  0032 <MNA 
+0099:2   0001
+ >> music(1)
+./org/egg.org: Org-02 detected
+0099:5  TEXT  '\n'
+0099:8   0000
+ANP: Obj 0161c920 (OBJ_TELEPORTER(22)): setting state: 1 and dir: LEFT
+ANP: Obj 0163b7a0 (OBJ_TELEPORTER_LIGHTS(23)): setting state: 1 and dir: LEFT
+0099:15   0004
+0099:18  TEXT  '\n'
+0099:21   0002
+CNP: Obj 01ea90c0 changing from [Type 0] to OBJ_PTELIN(112), new dir = RIGHT
+0099:28   0100
+0099:31  TEXT  '\n'
+0099:34   0000
+ANP: Obj 0161c920 (OBJ_TELEPORTER(22)): setting state: 0 and dir: LEFT
+ANP: Obj 0163b7a0 (OBJ_TELEPORTER_LIGHTS(23)): setting state: 0 and dir: LEFT
+0099:41  TEXT  '\n'
+0099:44   0002
+0099:47   0301
+DNP: 01ea90c0 (OBJ_PTELIN(112)) deleted
+0099:50  0049 <SMC 
+0099:51  0014 <END 
+  - Stopped script 0099
+  - Started script 0200
+0200:0  003f <PRI 
+0200:1  0039 <MSG 
+0200:2  TEXT  'I'd watch out if I were you.'
+0200:32  003d <NOD 
+0200:33  TEXT  '\nThat white thing on the\nbottom?'
+0200:67  003d <NOD 
+0200:68  TEXT  '\nOne touch and POW, it's over.'
+0200:100  003d <NOD 
+0200:101  0014 <END 
+  - Stopped script 0200
+HVTrigger 0500 (01cec8e0) activated
+  - Started script 0500
+0500:0  002c <KEY 
+0500:1  0031 <MM0 
+0500:2   0002
+0500:5  0020 <FMU 
+org_fade
+0500:6   0500
+DNP: 01cec8e0 (OBJ_HVTRIGGER(46)) deleted
+0500:9   0100
+0500:12  TEXT  '\n'
+0500:15  0039 <MSG 
+0500:16   0003
+0500:19   0002
+ANP: Obj 01eb7b70 (OBJ_SUE(42)): setting state: 11 and dir: RIGHT
+0500:26  TEXT  'There you are,\nyou monster!'
+0500:55  003d <NOD 
+0500:56  TEXT  '\nI'm not afraidda you!'
+0500:80   0002
+ANP: Obj 01eb7b70 (OBJ_SUE(42)): setting state: 0 and dir: RIGHT
+0500:87  003d <NOD 
+0500:88  000a <CLR 
+0500:89   0000
+ >> music(0)
+0500:92  TEXT  '\n'
+0500:95   0012
+0500:98  TEXT  'OOGAAHH!!'
+0500:109  003d <NOD 
+0500:110  000a <CLR 
+0500:111   0003
+0500:114   0002
+ANP: Obj 01eb7b70 (OBJ_SUE(42)): setting state: 11 and dir: RIGHT
+0500:121   0002
+ANP: Obj 01eb7b70 (OBJ_SUE(42)): setting state: 11 and dir: RIGHT
+0500:128  TEXT  'Yeah? What's that?'
+0500:148  003d <NOD 
+0500:149  TEXT  '\nYou wanna bring it?!'
+0500:172  003d <NOD 
+0500:173  000a <CLR 
+0500:174  TEXT  'Go ahead and try!'
+0500:193  003d <NOD 
+0500:194  TEXT  '\nEven my brother's never\nbeaten me!!'
+0500:232  003d <NOD 
+0500:233   0000
+0500:236  0009 <CLO 
+0500:237  TEXT  '\n'
+0500:240   0000
+ANP: Obj 01eb7a20 (OBJ_NPC_IGOR(83)): setting state: 2 and dir: LEFT
+0500:247   0058
+0500:250  TEXT  '\n'
+0500:253   0000
+ANP: Obj 01eb7a20 (OBJ_NPC_IGOR(83)): setting state: 4 and dir: LEFT
+0500:260   0010
+0500:263  TEXT  '\n'
+0500:266   0002
+ANP: Obj 01eb7b70 (OBJ_SUE(42)): setting state: 6 and dir: RIGHT
+0500:273   0010
+0500:276  003f <PRI 
+0500:277  0039 <MSG 
+0500:278   0004
+0500:281  TEXT  'Oof! You win!'
+0500:296  003d <NOD 
+0500:297  0009 <CLO 
+0500:298  002c <KEY 
+0500:299  TEXT  '\n'
+0500:302   0000
+ANP: Obj 01eb7a20 (OBJ_NPC_IGOR(83)): setting state: 4 and dir: LEFT
+0500:309   0010
+0500:312  TEXT  '\n'
+0500:315   0002
+ANP: Obj 01eb7b70 (OBJ_SUE(42)): setting state: 6 and dir: RIGHT
+0500:322   0010
+0500:325  003f <PRI 
+0500:326  0039 <MSG 
+0500:327  TEXT  'I'm sorry!\nI'm sorry!!'
+0500:351  003d <NOD 
+0500:352   0000
+0500:355  0009 <CLO 
+0500:356  002c <KEY 
+0500:357  TEXT  '\n'
+0500:360   0000
+ANP: Obj 01eb7a20 (OBJ_NPC_IGOR(83)): setting state: 4 and dir: LEFT
+0500:367   0010
+0500:370  TEXT  '\n'
+0500:373   0002
+ANP: Obj 01eb7b70 (OBJ_SUE(42)): setting state: 8 and dir: RIGHT
+0500:380  0039 <MSG 
+0500:381  TEXT  '*Crash!*'
+0500:391   0050
+0500:394  0009 <CLO 
+0500:395  TEXT  '\n'
+0500:398   0020
+0500:401  0039 <MSG 
+0500:402  TEXT  'Ooohh...'
+0500:412  003d <NOD 
+0500:413  000a <CLR 
+0500:414  TEXT  'Huh?'
+0500:420  003d <NOD 
+0500:421  TEXT  '\n'
+0500:424   0010
+0500:427   0000
+ANP: Obj 01eb7b70 (OBJ_SUE(42)): setting state: 0 and dir: LEFT
+0500:434   0010
+0500:437  TEXT  '\n'
+0500:440  0039 <MSG 
+0500:441   0001
+0500:444  TEXT  'Who're you?'
+0500:457  003d <NOD 
+0500:458  TEXT  '\n'
+0500:461   0000
+ANP: Obj 01eb7a20 (OBJ_NPC_IGOR(83)): setting state: 2 and dir: LEFT
+0500:468   0042
+0500:471  TEXT  '\n'
+0500:474   0000
+ANP: Obj 01eb7a20 (OBJ_NPC_IGOR(83)): setting state: 4 and dir: LEFT
+0500:481   0010
+0500:484  TEXT  '\n'
+0500:487   0002
+ANP: Obj 01eb7b70 (OBJ_SUE(42)): setting state: 6 and dir: RIGHT
+0500:494   0003
+0500:497  TEXT  '\n'
+0500:500  003f <PRI 
+0500:501  0039 <MSG 
+0500:502   0004
+0500:505  TEXT  'Erk!'
+0500:511   0050
+0500:514   0000
+0500:517  0009 <CLO 
+0500:518  002c <KEY 
+0500:519  TEXT  '\n'
+0500:522   0000
+ANP: Obj 01eb7b70 (OBJ_SUE(42)): setting state: 13 and dir: LEFT
+0500:529   0050
+ error << FindObjectByID2: ID2 0501 found: type OBJ_NPC_IGOR(83); coords: (1598, 76) >>
+0500:532  0039 <MSG 
+0500:533   0012
+0500:536  TEXT  '.....'
+0500:543  003d <NOD 
+0500:544  0009 <CLO 
+0500:545  TEXT  '\n'
+0500:548   0002
+ANP: Obj 01eb7a20 (OBJ_NPC_IGOR(83)): setting state: 2 and dir: RIGHT
+0500:555   0210
+0500:558   0502
+DNP: 01eb7b70 (OBJ_SUE(42)) deleted
+0500:561   0501
+DNP: 01eb7a20 (OBJ_NPC_IGOR(83)) deleted
+0500:564  0042 <RMU 
+ >> music(1)
+./org/egg.org: Org-02 detected
+0500:565  0014 <END 
+  - Stopped script 0500
+  - Started script 0106
+0106:0  003f <PRI 
+0106:1   0011
+0106:4   0106
+DNP: 01c9f9b0 (OBJ_DOOR(18)) deleted
+0106:7   0004
+0106:10   0012
+******* Executing <TRA to stage 22
+  - Stopped script 0106
+ >> Entering stage 22: 'Cthulhu's Abode'.
+load_map: level size 21x16
+load_map: 'data/Stage/Cthu.pxm' loaded OK! - 21x16
+load_pxa: reading in data/Stage/Store.pxa
+load_entities: reading in data/Stage/Cthu.pxe
+tsc_load: loading 'data/Stage/Cthu.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0  0032 <MNA 
+0094:1   0008
+ >> music(8)
+./org/gestation.org: Org-02 detected
+0094:4   0004
+0094:7  0014 <END 
+  - Stopped script 0094
   - Started script 0200
 0200:0  002c <KEY 
 0200:1   0201
-0200:6   1640
-0200:9   0022
-0200:12   0000
-CNP: Obj 01e67790 changing from OBJ_CHEST_CLOSED(15) to OBJ_CHEST_OPEN(21), new dir = LEFT
-0200:19  TEXT  '\n'
-0200:22  0039 <MSG 
-0200:23  TEXT  'Opened the chest.'
-0200:42  003d <NOD 
-0200:43   0002
-0200:46   0000
-0200:51  000a <CLR 
-0200:52  TEXT  '\n'
-0200:55   0010
- >> music(10)
-./org/fanfale1.org: Org-02 detected
-0200:58  TEXT  'Got the =Polar Star=!'
-0200:81   0160
-0200:84  003d <NOD 
-0200:85   0000
-0200:88  0009 <CLO 
-0200:89  0042 <RMU 
+0200:6   1290
+0200:9  0039 <MSG 
+0200:10  TEXT  'Oho.'
+0200:16  003d <NOD 
+0200:17  000a <CLR 
+0200:18  TEXT  'A soldier from the surface?\nDidn't expect to see you\nhere...'
+0200:80  003d <NOD 
+0200:81  TEXT  '\nWhere are the others?'
+0200:105  003d <NOD 
+0200:106  000a <CLR 
+0200:107  TEXT  '.....'
+0200:114  003d <NOD 
+0200:115  000a <CLR 
+0200:116  TEXT  'What's that?\nYour memory's gone?'
+0200:150  003d <NOD 
+0200:151  TEXT  '\nHeh-heh-heh...'
+0200:168  003d <NOD 
+0200:169  0014 <END 
+  - Stopped script 0200
+  - Started script 0100
+0100:0  003f <PRI 
+0100:1   0004
+0100:4   0002
+******* Executing <TRA to stage 2
+  - Stopped script 0100
+ >> Entering stage 2: 'Egg Corridor'.
+load_map: level size 300x16
+load_map: 'data/Stage/Eggs.pxm' loaded OK! - 300x16
+load_pxa: reading in data/Stage/Eggs.pxa
+load_entities: reading in data/Stage/Eggs.pxe
+ -- Disappearing object 500 (OBJ_HVTRIGGER(46)) because flag 100 is set
+ -- Disappearing object 501 (OBJ_NPC_IGOR(83)) because flag 100 is set
+ -- Disappearing object 502 (OBJ_SUE(42)) because flag 100 is set
+tsc_load: loading 'data/Stage/Eggs.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0   0095
+0094:5  0032 <MNA 
+0094:6   0001
+ >> music(1)
+./org/egg.org: Org-02 detected
+0094:9   0004
+0094:12  0014 <END 
+  - Stopped script 0094
+  - Started script 0106
+0106:0  003f <PRI 
+0106:1   0011
+0106:4   0106
+DNP: 0161c920 (OBJ_DOOR(18)) deleted
+0106:7   0004
+0106:10   0012
+******* Executing <TRA to stage 22
+  - Stopped script 0106
+ >> Entering stage 22: 'Cthulhu's Abode'.
+load_map: level size 21x16
+load_map: 'data/Stage/Cthu.pxm' loaded OK! - 21x16
+load_pxa: reading in data/Stage/Store.pxa
+load_entities: reading in data/Stage/Cthu.pxe
+tsc_load: loading 'data/Stage/Cthu.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0  0032 <MNA 
+0094:1   0008
  >> music(8)
 ./org/gestation.org: Org-02 detected
-0200:90  TEXT  '\n'
-0200:93  0039 <MSG 
-0200:94  TEXT  '\nFrom somewhere, a transmission...'
-0200:130   0004
-0200:133  003d <NOD 
-0200:134   0000
-******* Executing <TRA to stage 18
-  - Stopped script 0200
- >> Entering stage 18: 'Shelter'.
-load_map: level size 21x16
-load_map: 'data/Stage/Shelt.pxm' loaded OK! - 21x16
-load_pxa: reading in data/Stage/Store.pxa
-load_entities: reading in data/Stage/Shelt.pxe
-tsc_load: loading 'data/Stage/Shelt.tsc' to page 1
+0094:4   0004
+0094:7  0014 <END 
+  - Stopped script 0094
+  - Started script 0016
+0016:0  003f <PRI 
+0016:1  0039 <MSG 
+0016:2  TEXT  '\nDo you want to save?'
+0016:25   0000
+0016:28   0431
+0016:31  0050 <SVP 
+Loading profile from profile.dat...
+Loading profile from profile2.dat...
+ error << profile_load: unable to open 'profile2.dat' >>
+Loading profile from profile3.dat...
+ error << profile_load: unable to open 'profile3.dat' >>
+Loading profile from profile4.dat...
+ error << profile_load: unable to open 'profile4.dat' >>
+Loading profile from profile5.dat...
+ error << profile_load: unable to open 'profile5.dat' >>
+game_save: writing savefile 0
+Writing settings...
+0016:32  000a <CLR 
+0016:33  TEXT  'Game saved.'
+0016:46  003d <NOD 
+0016:47  0014 <END 
+  - Stopped script 0016
+  - Started script 0100
+0100:0  003f <PRI 
+0100:1   0004
+0100:4   0002
+******* Executing <TRA to stage 2
+  - Stopped script 0100
+ >> Entering stage 2: 'Egg Corridor'.
+load_map: level size 300x16
+load_map: 'data/Stage/Eggs.pxm' loaded OK! - 300x16
+load_pxa: reading in data/Stage/Eggs.pxa
+load_entities: reading in data/Stage/Eggs.pxe
+ -- Disappearing object 500 (OBJ_HVTRIGGER(46)) because flag 100 is set
+ -- Disappearing object 501 (OBJ_NPC_IGOR(83)) because flag 100 is set
+ -- Disappearing object 502 (OBJ_SUE(42)) because flag 100 is set
+tsc_load: loading 'data/Stage/Eggs.tsc' to page 1
 StageBossManager::SetType(0)
--- Starting on-entry script 501
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0   0095
+0094:5  0032 <MNA 
+0094:6   0001
+ >> music(1)
+./org/egg.org: Org-02 detected
+0094:9   0004
+0094:12  0014 <END 
+  - Stopped script 0094
+  - Started script 0401
+0401:0  003f <PRI 
+0401:1   0102
+0401:4   0022
+0401:7   0401
+DNP: 01eb75c0 (OBJ_LIFE_CAPSULE(32)) deleted
+0401:10  000a <CLR 
+0401:11   0016
+ >> music(16)
+./org/fanfale3.org: Org-02 detected
+0401:14  TEXT  '\n'
+0401:17  0039 <MSG 
+0401:18   1006
+0401:21  TEXT  'Got a =Life Capsule=!'
+0401:44   0160
+0401:47  003d <NOD 
+0401:48  0042 <RMU 
+ >> music(1)
+./org/egg.org: Org-02 detected
+0401:49   0004
+0401:52  TEXT  '\nMax health increased by 4!'
+0401:81  003d <NOD 
+0401:82  0014 <END 
+  - Stopped script 0401
+  - Started script 0103
+0103:0  003f <PRI 
+0103:1   0004
+0103:4   0008
+******* Executing <TRA to stage 5
+  - Stopped script 0103
+ >> Entering stage 5: 'Egg Observation Room'.
+load_map: level size 21x16
+load_map: 'data/Stage/EggR.pxm' loaded OK! - 21x16
+load_pxa: reading in data/Stage/Store.pxa
+load_entities: reading in data/Stage/EggR.pxe
+tsc_load: loading 'data/Stage/EggR.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0  0032 <MNA 
+0094:1   0008
+ >> music(8)
+./org/gestation.org: Org-02 detected
+0094:4   0004
+0094:7  0014 <END 
+  - Stopped script 0094
+  - Started script 0016
+0016:0  003f <PRI 
+0016:1  0039 <MSG 
+0016:2  TEXT  '\nDo you want to save?'
+0016:25   0000
+0016:28   0431
+0016:31  0050 <SVP 
+Loading profile from profile.dat...
+Loading profile from profile2.dat...
+ error << profile_load: unable to open 'profile2.dat' >>
+Loading profile from profile3.dat...
+ error << profile_load: unable to open 'profile3.dat' >>
+Loading profile from profile4.dat...
+ error << profile_load: unable to open 'profile4.dat' >>
+Loading profile from profile5.dat...
+ error << profile_load: unable to open 'profile5.dat' >>
+game_save: writing savefile 0
+Writing settings...
+0016:32  000a <CLR 
+0016:33  TEXT  'Game saved.'
+0016:46  003d <NOD 
+0016:47  0014 <END 
+  - Stopped script 0016
+  - Started script 0200
+0200:0  002c <KEY 
+0200:1  0039 <MSG 
+0200:2  TEXT  'You find a note.'
+0200:20  003d <NOD 
+0200:21  000a <CLR 
+0200:22  0053 <TUR 
+0200:23  TEXT  'With the shield up, I can't\nget to No. 00's room.'
+0200:74  003d <NOD 
+0200:75  000a <CLR 
+0200:76  0053 <TUR 
+0200:77  TEXT  'I think one of these terminals\nought to be able to lower the\nshield...'
+0200:149  003d <NOD 
+0200:150  0014 <END 
+  - Stopped script 0200
+  - Started script 0508
+0508:0  003f <PRI 
+0508:1  0039 <MSG 
+0508:2  0053 <TUR 
+0508:3  TEXT  'Sky Dragon Egg No. 08\nCondition normal.'
+0508:44  003d <NOD 
+0508:45  0014 <END 
+  - Stopped script 0508
+  - Started script 0509
+0509:0  003f <PRI 
+0509:1  0039 <MSG 
+0509:2  0053 <TUR 
+0509:3  TEXT  'Sky Dragon Egg No. 09\nCondition normal.'
+0509:44  003d <NOD 
+0509:45  0014 <END 
+  - Stopped script 0509
+  - Started script 0507
+0507:0  003f <PRI 
+0507:1  0038 <MS3 
+0507:2  0053 <TUR 
+0507:3  TEXT  'Sky Dragon Egg No. 07\nCondition normal.'
+0507:44  003d <NOD 
+0507:45  0014 <END 
+  - Stopped script 0507
+  - Started script 0506
+0506:0  003f <PRI 
+0506:1  0038 <MS3 
+0506:2  0053 <TUR 
+0506:3  TEXT  'Sky Dragon Egg No. 06\nError: Egg's condition abnormal.\nAdvise investigation.'
+0506:81  003d <NOD 
+0506:82  0014 <END 
+  - Stopped script 0506
+  - Started script 0506
+0506:0  003f <PRI 
+0506:1  0038 <MS3 
+0506:2  0053 <TUR 
+0506:3  TEXT  'Sky Dragon Egg No. 06\nError: Egg's condition abnormal.\nAdvise investigation.'
+0506:81  003d <NOD 
+0506:82  0014 <END 
+  - Stopped script 0506
+  - Started script 0507
+0507:0  003f <PRI 
+0507:1  0038 <MS3 
+0507:2  0053 <TUR 
+0507:3  TEXT  'Sky Dragon Egg No. 07\nCondition normal.'
+0507:44  003d <NOD 
+0507:45  0014 <END 
+  - Stopped script 0507
+  - Started script 0504
+0504:0  003f <PRI 
+0504:1  0038 <MS3 
+0504:2  0053 <TUR 
+0504:3  TEXT  'Sky Dragon Egg No. 04\nCondition normal.'
+0504:44  003d <NOD 
+0504:45  0014 <END 
+  - Stopped script 0504
   - Started script 0501
-0501:0  002c <KEY 
-0501:1  0026 <HMC 
-0501:2   0021
- >> music(21)
-./org/access.org: Org-02 detected
-0501:5   0004
-0501:8  TEXT  '\n'
-0501:11  0039 <MSG 
-0501:12  0053 <TUR 
-0501:13  TEXT  'Searching for user "Sue"...'
-0501:42   0150
-0501:45  000a <CLR 
-0501:46  0053 <TUR 
-0501:47  TEXT  '1 user "Sue" found.'
-0501:68   0150
-0501:71  000a <CLR 
-0501:72  0039 <MSG 
-0501:73  TEXT  'Sue!'
-0501:79  003d <NOD 
-0501:80  TEXT  '\nPlease respond!'
-0501:98  003d <NOD 
-0501:99  TEXT  '\nThey're looking for you...'
-0501:128  003d <NOD 
-0501:129  TEXT  '\nAre you asleep?'
-0501:147  003d <NOD 
+0501:0  003f <PRI 
+0501:1  0038 <MS3 
+0501:2  0053 <TUR 
+0501:3  TEXT  'Sky Dragon Egg No. 01\nError: Egg's condition abnormal.\nAdvise investigation.'
+0501:81  003d <NOD 
+0501:82  0014 <END 
+  - Stopped script 0501
+  - Started script 0502
+0502:0  003f <PRI 
+0502:1  0038 <MS3 
+0502:2  0053 <TUR 
+0502:3  TEXT  'Sky Dragon Egg No. 02\nCondition normal.'
+0502:44  003d <NOD 
+0502:45  0014 <END 
+  - Stopped script 0502
+  - Started script 0503
+0503:0  003f <PRI 
+0503:1  0038 <MS3 
+0503:2  0053 <TUR 
+0503:3  TEXT  'Sky Dragon Egg No. 03\nCondition normal.'
+0503:44  003d <NOD 
+0503:45  0014 <END 
+  - Stopped script 0503
+  - Started script 0516
+0516:0  003f <PRI 
+0516:1  0039 <MSG 
+0516:2  0053 <TUR 
+0516:3  TEXT  'Sky Dragon Egg No. 16\nCondition normal.'
+0516:44  003d <NOD 
+0516:45  0014 <END 
+  - Stopped script 0516
+  - Started script 0300
+0300:0  003f <PRI 
+0300:1   0001
+0300:6   0200
+0300:9  TEXT  '\n'
+0300:12   0022
+0300:15   0000
+CNP: Obj 01eb7720 changing from OBJ_CHEST_CLOSED(15) to OBJ_CHEST_OPEN(21), new dir = LEFT
+0300:22  TEXT  '\n'
+0300:25  0039 <MSG 
+0300:26  TEXT  'Opened the treasure chest.'
+0300:54  003d <NOD 
+0300:55  000a <CLR 
+0300:56   0030
+JumpScript: moving to script #0030 page 1
+0030:0  003f <PRI 
+0030:1   0032
+0030:6   0031
+0030:11   0201
+0030:14   0005
+0030:17   0010
+0030:22  TEXT  '\n'
+0030:25   0010
+ >> music(10)
+./org/fanfale1.org: Org-02 detected
+0030:28  TEXT  'Got the =Missile Launcher=!'
+0030:57   0160
+0030:60  003d <NOD 
+0030:61  0042 <RMU 
+ >> music(8)
+./org/gestation.org: Org-02 detected
+0030:62  000a <CLR 
+0030:63  TEXT  'The Missile Launcher is a powerful\nweapon, but its ammo is limited.'
+0030:132  003d <NOD 
+0030:133  TEXT  '\nYou can replenish your stockpile\nwith items dropped by enemies.'
+0030:199  003d <NOD 
+0030:200  0014 <END 
+  - Stopped script 0030
+  - Started script 0510
+0510:0  003f <PRI 
+0510:1  0039 <MSG 
+0510:2  0053 <TUR 
+0510:3  TEXT  'Sky Dragon Egg No. 10\nCondition normal.'
+0510:44  003d <NOD 
+0510:45  0014 <END 
+  - Stopped script 0510
+  - Started script 0511
+0511:0  003f <PRI 
+0511:1  0039 <MSG 
+0511:2  0053 <TUR 
+0511:3  TEXT  'Sky Dragon Egg No. 11\nCondition normal.'
+0511:44  003d <NOD 
+0511:45  0014 <END 
+  - Stopped script 0511
+  - Started script 0512
+0512:0  003f <PRI 
+0512:1  0039 <MSG 
+0512:2  0053 <TUR 
+0512:3  TEXT  'Sky Dragon Egg No. 12\nCondition normal.'
+0512:44  003d <NOD 
+0512:45  0014 <END 
+  - Stopped script 0512
+  - Started script 0513
+0513:0  003f <PRI 
+0513:1  0039 <MSG 
+0513:2  0053 <TUR 
+0513:3  TEXT  'Sky Dragon Egg No. 13\nCondition normal.'
+0513:44  003d <NOD 
+0513:45  0014 <END 
+  - Stopped script 0513
+  - Started script 0514
+0514:0  003f <PRI 
+0514:1  0039 <MSG 
+0514:2  0053 <TUR 
+0514:3  TEXT  'Sky Dragon Egg No. 14\nCondition normal.'
+0514:44  003d <NOD 
+0514:45  0014 <END 
+  - Stopped script 0514
+  - Started script 0515
+0515:0  003f <PRI 
+0515:1  0039 <MSG 
+0515:2  0053 <TUR 
+0515:3  TEXT  'Sky Dragon Egg No. 15\nCondition normal.'
+0515:44  003d <NOD 
+0515:45  0014 <END 
+  - Stopped script 0515
+  - Started script 0516
+0516:0  003f <PRI 
+0516:1  0039 <MSG 
+0516:2  0053 <TUR 
+0516:3  TEXT  'Sky Dragon Egg No. 16\nCondition normal.'
+0516:44  003d <NOD 
+0516:45  0014 <END 
+  - Stopped script 0516
+  - Started script 0508
+0508:0  003f <PRI 
+0508:1  0039 <MSG 
+0508:2  0053 <TUR 
+0508:3  TEXT  'Sky Dragon Egg No. 08\nCondition normal.'
+0508:44  003d <NOD 
+0508:45  0014 <END 
+  - Stopped script 0508
+  - Started script 0200
+0200:0  002c <KEY 
+0200:1  0039 <MSG 
+0200:2  TEXT  'You find a note.'
+0200:20  003d <NOD 
+0200:21  000a <CLR 
+0200:22  0053 <TUR 
+0200:23  TEXT  'With the shield up, I can't\nget to No. 00's room.'
+0200:74  003d <NOD 
+0200:75  000a <CLR 
+0200:76  0053 <TUR 
+0200:77  TEXT  'I think one of these terminals\nought to be able to lower the\nshield...'
+0200:149  003d <NOD 
+0200:150  0014 <END 
+  - Stopped script 0200
+  - Started script 0150
+0150:0  002c <KEY 
+0150:1  0039 <MSG 
+0150:2  TEXT  'Red petals are scattered about.'
+0150:35  003d <NOD 
+0150:36  0014 <END 
+  - Stopped script 0150
+  - Started script 0016
+0016:0  003f <PRI 
+0016:1  0039 <MSG 
+0016:2  TEXT  '\nDo you want to save?'
+0016:25   0000
+0016:28   0431
+0016:31  0050 <SVP 
+Loading profile from profile.dat...
+Loading profile from profile2.dat...
+ error << profile_load: unable to open 'profile2.dat' >>
+Loading profile from profile3.dat...
+ error << profile_load: unable to open 'profile3.dat' >>
+Loading profile from profile4.dat...
+ error << profile_load: unable to open 'profile4.dat' >>
+Loading profile from profile5.dat...
+ error << profile_load: unable to open 'profile5.dat' >>
+game_save: writing savefile 0
+Writing settings...
+0016:32  000a <CLR 
+0016:33  TEXT  'Game saved.'
+0016:46  003d <NOD 
+0016:47  0014 <END 
+  - Stopped script 0016
+  - Started script 0100
+0100:0  003f <PRI 
+0100:1   0004
+0100:4   0007
+******* Executing <TRA to stage 2
+  - Stopped script 0100
+ >> Entering stage 2: 'Egg Corridor'.
+load_map: level size 300x16
+load_map: 'data/Stage/Eggs.pxm' loaded OK! - 300x16
+load_pxa: reading in data/Stage/Eggs.pxa
+load_entities: reading in data/Stage/Eggs.pxe
+ -- Disappearing object 401 (OBJ_LIFE_CAPSULE(32)) because flag 102 is set
+ -- Disappearing object 500 (OBJ_HVTRIGGER(46)) because flag 100 is set
+ -- Disappearing object 501 (OBJ_NPC_IGOR(83)) because flag 100 is set
+ -- Disappearing object 502 (OBJ_SUE(42)) because flag 100 is set
+ -- Appearing object 00 (OBJ_HIDDEN_POWERUP(125)) because flag 201 is set
+ -- Appearing object 00 (OBJ_HIDDEN_POWERUP(125)) because flag 201 is set
+tsc_load: loading 'data/Stage/Eggs.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0   0095
+0094:5  0032 <MNA 
+0094:6   0001
+ >> music(1)
+./org/egg.org: Org-02 detected
+0094:9   0004
+0094:12  0014 <END 
+  - Stopped script 0094
+HVTrigger 0107 (0154b4f0) activated
+  - Started script 0107
+0107:0  003f <PRI 
+0107:1   0004
+0107:4   0008
+******* Executing <TRA to stage 23
+  - Stopped script 0107
+ >> Entering stage 23: 'Egg No. 01'.
+load_map: level size 21x16
+load_map: 'data/Stage/Egg1.pxm' loaded OK! - 21x16
+load_pxa: reading in data/Stage/EggIn.pxa
+load_entities: reading in data/Stage/Egg1.pxe
+ -- Appearing object 00 (OBJ_MISSILE(86)) because flag 201 is set
+tsc_load: loading 'data/Stage/Egg1.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0  0032 <MNA 
+0094:1   0000
+ >> music(0)
+0094:4   0004
+0094:7  0014 <END 
+  - Stopped script 0094
+  - Started script 0200
+0200:0  002c <KEY 
+0200:1   0202
+0200:6   0201
+0200:11  0053 <TUR 
+0200:12  0039 <MSG 
+0200:13  TEXT  'ID Card necessary to lower shield.'
+0200:49  003d <NOD 
+0200:50  0014 <END 
+  - Stopped script 0200
+Game minimized or lost focus--pausing...
+Focus regained, resuming play...
+  - Started script 0100
+0100:0  003f <PRI 
+0100:1   0004
+0100:4   0011
+******* Executing <TRA to stage 2
+  - Stopped script 0100
+ >> Entering stage 2: 'Egg Corridor'.
+load_map: level size 300x16
+load_map: 'data/Stage/Eggs.pxm' loaded OK! - 300x16
+load_pxa: reading in data/Stage/Eggs.pxa
+load_entities: reading in data/Stage/Eggs.pxe
+ -- Disappearing object 401 (OBJ_LIFE_CAPSULE(32)) because flag 102 is set
+ -- Disappearing object 500 (OBJ_HVTRIGGER(46)) because flag 100 is set
+ -- Disappearing object 501 (OBJ_NPC_IGOR(83)) because flag 100 is set
+ -- Disappearing object 502 (OBJ_SUE(42)) because flag 100 is set
+ -- Appearing object 00 (OBJ_HIDDEN_POWERUP(125)) because flag 201 is set
+ -- Appearing object 00 (OBJ_HIDDEN_POWERUP(125)) because flag 201 is set
+tsc_load: loading 'data/Stage/Eggs.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0   0095
+0094:5  0032 <MNA 
+0094:6   0001
+ >> music(1)
+./org/egg.org: Org-02 detected
+0094:9   0004
+0094:12  0014 <END 
+  - Stopped script 0094
+HVTrigger 0107 (01eb80e0) activated
+  - Started script 0107
+0107:0  003f <PRI 
+0107:1   0004
+0107:4   0008
+******* Executing <TRA to stage 23
+  - Stopped script 0107
+ >> Entering stage 23: 'Egg No. 01'.
+load_map: level size 21x16
+load_map: 'data/Stage/Egg1.pxm' loaded OK! - 21x16
+load_pxa: reading in data/Stage/EggIn.pxa
+load_entities: reading in data/Stage/Egg1.pxe
+ -- Appearing object 00 (OBJ_MISSILE(86)) because flag 201 is set
+tsc_load: loading 'data/Stage/Egg1.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0  0032 <MNA 
+0094:1   0000
+ >> music(0)
+0094:4   0004
+0094:7  0014 <END 
+  - Stopped script 0094
+  - Started script 0100
+0100:0  003f <PRI 
+0100:1   0004
+0100:4   0011
+******* Executing <TRA to stage 2
+  - Stopped script 0100
+ >> Entering stage 2: 'Egg Corridor'.
+load_map: level size 300x16
+load_map: 'data/Stage/Eggs.pxm' loaded OK! - 300x16
+load_pxa: reading in data/Stage/Eggs.pxa
+load_entities: reading in data/Stage/Eggs.pxe
+ -- Disappearing object 401 (OBJ_LIFE_CAPSULE(32)) because flag 102 is set
+ -- Disappearing object 500 (OBJ_HVTRIGGER(46)) because flag 100 is set
+ -- Disappearing object 501 (OBJ_NPC_IGOR(83)) because flag 100 is set
+ -- Disappearing object 502 (OBJ_SUE(42)) because flag 100 is set
+ -- Appearing object 00 (OBJ_HIDDEN_POWERUP(125)) because flag 201 is set
+ -- Appearing object 00 (OBJ_HIDDEN_POWERUP(125)) because flag 201 is set
+tsc_load: loading 'data/Stage/Eggs.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0   0095
+0094:5  0032 <MNA 
+0094:6   0001
+ >> music(1)
+./org/egg.org: Org-02 detected
+0094:9   0004
+0094:12  0014 <END 
+  - Stopped script 0094
+HVTrigger 0107 (01eb80e0) activated
+  - Started script 0107
+0107:0  003f <PRI 
+0107:1   0004
+0107:4   0008
+******* Executing <TRA to stage 23
+  - Stopped script 0107
+ >> Entering stage 23: 'Egg No. 01'.
+load_map: level size 21x16
+load_map: 'data/Stage/Egg1.pxm' loaded OK! - 21x16
+load_pxa: reading in data/Stage/EggIn.pxa
+load_entities: reading in data/Stage/Egg1.pxe
+ -- Appearing object 00 (OBJ_MISSILE(86)) because flag 201 is set
+tsc_load: loading 'data/Stage/Egg1.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0  0032 <MNA 
+0094:1   0000
+ >> music(0)
+0094:4   0004
+0094:7  0014 <END 
+  - Stopped script 0094
+  - Started script 0100
+0100:0  003f <PRI 
+0100:1   0004
+0100:4   0011
+******* Executing <TRA to stage 2
+  - Stopped script 0100
+ >> Entering stage 2: 'Egg Corridor'.
+load_map: level size 300x16
+load_map: 'data/Stage/Eggs.pxm' loaded OK! - 300x16
+load_pxa: reading in data/Stage/Eggs.pxa
+load_entities: reading in data/Stage/Eggs.pxe
+ -- Disappearing object 401 (OBJ_LIFE_CAPSULE(32)) because flag 102 is set
+ -- Disappearing object 500 (OBJ_HVTRIGGER(46)) because flag 100 is set
+ -- Disappearing object 501 (OBJ_NPC_IGOR(83)) because flag 100 is set
+ -- Disappearing object 502 (OBJ_SUE(42)) because flag 100 is set
+ -- Appearing object 00 (OBJ_HIDDEN_POWERUP(125)) because flag 201 is set
+ -- Appearing object 00 (OBJ_HIDDEN_POWERUP(125)) because flag 201 is set
+tsc_load: loading 'data/Stage/Eggs.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0   0095
+0094:5  0032 <MNA 
+0094:6   0001
+ >> music(1)
+./org/egg.org: Org-02 detected
+0094:9   0004
+0094:12  0014 <END 
+  - Stopped script 0094
+  - Started script 0103
+0103:0  003f <PRI 
+0103:1   0004
+0103:4   0008
+******* Executing <TRA to stage 5
+  - Stopped script 0103
+ >> Entering stage 5: 'Egg Observation Room'.
+load_map: level size 21x16
+load_map: 'data/Stage/EggR.pxm' loaded OK! - 21x16
+load_pxa: reading in data/Stage/Store.pxa
+load_entities: reading in data/Stage/EggR.pxe
+ -- Disappearing object 300 (OBJ_CHEST_CLOSED(15)) because flag 200 is set
+ -- Appearing object 01 (OBJ_CHEST_OPEN(21)) because flag 200 is set
+ -- Appearing object 00 (OBJ_MISSILE(86)) because flag 201 is set
+ -- Appearing object 00 (OBJ_MISSILE(86)) because flag 201 is set
+ -- Appearing object 00 (OBJ_MISSILE(86)) because flag 201 is set
+tsc_load: loading 'data/Stage/EggR.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0  0032 <MNA 
+0094:1   0008
+ >> music(8)
+./org/gestation.org: Org-02 detected
+0094:4   0004
+0094:7  0014 <END 
+  - Stopped script 0094
+  - Started script 0016
+0016:0  003f <PRI 
+0016:1  0039 <MSG 
+0016:2  TEXT  '\nDo you want to save?'
+0016:25   0000
+0016:28   0431
+0016:31  0050 <SVP 
+Loading profile from profile.dat...
+Loading profile from profile2.dat...
+ error << profile_load: unable to open 'profile2.dat' >>
+Loading profile from profile3.dat...
+ error << profile_load: unable to open 'profile3.dat' >>
+Loading profile from profile4.dat...
+ error << profile_load: unable to open 'profile4.dat' >>
+Loading profile from profile5.dat...
+ error << profile_load: unable to open 'profile5.dat' >>
+game_save: writing savefile 0
+Writing settings...
+0016:32  000a <CLR 
+0016:33  TEXT  'Game saved.'
+0016:46  003d <NOD 
+0016:47  0014 <END 
+  - Stopped script 0016
+  - Started script 0506
+0506:0  003f <PRI 
+0506:1  0038 <MS3 
+0506:2  0053 <TUR 
+0506:3  TEXT  'Sky Dragon Egg No. 06\nError: Egg's condition abnormal.\nAdvise investigation.'
+0506:81  003d <NOD 
+0506:82  0014 <END 
+  - Stopped script 0506
+  - Started script 0506
+0506:0  003f <PRI 
+0506:1  0038 <MS3 
+0506:2  0053 <TUR 
+0506:3  TEXT  'Sky Dragon Egg No. 06\nError: Egg's condition abnormal.\nAdvise investigation.'
+0506:81  003d <NOD 
+0506:82  0014 <END 
+  - Stopped script 0506
+  - Started script 0016
+0016:0  003f <PRI 
+0016:1  0039 <MSG 
+0016:2  TEXT  '\nDo you want to save?'
+0016:25   0000
+0016:28   0431
+0016:31  0050 <SVP 
+Loading profile from profile.dat...
+Loading profile from profile2.dat...
+ error << profile_load: unable to open 'profile2.dat' >>
+Loading profile from profile3.dat...
+ error << profile_load: unable to open 'profile3.dat' >>
+Loading profile from profile4.dat...
+ error << profile_load: unable to open 'profile4.dat' >>
+Loading profile from profile5.dat...
+ error << profile_load: unable to open 'profile5.dat' >>
+game_save: writing savefile 0
+Writing settings...
+0016:32  000a <CLR 
+0016:33  TEXT  'Game saved.'
+0016:46  003d <NOD 
+0016:47  0014 <END 
+  - Stopped script 0016
+  - Started script 0100
+0100:0  003f <PRI 
+0100:1   0004
+0100:4   0007
+******* Executing <TRA to stage 2
+  - Stopped script 0100
+ >> Entering stage 2: 'Egg Corridor'.
+load_map: level size 300x16
+load_map: 'data/Stage/Eggs.pxm' loaded OK! - 300x16
+load_pxa: reading in data/Stage/Eggs.pxa
+load_entities: reading in data/Stage/Eggs.pxe
+ -- Disappearing object 401 (OBJ_LIFE_CAPSULE(32)) because flag 102 is set
+ -- Disappearing object 500 (OBJ_HVTRIGGER(46)) because flag 100 is set
+ -- Disappearing object 501 (OBJ_NPC_IGOR(83)) because flag 100 is set
+ -- Disappearing object 502 (OBJ_SUE(42)) because flag 100 is set
+ -- Appearing object 00 (OBJ_HIDDEN_POWERUP(125)) because flag 201 is set
+ -- Appearing object 00 (OBJ_HIDDEN_POWERUP(125)) because flag 201 is set
+tsc_load: loading 'data/Stage/Eggs.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0   0095
+0094:5  0032 <MNA 
+0094:6   0001
+ >> music(1)
+./org/egg.org: Org-02 detected
+0094:9   0004
+0094:12  0014 <END 
+  - Stopped script 0094
+  - Started script 0040
+0040:0  002c <KEY 
+0040:1   0000
+ >> music(0)
+0040:4   0040
+0040:7  003f <PRI 
+0040:8   0040
+0040:11   0003
+ >> music(3)
+./org/gameover.org: Org-02 detected
+0040:14  TEXT  '\n'
+0040:17  0039 <MSG 
+0040:18  TEXT  '\nYou have died.'
+0040:35  003d <NOD 
+0040:36  000a <CLR 
+0040:37  TEXT  'Want to retry?'
+0040:53   0049
+0040:56  0009 <CLO 
+0040:57  TEXT  '\n'
+0040:60   0001
+0040:63   0050
+0040:66   0048
+JumpScript: moving to script #0048 page 0
+0048:0  0049 <SMC 
+0048:1  002d <LDP 
+0048:2  0014 <END 
+  - Stopped script 0048
+= Loading game =
+game_load: loading savefile 0
+Loading profile from profile.dat...
+ - Read Teleporter Slot 0: slotno=1 scriptno=6001
+ >> Entering stage 5: 'Egg Observation Room'.
+load_map: level size 21x16
+load_map: 'data/Stage/EggR.pxm' loaded OK! - 21x16
+load_pxa: reading in data/Stage/Store.pxa
+load_entities: reading in data/Stage/EggR.pxe
+ -- Disappearing object 300 (OBJ_CHEST_CLOSED(15)) because flag 200 is set
+ -- Appearing object 01 (OBJ_CHEST_OPEN(21)) because flag 200 is set
+ -- Appearing object 00 (OBJ_MISSILE(86)) because flag 201 is set
+ -- Appearing object 00 (OBJ_MISSILE(86)) because flag 201 is set
+ -- Appearing object 00 (OBJ_MISSILE(86)) because flag 201 is set
+tsc_load: loading 'data/Stage/EggR.tsc' to page 1
+ >> music(8)
+./org/gestation.org: Org-02 detected
+Replay::OnGameStarting()
+ error << LoadHeader: can't open file 'replay/rep7.dat' >>
+begin_record_next: starting record to slot 7
+begin_record('replay/rep7.dat')
+ error << profile_save: unable to open replay/rep7.dat >>
+StageBossManager::SetType(0)
+  - Started script 0100
+0100:0  003f <PRI 
+0100:1   0004
+0100:4   0007
+******* Executing <TRA to stage 2
+  - Stopped script 0100
+ >> Entering stage 2: 'Egg Corridor'.
+load_map: level size 300x16
+load_map: 'data/Stage/Eggs.pxm' loaded OK! - 300x16
+load_pxa: reading in data/Stage/Eggs.pxa
+load_entities: reading in data/Stage/Eggs.pxe
+ -- Disappearing object 401 (OBJ_LIFE_CAPSULE(32)) because flag 102 is set
+ -- Disappearing object 500 (OBJ_HVTRIGGER(46)) because flag 100 is set
+ -- Disappearing object 501 (OBJ_NPC_IGOR(83)) because flag 100 is set
+ -- Disappearing object 502 (OBJ_SUE(42)) because flag 100 is set
+ -- Appearing object 00 (OBJ_HIDDEN_POWERUP(125)) because flag 201 is set
+ -- Appearing object 00 (OBJ_HIDDEN_POWERUP(125)) because flag 201 is set
+tsc_load: loading 'data/Stage/Eggs.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0   0095
+0094:5  0032 <MNA 
+0094:6   0001
+ >> music(1)
+./org/egg.org: Org-02 detected
+0094:9   0004
+0094:12  0014 <END 
+  - Stopped script 0094
+  - Started script 0040
+0040:0  002c <KEY 
+0040:1   0000
+ >> music(0)
+0040:4   0040
+0040:7  003f <PRI 
+0040:8   0040
+0040:11   0003
+ >> music(3)
+./org/gameover.org: Org-02 detected
+0040:14  TEXT  '\n'
+0040:17  0039 <MSG 
+0040:18  TEXT  '\nYou have died.'
+0040:35  003d <NOD 
+0040:36  000a <CLR 
+0040:37  TEXT  'Want to retry?'
+0040:53   0049
+0040:56  0009 <CLO 
+0040:57  TEXT  '\n'
+0040:60   0001
+0040:63   0050
+0040:66   0048
+JumpScript: moving to script #0048 page 0
+0048:0  0049 <SMC 
+0048:1  002d <LDP 
+0048:2  0014 <END 
+  - Stopped script 0048
+= Loading game =
+game_load: loading savefile 0
+Loading profile from profile.dat...
+ - Read Teleporter Slot 0: slotno=1 scriptno=6001
+ >> Entering stage 5: 'Egg Observation Room'.
+load_map: level size 21x16
+load_map: 'data/Stage/EggR.pxm' loaded OK! - 21x16
+load_pxa: reading in data/Stage/Store.pxa
+load_entities: reading in data/Stage/EggR.pxe
+ -- Disappearing object 300 (OBJ_CHEST_CLOSED(15)) because flag 200 is set
+ -- Appearing object 01 (OBJ_CHEST_OPEN(21)) because flag 200 is set
+ -- Appearing object 00 (OBJ_MISSILE(86)) because flag 201 is set
+ -- Appearing object 00 (OBJ_MISSILE(86)) because flag 201 is set
+ -- Appearing object 00 (OBJ_MISSILE(86)) because flag 201 is set
+tsc_load: loading 'data/Stage/EggR.tsc' to page 1
+ >> music(8)
+./org/gestation.org: Org-02 detected
+Replay::OnGameStarting()
+ error << LoadHeader: can't open file 'replay/rep7.dat' >>
+begin_record_next: starting record to slot 7
+begin_record('replay/rep7.dat')
+ error << profile_save: unable to open replay/rep7.dat >>
+StageBossManager::SetType(0)
+  - Started script 0100
+0100:0  003f <PRI 
+0100:1   0004
+0100:4   0007
+******* Executing <TRA to stage 2
+  - Stopped script 0100
+ >> Entering stage 2: 'Egg Corridor'.
+load_map: level size 300x16
+load_map: 'data/Stage/Eggs.pxm' loaded OK! - 300x16
+load_pxa: reading in data/Stage/Eggs.pxa
+load_entities: reading in data/Stage/Eggs.pxe
+ -- Disappearing object 401 (OBJ_LIFE_CAPSULE(32)) because flag 102 is set
+ -- Disappearing object 500 (OBJ_HVTRIGGER(46)) because flag 100 is set
+ -- Disappearing object 501 (OBJ_NPC_IGOR(83)) because flag 100 is set
+ -- Disappearing object 502 (OBJ_SUE(42)) because flag 100 is set
+ -- Appearing object 00 (OBJ_HIDDEN_POWERUP(125)) because flag 201 is set
+ -- Appearing object 00 (OBJ_HIDDEN_POWERUP(125)) because flag 201 is set
+tsc_load: loading 'data/Stage/Eggs.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0   0095
+0094:5  0032 <MNA 
+0094:6   0001
+ >> music(1)
+./org/egg.org: Org-02 detected
+0094:9   0004
+0094:12  0014 <END 
+  - Stopped script 0094
+HVTrigger 0101 (01ebe470) activated
+  - Started script 0101
+0101:0  003f <PRI 
+0101:1   0004
+0101:4   0008
+******* Executing <TRA to stage 4
+  - Stopped script 0101
+ >> Entering stage 4: 'Egg No. 06'.
+load_map: level size 21x16
+load_map: 'data/Stage/Egg6.pxm' loaded OK! - 21x16
+load_pxa: reading in data/Stage/EggIn.pxa
+load_entities: reading in data/Stage/Egg6.pxe
+tsc_load: loading 'data/Stage/Egg6.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0  0032 <MNA 
+0094:1   0000
+ >> music(0)
+0094:4   0004
+0094:7  0014 <END 
+  - Stopped script 0094
+  - Started script 0200
+0200:0  003f <PRI 
+0200:1   0001
+0200:6   0140
+0200:9   0022
+0200:12   0000
+CNP: Obj 01581220 changing from OBJ_CHEST_CLOSED(15) to OBJ_CHEST_OPEN(21), new dir = LEFT
+0200:19  TEXT  '\n'
+0200:22  0039 <MSG 
+0200:23  TEXT  'Opened the treasure chest.'
+0200:51  003d <NOD 
+0200:52   1007
+0200:55   0007
+0200:58  000a <CLR 
+0200:59  TEXT  '\n'
+0200:62   0010
+ >> music(10)
+./org/fanfale1.org: Org-02 detected
+0200:65  TEXT  'Got the =ID Card=.'
+0200:85   0160
+0200:88  003d <NOD 
+0200:89  0042 <RMU 
+ >> music(0)
+0200:90  0014 <END 
+  - Stopped script 0200
+  - Started script 0100
+0100:0  003f <PRI 
+0100:1   0004
+0100:4   0010
+******* Executing <TRA to stage 2
+  - Stopped script 0100
+ >> Entering stage 2: 'Egg Corridor'.
+load_map: level size 300x16
+load_map: 'data/Stage/Eggs.pxm' loaded OK! - 300x16
+load_pxa: reading in data/Stage/Eggs.pxa
+load_entities: reading in data/Stage/Eggs.pxe
+ -- Disappearing object 401 (OBJ_LIFE_CAPSULE(32)) because flag 102 is set
+ -- Disappearing object 500 (OBJ_HVTRIGGER(46)) because flag 100 is set
+ -- Disappearing object 501 (OBJ_NPC_IGOR(83)) because flag 100 is set
+ -- Disappearing object 502 (OBJ_SUE(42)) because flag 100 is set
+ -- Appearing object 00 (OBJ_HIDDEN_POWERUP(125)) because flag 201 is set
+ -- Appearing object 00 (OBJ_HIDDEN_POWERUP(125)) because flag 201 is set
+tsc_load: loading 'data/Stage/Eggs.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0   0095
+0094:5  0032 <MNA 
+0094:6   0001
+ >> music(1)
+./org/egg.org: Org-02 detected
+0094:9   0004
+0094:12  0014 <END 
+  - Stopped script 0094
+  - Started script 0103
+0103:0  003f <PRI 
+0103:1   0004
+0103:4   0008
+******* Executing <TRA to stage 5
+  - Stopped script 0103
+ >> Entering stage 5: 'Egg Observation Room'.
+load_map: level size 21x16
+load_map: 'data/Stage/EggR.pxm' loaded OK! - 21x16
+load_pxa: reading in data/Stage/Store.pxa
+load_entities: reading in data/Stage/EggR.pxe
+ -- Disappearing object 300 (OBJ_CHEST_CLOSED(15)) because flag 200 is set
+ -- Appearing object 01 (OBJ_CHEST_OPEN(21)) because flag 200 is set
+ -- Appearing object 00 (OBJ_MISSILE(86)) because flag 201 is set
+ -- Appearing object 00 (OBJ_MISSILE(86)) because flag 201 is set
+ -- Appearing object 00 (OBJ_MISSILE(86)) because flag 201 is set
+tsc_load: loading 'data/Stage/EggR.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0  0032 <MNA 
+0094:1   0008
+ >> music(8)
+./org/gestation.org: Org-02 detected
+0094:4   0004
+0094:7  0014 <END 
+  - Stopped script 0094
+  - Started script 0016
+0016:0  003f <PRI 
+0016:1  0039 <MSG 
+0016:2  TEXT  '\nDo you want to save?'
+0016:25   0000
+0016:28   0431
+0016:31  0050 <SVP 
+Loading profile from profile.dat...
+Loading profile from profile2.dat...
+ error << profile_load: unable to open 'profile2.dat' >>
+Loading profile from profile3.dat...
+ error << profile_load: unable to open 'profile3.dat' >>
+Loading profile from profile4.dat...
+ error << profile_load: unable to open 'profile4.dat' >>
+Loading profile from profile5.dat...
+ error << profile_load: unable to open 'profile5.dat' >>
+game_save: writing savefile 0
+Writing settings...
+0016:32  000a <CLR 
+0016:33  TEXT  'Game saved.'
+0016:46  003d <NOD 
+0016:47  0014 <END 
+  - Stopped script 0016
+  - Started script 0100
+0100:0  003f <PRI 
+0100:1   0004
+0100:4   0007
+******* Executing <TRA to stage 2
+  - Stopped script 0100
+ >> Entering stage 2: 'Egg Corridor'.
+load_map: level size 300x16
+load_map: 'data/Stage/Eggs.pxm' loaded OK! - 300x16
+load_pxa: reading in data/Stage/Eggs.pxa
+load_entities: reading in data/Stage/Eggs.pxe
+ -- Disappearing object 401 (OBJ_LIFE_CAPSULE(32)) because flag 102 is set
+ -- Disappearing object 500 (OBJ_HVTRIGGER(46)) because flag 100 is set
+ -- Disappearing object 501 (OBJ_NPC_IGOR(83)) because flag 100 is set
+ -- Disappearing object 502 (OBJ_SUE(42)) because flag 100 is set
+ -- Appearing object 00 (OBJ_HIDDEN_POWERUP(125)) because flag 201 is set
+ -- Appearing object 00 (OBJ_HIDDEN_POWERUP(125)) because flag 201 is set
+tsc_load: loading 'data/Stage/Eggs.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0   0095
+0094:5  0032 <MNA 
+0094:6   0001
+ >> music(1)
+./org/egg.org: Org-02 detected
+0094:9   0004
+0094:12  0014 <END 
+  - Stopped script 0094
+HVTrigger 0107 (01581220) activated
+  - Started script 0107
+0107:0  003f <PRI 
+0107:1   0004
+0107:4   0008
+******* Executing <TRA to stage 23
+  - Stopped script 0107
+ >> Entering stage 23: 'Egg No. 01'.
+load_map: level size 21x16
+load_map: 'data/Stage/Egg1.pxm' loaded OK! - 21x16
+load_pxa: reading in data/Stage/EggIn.pxa
+load_entities: reading in data/Stage/Egg1.pxe
+ -- Appearing object 00 (OBJ_MISSILE(86)) because flag 201 is set
+tsc_load: loading 'data/Stage/Egg1.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0  0032 <MNA 
+0094:1   0000
+ >> music(0)
+0094:4   0004
+0094:7  0014 <END 
+  - Stopped script 0094
+  - Started script 0200
+0200:0  002c <KEY 
+0200:1   0202
+0200:6   0201
+JumpScript: moving to script #0201 page 1
+0201:0  002c <KEY 
+0201:1   0470
+0201:4  0039 <MSG 
+0201:5   1007
+0201:8  TEXT  'Inserted the =ID Card=.'
+0201:33  003d <NOD 
+0201:34   0000
+0201:37  000a <CLR 
+0201:38  TEXT  '\n'
+0201:41   0043
+0201:44  TEXT  'Shield lowered.'
+0201:61  003d <NOD 
+0201:62  0014 <END 
+  - Stopped script 0201
+  - Started script 0100
+0100:0  003f <PRI 
+0100:1   0004
+0100:4   0011
+******* Executing <TRA to stage 2
+  - Stopped script 0100
+ >> Entering stage 2: 'Egg Corridor'.
+load_map: level size 300x16
+load_map: 'data/Stage/Eggs.pxm' loaded OK! - 300x16
+load_pxa: reading in data/Stage/Eggs.pxa
+load_entities: reading in data/Stage/Eggs.pxe
+ -- Disappearing object 401 (OBJ_LIFE_CAPSULE(32)) because flag 102 is set
+ -- Disappearing object 500 (OBJ_HVTRIGGER(46)) because flag 100 is set
+ -- Disappearing object 501 (OBJ_NPC_IGOR(83)) because flag 100 is set
+ -- Disappearing object 502 (OBJ_SUE(42)) because flag 100 is set
+ -- Disappearing object 00 (OBJ_FORCEFIELD(13)) because flag 470 is set
+ -- Disappearing object 00 (OBJ_FORCEFIELD(13)) because flag 470 is set
+ -- Appearing object 00 (OBJ_HIDDEN_POWERUP(125)) because flag 201 is set
+ -- Appearing object 00 (OBJ_HIDDEN_POWERUP(125)) because flag 201 is set
+tsc_load: loading 'data/Stage/Eggs.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0   0095
+0094:5  0032 <MNA 
+0094:6   0001
+ >> music(1)
+./org/egg.org: Org-02 detected
+0094:9   0004
+0094:12  0014 <END 
+  - Stopped script 0094
+HVTrigger 0600 (01ec3b60) activated
+  - Started script 0600
+0600:0  002c <KEY 
+0600:1  0020 <FMU 
+org_fade
+0600:2   0058
+0600:5  0031 <MM0 
+0600:6   0002
+0600:9   0600
+DNP: 01ec3b60 (OBJ_HVTRIGGER(46)) deleted
+0600:12  TEXT  '\n'
+0600:15  0039 <MSG 
+0600:16   0012
+0600:19  TEXT  'GRRRR...'
+0600:29   0020
+0600:32  003d <NOD 
+0600:33  000a <CLR 
+0600:34  TEXT  'NO ONE MAY TOUCH MASTER'S\nPRECIOUS EGGS!'
+0600:76  003d <NOD 
+0600:77  0009 <CLO 
+0600:78  TEXT  '\n'
+0600:81   0004
+ >> music(4)
+./org/gravity.org: Org-02 detected
+0600:84  TEXT  '\n'
+0600:87   0000
+CNP: Obj 01ec3cb0 changing from [Type 0] to OBJ_FORCEFIELD(13), new dir = LEFT
+CNP: Obj 01ec3e00 changing from [Type 0] to OBJ_FORCEFIELD(13), new dir = LEFT
+0600:94  TEXT  '\n'
+0600:97   0000
+CNP: Obj 01ebeda0 changing from OBJ_NPC_IGOR(83) to OBJ_BOSS_IGOR(88), new dir = LEFT
+0600:104   0503
+ error << FindObjectByID2: ID2 0503 found: type OBJ_BOSS_IGOR(88); coords: (4612, 108) >>
+0600:107   0103
+0600:110  0014 <END 
+  - Stopped script 0600
+ForceSamplePos: WARNING: !!! truncated channel 6 from 15185 to 15168 samples !!!
+  - Started script 0503
+0503:0  002c <KEY 
+0503:1   0103
+0503:4   0016
+ error << FindObjectByID2: ID2 0503 found: type OBJ_BOSS_IGOR(88); coords: (4628, 108) >>
+0503:9  TEXT  '\n'
+0503:12   0000
+CNP: Obj 01ebeda0 changing from OBJ_BOSS_IGOR(88) to OBJ_BOSS_IGOR_DEFEATED(89), new dir = LEFT
+0503:19  TEXT  '\n'
+0503:22   0400
+0503:25   0015
+ >> music(15)
+./org/fanfale2.org: Org-02 detected
+0503:28  TEXT  '\n'
+0503:31   0016
+0503:34  0039 <MSG 
+0503:35  TEXT  '\nDefeated Igor!'
+0503:52   0140
+0503:55  003d <NOD 
+0503:56  TEXT  '\n'
+0503:59   0001
+ >> music(1)
+./org/egg.org: Org-02 detected
+0503:62  0014 <END 
+  - Stopped script 0503
+  - Started script 0110
+0110:0  003f <PRI 
+0110:1   0111
+0110:6  0039 <MSG 
+0110:7  TEXT  'It won't open...'
+0110:25  003d <NOD 
+0110:26  0014 <END 
+  - Stopped script 0110
+  - Started script 0108
+0108:0  003f <PRI 
+0108:1   0109
+JumpScript: moving to script #0109 page 1
+0109:0  003f <PRI 
+0109:1   0011
+0109:4   0108
+DNP: 01581c50 (OBJ_DOOR(18)) deleted
+0109:7   0004
+0109:10   0010
+******* Executing <TRA to stage 3
+  - Stopped script 0109
+ >> Entering stage 3: 'Egg No. 00'.
+load_map: level size 21x16
+load_map: 'data/Stage/EggX.pxm' loaded OK! - 21x16
+load_pxa: reading in data/Stage/EggX.pxa
+load_entities: reading in data/Stage/EggX.pxe
+tsc_load: loading 'data/Stage/EggX.tsc' to page 1
+ error << tsc_compile WARNING: duplicate script #0300; ignoring >>
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0   0095
+0094:5   0002
+ANP: Obj 015ebd90 (OBJ_SUE(42)): setting state: 10 and dir: RIGHT
+0094:12   0095
+JumpScript: moving to script #0095 page 1
+0095:0  0032 <MNA 
+0095:1   0014
+ >> music(14)
+./org/pulse.org: Org-02 detected
+0095:4   0004
+0095:7  0014 <END 
+  - Stopped script 0095
+  - Started script 0200
+0200:0   0210
+0200:5  TEXT  '\n'
+0200:8  002c <KEY 
+0200:9  TEXT  '\n'
+0200:12   0120
+0200:15   0105
+0200:18   0154
+0200:21   0155
+0200:24   0329
+0200:27   0106
+0200:30  TEXT  '\n'
+0200:33  0039 <MSG 
+0200:34  TEXT  '...Ergh.'
+0200:44  003d <NOD 
+0200:45  0009 <CLO 
+0200:46  TEXT  '\n'
+0200:49   0002
+0200:52   0050
+0200:55   0002
+0200:58  TEXT  '\n'
+0200:61  0039 <MSG 
+0200:62  TEXT  'Owww...'
+0200:71  003d <NOD 
+0200:72   0002
+ANP: Obj 015ebd90 (OBJ_SUE(42)): setting state: 11 and dir: RIGHT
+0200:79  000a <CLR 
+0200:80   0003
+0200:83  TEXT  'Woh-oh!\nHey, I'm not dead yet!'
+0200:115  003d <NOD 
+0200:116  TEXT  '\nYou're gonna eat it\nthis time!!'
+0200:150  003d <NOD 
+0200:151   0000
+0200:154  0009 <CLO 
+0200:155  TEXT  '\n'
+0200:158   0050
+0200:161   0002
+ANP: Obj 015ebd90 (OBJ_SUE(42)): setting state: 0 and dir: RIGHT
+0200:168  TEXT  '\n'
+0200:171  0039 <MSG 
+0200:172   0001
+0200:175  TEXT  'Huh?'
+0200:181   0050
+0200:184  003d <NOD 
+0200:185  TEXT  '\nI got creamed by that\nmonster...'
+0200:220   0000
+ANP: Obj 015ebd90 (OBJ_SUE(42)): setting state: 0 and dir: LEFT
+0200:227  003d <NOD 
+0200:228  000a <CLR 
+0200:229  TEXT  '.....'
+0200:236  003d <NOD 
+0200:237  TEXT  '\nDid you save me?'
+0200:256   0202
+0200:259   0201
+JumpScript: moving to script #0201 page 1
+0201:0   0003
+0201:3  TEXT  'I don't need your help!!'
+0201:29  003d <NOD 
+0201:30  000a <CLR 
+0201:31  TEXT  'I could handle him\nby myself! Somehow!'
+0201:71  003d <NOD 
+0201:72  TEXT  '\nGrr...I hate this stinking\nisland, and I hate every\nliving thing on it!'
+0201:146  003d <NOD 
+0201:147   0000
+0201:150  0009 <CLO 
+0201:151   0203
+JumpScript: moving to script #0203 page 1
+0203:0   0050
+0203:3  0039 <MSG 
+0203:4   0002
+ANP: Obj 015ebd90 (OBJ_SUE(42)): setting state: 5 and dir: RIGHT
+0203:11   0001
+0203:14  TEXT  'Oh!'
+0203:19  003d <NOD 
+0203:20   0003
+0203:23  000a <CLR 
+0203:24  TEXT  'Look! It's...I think\nit's Number 00!'
+0203:62  003d <NOD 
+0203:63  000a <CLR 
+0203:64  TEXT  'This egg could be our\nticket off this island!'
+0203:111  003d <NOD 
+0203:112  0009 <CLO 
+0203:113   0000
+0203:116   0002
+0203:119  TEXT  '\n'
+0203:122   0002
+ANP: Obj 015ebd90 (OBJ_SUE(42)): setting state: 3 and dir: RIGHT
+0203:129   0030
+0203:132  TEXT  '\n'
+0203:135   0002
+ANP: Obj 015ebd90 (OBJ_SUE(42)): setting state: 5 and dir: RIGHT
+0203:142   0050
+0203:145  TEXT  '\n'
+0203:148  0039 <MSG 
+0203:149   0001
+0203:152  TEXT  'Egg condition: Normal!\nThat's what I like to\nhear!'
+0203:204  003d <NOD 
+0203:205  0009 <CLO 
+0203:206   0050
+0203:209   0043
+0203:212   0020
+0203:215   0000
+0203:218  TEXT  '\n'
+0203:221  0039 <MSG 
+0203:222   0002
+0203:225  TEXT  'Hm?'
+0203:230  003d <NOD 
+0203:231  TEXT  ' A password?'
+0203:245  003d <NOD 
+0203:246   0000
+0203:249  0009 <CLO 
+0203:250  TEXT  '\n'
+0203:253   0050
+0203:256  TEXT  '\n'
+0203:259   0000
+ANP: Obj 015ebd90 (OBJ_SUE(42)): setting state: 0 and dir: LEFT
+0203:266   0050
+0203:269  TEXT  '\n'
+0203:272  0039 <MSG 
+0203:273   0001
+0203:276  TEXT  'Looks like you need a\npassword to hatch this\negg.'
+0203:327  003d <NOD 
+0203:328  000a <CLR 
+0203:329   0002
+0203:332  TEXT  'Well, crud.'
+0203:345  003d <NOD 
+0203:346  000a <CLR 
+0203:347  TEXT  'If only my brother were\nhere, he'd set things\nstraight.'
+0203:404  003d <NOD 
+0203:405  000a <CLR 
+0203:406  TEXT  '.....'
+0203:413  003d <NOD 
+0203:414  000a <CLR 
+0203:415   0001
+0203:418  TEXT  'All right, looks like\nI'm done here for now.'
+0203:464  003d <NOD 
+0203:465  0009 <CLO 
+0203:466  TEXT  '\n'
+0203:469   0000
+ANP: Obj 015ebd90 (OBJ_SUE(42)): setting state: 3 and dir: LEFT
+0203:476   0126
+Game minimized or lost focus--pausing...
+Focus regained, resuming play...
+0203:479  TEXT  '\n'
+0203:482   0002
+ANP: Obj 015ebd90 (OBJ_SUE(42)): setting state: 0 and dir: RIGHT
+0203:489   0020
+0203:492  TEXT  '\n'
+0203:495  0039 <MSG 
+0203:496  TEXT  'Are you'
+0203:505   0000
+0203:508  TEXT  ' from around\nhere?'
+0203:528  003d <NOD 
+0203:529  000a <CLR 
+0203:530  TEXT  'Doesn't look like it,\ndoes it.'
+0203:562  003d <NOD 
+0203:563  TEXT  '\nThe words on your cap\nthere...'
+0203:596  003d <NOD 
+0203:597  TEXT  '\nThat's not a language\nthey have on this\nisland.'
+0203:647  003d <NOD 
+0203:648  000a <CLR 
+0203:649  TEXT  '\n...Did you get lost?'
+0203:672  003d <NOD 
+0203:673  000a <CLR 
+0203:674  TEXT  'That's okay.'
+0203:688  003d <NOD 
+0203:689  TEXT  '\nI'll let you come\nwith me.'
+0203:718  003d <NOD 
+0203:719  TEXT  '\nWe can get off this\ndump together.'
+0203:756  003d <NOD 
+0203:757  TEXT  '\nIn return, you're\ngonna help me.'
+0203:792  003d <NOD 
+0203:793  0009 <CLO 
+0203:794  TEXT  '\n'
+0203:797   0002
+ANP: Obj 015ebd90 (OBJ_SUE(42)): setting state: 5 and dir: RIGHT
+0203:804   0020
+0203:807  TEXT  '\n'
+0203:810   0011
+0203:813   0002
+ANP: Obj 015843f0 (OBJ_DOOR(18)): setting state: 0 and dir: RIGHT
+0203:820   0020
+0203:823  TEXT  '\n'
+0203:826   0000
+ANP: Obj 015843f0 (OBJ_DOOR(18)): setting state: 0 and dir: LEFT
+0203:833   0200
+DNP: 015ebd90 (OBJ_SUE(42)) deleted
+0203:836   0023
+0203:839  0014 <END 
+  - Stopped script 0203
+  - Started script 0100
+0100:0  003f <PRI 
+0100:1   0011
+0100:4   0100
+DNP: 015843f0 (OBJ_DOOR(18)) deleted
+0100:7   0004
+0100:10   0008
+******* Executing <TRA to stage 2
+  - Stopped script 0100
+ >> Entering stage 2: 'Egg Corridor'.
+load_map: level size 300x16
+load_map: 'data/Stage/Eggs.pxm' loaded OK! - 300x16
+load_pxa: reading in data/Stage/Eggs.pxa
+load_entities: reading in data/Stage/Eggs.pxe
+ -- Disappearing object 401 (OBJ_LIFE_CAPSULE(32)) because flag 102 is set
+ -- Disappearing object 503 (OBJ_NPC_IGOR(83)) because flag 103 is set
+ -- Disappearing object 500 (OBJ_HVTRIGGER(46)) because flag 100 is set
+ -- Disappearing object 501 (OBJ_NPC_IGOR(83)) because flag 100 is set
+ -- Disappearing object 502 (OBJ_SUE(42)) because flag 100 is set
+ -- Disappearing object 00 (OBJ_FORCEFIELD(13)) because flag 470 is set
+ -- Disappearing object 00 (OBJ_FORCEFIELD(13)) because flag 470 is set
+ -- Disappearing object 600 (OBJ_HVTRIGGER(46)) because flag 103 is set
+ -- Appearing object 00 (OBJ_HIDDEN_POWERUP(125)) because flag 201 is set
+ -- Appearing object 00 (OBJ_HIDDEN_POWERUP(125)) because flag 201 is set
+tsc_load: loading 'data/Stage/Eggs.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0   0095
+JumpScript: moving to script #0095 page 1
+0095:0  0032 <MNA 
+0095:1   0002
+ANP: Obj 01ebeda0 (OBJ_DOOR(18)): setting state: 0 and dir: RIGHT
+0095:8   0001
+ >> music(1)
+./org/egg.org: Org-02 detected
+0095:11   0004
+0095:14  0014 <END 
+  - Stopped script 0095
+  - Started script 0110
+0110:0  003f <PRI 
+0110:1   0111
+JumpScript: moving to script #0111 page 1
+0111:0  003f <PRI 
+0111:1   0110
+DNP: 01ebeda0 (OBJ_DOOR(18)) deleted
+0111:4   0004
+0111:7   0009
+******* Executing <TRA to stage 21
+  - Stopped script 0111
+ >> Entering stage 21: 'Side Room'.
+load_map: level size 21x16
+load_map: 'data/Stage/EgEnd1.pxm' loaded OK! - 21x16
+load_pxa: reading in data/Stage/Store.pxa
+load_entities: reading in data/Stage/EgEnd1.pxe
+tsc_load: loading 'data/Stage/EgEnd1.tsc' to page 1
+StageBossManager::SetType(0)
+-- Starting on-entry script 94
+  - Started script 0094
+0094:0  0032 <MNA 
+0094:1   0000
+ >> music(0)
+0094:4   0004
+0094:7  0014 <END 
+  - Stopped script 0094
+  - Started script 0016
+0016:0  003f <PRI 
+0016:1  0039 <MSG 
+0016:2  TEXT  '\nDo you want to save?'
+0016:25   0000
+0016:28   0431
+0016:31  0050 <SVP 
+Loading profile from profile.dat...
+Loading profile from profile2.dat...
+ error << profile_load: unable to open 'profile2.dat' >>
+Loading profile from profile3.dat...
+ error << profile_load: unable to open 'profile3.dat' >>
+Loading profile from profile4.dat...
+ error << profile_load: unable to open 'profile4.dat' >>
+Loading profile from profile5.dat...
+ error << profile_load: unable to open 'profile5.dat' >>
+game_save: writing savefile 0
+Writing settings...
+0016:32  000a <CLR 
+0016:33  TEXT  'Game saved.'
+0016:46  003d <NOD 
+0016:47  0014 <END 
+  - Stopped script 0016
 Setting pause: type 8 param 0
 Graphics::Close()

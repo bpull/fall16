@@ -97,7 +97,7 @@ class Scene:
                 y = row - (self.rows/2)
                 z = self.M[row][col]
 
-                color = z*0.1 + 0.3
+                color = z*(0.7/8) + 0.3
                 glColor3f(color, color, color)
                 glVertex3f(x, y, -z)
 
@@ -105,7 +105,7 @@ class Scene:
                 y = row     - (self.rows/2)
                 z = self.M[row][col+1]
 
-                color = z*0.1 + 0.3
+                color = z*(0.7/8) + 0.3
                 glColor3f(color, color, color)
                 glVertex3f(x, y, -z)
 
@@ -114,7 +114,7 @@ class Scene:
                 y = (row+1) - (self.rows/2)
                 z = self.M[row+1][col]
 
-                color = z*0.1 + 0.3
+                color = z*(0.7/8) + 0.3
                 glColor3f(color, color, color)
                 glVertex3f(x, y, -z)
 
@@ -125,7 +125,7 @@ class Scene:
                 y = (row+1) - (self.rows/2)
                 z = self.M[row+1][col+1]
 
-                color = z*0.1 + 0.3
+                color = z*(0.7/8) + 0.3
                 glColor3f(color, color, color)
                 glVertex3f(x, y, -z)
 
@@ -133,7 +133,7 @@ class Scene:
                 y = (row+1) - (self.rows/2)
                 z = self.M[row+1][col]
 
-                color = z*0.1 + 0.3
+                color = z*(0.7/8) + 0.3
                 glColor3f(color, color, color)
                 glVertex3f(x, y, -z)
 
@@ -141,7 +141,7 @@ class Scene:
                 y = row     - (self.rows/2)
                 z = self.M[row][col+1]
 
-                color = z*0.1 + 0.3
+                color = z*(0.7/8) + 0.3
                 glColor3f(color, color, color)
                 glVertex3f(x, y, -z)
 

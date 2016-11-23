@@ -57,16 +57,17 @@ class Scene:
         self.lastX = 0
         self.lastY = 0
         self.threshold = 6.5
-        self.rows = 40
-        self.cols = 40
-        self.radius = 20
+        self.rows = 10
+        self.cols = 10
+        self.M = makeTopoMap.get_matrix(rows=10, cols=10, seed=11317, maxval=8)
+        self.colors = [(8,48,107), (8,81,156), (33, 113, 181), (66, 146, 198), (107, 174, 214), (158, 202, 225), (198, 219, 239), (222, 235, 247), (247, 251, 255)]
 
         glutInit(sys.argv)
         glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGB|GLUT_DEPTH)
         #glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB|GLUT_DEPTH)
         glutInitWindowPosition(100,50)
         glutInitWindowSize(self.width, self.height)
-        glutCreateWindow("Lab 10 - Part 3")
+        glutCreateWindow("Color Scheme")
         glutDisplayFunc(self.display)
         glMatrixMode(GL_PROJECTION)
         glLoadIdentity()
@@ -79,61 +80,52 @@ class Scene:
         glutMotionFunc(self.motion)
         glutMainLoop()
 
-    def drange(self, start, stop, step):
-        r = start
-        while r < stop:
-            yield r
-            r += step
-
     # Build the scene
     def display(self):
         glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
 
         glPushMatrix()
-        gluLookAt(40*math.cos(self.angle)*math.cos(self.up), 40*math.sin(self.up), 40*math.sin(self.angle)*math.cos(self.up), 0.0, 0.0, 0.0, 0.0, -1.0, 0.0)
+        gluLookAt((self.rows+10)*math.cos(self.angle)*math.cos(self.up), (self.rows+10)*math.sin(self.up), (self.rows+10)*math.sin(self.angle)*math.cos(self.up), 0.0, 0.0, 0.0, 0.0, -1.0, 0.0)
 
 
-        for row in self.drange(0, 40, 0.1):
-            for col in self.drange(0, 40, 0.1):
+        for row in range(self.rows-1):
+            for col in range(self.cols-1):
 
                 glColor3f(1,1,1)
                 glBegin(GL_TRIANGLES)
 
                 x = col - (self.cols/2)
                 y = row - (self.rows/2)
-                x2y2 = pow(x,2) + pow(y,2)
-                if x2y2 >= pow(20,2):
-                    z = 0
-                else:
-                    z = math.sqrt(400 - pow(x,2) - pow(y,2))
+                z = self.M[row][col]
 
-                color = z*(0.7/20) + 0.3
-                glColor3f(color, color, color)
+                r,g,b = self.colors[z]
+                r /= 255.0
+                g /= 255.0
+                b /= 255.0
+                glColor3f(r,g,b)
                 glVertex3f(x, y, -z)
 
                 x = (col+1) - (self.cols/2)
                 y = row     - (self.rows/2)
-                x2y2 = pow(x,2) + pow(y,2)
-                if x2y2 >= pow(20,2):
-                    z = 0
-                else:
-                    z = math.sqrt(400 - pow(x,2) - pow(y,2))
+                z = self.M[row][col+1]
 
-                color = z*(0.7/20) + 0.3
-                glColor3f(color, color, color)
+                r,g,b = self.colors[z]
+                r /= 255.0
+                g /= 255.0
+                b /= 255.0
+                glColor3f(r,g,b)
                 glVertex3f(x, y, -z)
 
 
                 x = col     - (self.cols/2)
                 y = (row+1) - (self.rows/2)
-                x2y2 = pow(x,2) + pow(y,2)
-                if x2y2 >= pow(20,2):
-                    z = 0
-                else:
-                    z = math.sqrt(400 - pow(x,2) - pow(y,2))
+                z = self.M[row+1][col]
 
-                color = z*(0.7/20) + 0.3
-                glColor3f(color, color, color)
+                r,g,b = self.colors[z]
+                r /= 255.0
+                g /= 255.0
+                b /= 255.0
+                glColor3f(r,g,b)
                 glVertex3f(x, y, -z)
 
                 glEnd()
@@ -141,38 +133,35 @@ class Scene:
 
                 x = (col+1) - (self.cols/2)
                 y = (row+1) - (self.rows/2)
-                x2y2 = pow(x,2) + pow(y,2)
-                if x2y2 >= pow(20,2):
-                    z = 0
-                else:
-                    z = math.sqrt(400 - pow(x,2) - pow(y,2))
+                z = self.M[row+1][col+1]
 
-                color = z*(0.7/20) + 0.3
-                glColor3f(color, color, color)
+                r,g,b = self.colors[z]
+                r /= 255.0
+                g /= 255.0
+                b /= 255.0
+                glColor3f(r,g,b)
                 glVertex3f(x, y, -z)
 
                 x = col     - (self.cols/2)
                 y = (row+1) - (self.rows/2)
-                x2y2 = pow(x,2) + pow(y,2)
-                if x2y2 >= pow(20,2):
-                    z = 0
-                else:
-                    z = math.sqrt(400 - pow(x,2) - pow(y,2))
+                z = self.M[row+1][col]
 
-                color = z*(0.7/20) + 0.3
-                glColor3f(color, color, color)
+                r,g,b = self.colors[z]
+                r /= 255.0
+                g /= 255.0
+                b /= 255.0
+                glColor3f(r,g,b)
                 glVertex3f(x, y, -z)
 
                 x = (col+1) - (self.cols/2)
                 y = row     - (self.rows/2)
-                x2y2 = pow(x,2) + pow(y,2)
-                if x2y2 >= pow(20,2):
-                    z = 0
-                else:
-                    z = math.sqrt(400 - pow(x,2) - pow(y,2))
+                z = self.M[row][col+1]
 
-                color = z*(0.7/20) + 0.3
-                glColor3f(color, color, color)
+                r,g,b = self.colors[z]
+                r /= 255.0
+                g /= 255.0
+                b /= 255.0
+                glColor3f(r,g,b)
                 glVertex3f(x, y, -z)
 
                 glEnd()

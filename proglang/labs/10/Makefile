@@ -1,6 +1,6 @@
 PROGS=spl
 IMPLS=ast.cpp
-HEADERS=value.hpp st.hpp colorout.hpp $(IMPLS:.cpp=.hpp)
+HEADERS=value.hpp st.hpp colorout.hpp regall.hpp $(IMPLS:.cpp=.hpp)
 CXX=clang++
 CPPFLAGS=-Wextra -Wno-sign-compare
 
