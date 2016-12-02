@@ -10,42 +10,96 @@ from OpenGL.GLUT import *
 
 class Scene:
 
-    def mouse(self, button, state, x, y):
-        print ("['mouse', "+str(button)+", "+str(state)+", "+str(x)+", "+str(y)+"]")
-        self.lastX = x
-        self.lastY = y
+
+    # arcball position function
+    def zxy(self,x,y,w,h):
+        if ((x - (w/2.0))**2 + (y - (h/2.0))**2) < ((h/2.0)**2):
+            return numpy.sqrt((h/2.0)**2 - (x - (w/2.0))**2 - (y - (h/2.0))**2)
+        return 0.01
+
+    # arcball angle determination
+    def vector_angle(self, p1, p2):
+        # Calculate the angle between the two vectors
+        theta = numpy.arccos((p1.dot(p2))/(numpy.linalg.norm(p2) * numpy.linalg.norm(p1)))
+        # Calculate the axis of rotation (u)
+        u = (numpy.cross(p1, p2) / (numpy.linalg.norm(p2) * numpy.linalg.norm(p1)))
+        return theta, u
+
+    # hit a key
+    def keyboard(self, key, x, y):
+        print(str(['keyboard-action', key, x, y]))
         glutPostRedisplay()
 
-    def motion(self, x, y):
-        self.angle += (math.pi/180)*(self.lastX - x)
-        self.up    += (math.pi/180)*(self.lastY - y)
-        print ("[(Xangle, Yangle), ("+str(self.angle)+", "+str(self.up)+")]")
-
-        self.lastX = x
-        self.lastY = y
-        glutPostRedisplay()
-
+    # hit a special key
     def keyboardSpecial(self, key, x, y):
-        if key == 102:
-            self.angle += .0174533
-        elif key == 100:
-            self.angle -= .0174533
-        if key == 104:
-            if self.stepSizeX > 1:
-                self.stepSizeX -= 1
-            if self.stepSizeY > 1:
-                self.stepSizeY -= 1
-        elif key == 105:
-            if self.stepSizeX <= 180:
-                self.stepSizeX += 1
-            if self.stepSizeY <= 180:
-                self.stepSizeY += 1
+        print(str(['keyboard-special-action', key, x, y]))
+        #glutPostRedisplay()
+
+    # Click the mouse
+    def mouse(self, button, state, x, y):
+        z = self.zxy(x,y,self.width, self.height)
+        x = -1.0 * (self.width/2.0 - x)
+        y = self.height/2.0 - y
+        if button == 0 and state == 0:
+            self.wr.append([0.0, numpy.array([0,0,0])])
+            self.P1 = numpy.array([x,y,z])
+
+    # The mouse is clicked and held down
+    # This is called no matter what button is being held down,
+    # So you will want to track which buttons are down.
+    def motion(self, x, y):
+        z = self.zxy(x,y,self.width, self.height)
+        x = -1.0 * (self.width/2.0 - x)
+        y = self.height/2.0 - y
+        self.P2 = numpy.array([x,y,z])
+        theta, u = self.vector_angle(self.P1, self.P2)
+        self.wr[-1] = [theta, u]
         glutPostRedisplay()
+
+    # def mouse(self, button, state, x, y):
+    #     print ("['mouse', "+str(button)+", "+str(state)+", "+str(x)+", "+str(y)+"]")
+    #     self.lastX = x
+    #     self.lastY = y
+    #     glutPostRedisplay()
+    #
+    # def motion(self, x, y):
+    #     self.angle += (math.pi/180)*(self.lastX - x)
+    #     self.up    += (math.pi/180)*(self.lastY - y)
+    #     print ("[(Xangle, Yangle), ("+str(self.angle)+", "+str(self.up)+")]")
+    #
+    #     self.lastX = x
+    #     self.lastY = y
+    #     glutPostRedisplay()
+    #
+    # def keyboardSpecial(self, key, x, y):
+    #     if key == 102:
+    #         self.angle += .0174533
+    #     elif key == 100:
+    #         self.angle -= .0174533
+    #     if key == 104:
+    #         if self.stepSizeX > 1:
+    #             self.stepSizeX -= 1
+    #         if self.stepSizeY > 1:
+    #             self.stepSizeY -= 1
+    #     elif key == 105:
+    #         if self.stepSizeX <= 180:
+    #             self.stepSizeX += 1
+    #         if self.stepSizeY <= 180:
+    #             self.stepSizeY += 1
+    #     glutPostRedisplay()
 
 
     def __init__(self):
-        self.width = 800
-        self.height = 800
+        self.width = 400
+        self.height = 400
+        self.camera = 10
+
+        self.P1 = numpy.array([0,0,0])
+        self.P2 = numpy.array([0,0,0])
+        self.theta = 0.0
+        self.u = numpy.array([0,0,0])
+        self.wr = []
+
         self.timeStep = 0
         self.timeStepSize = 0.02
         self.angle = -1.5708
@@ -83,9 +137,44 @@ class Scene:
     def display(self):
         glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
 
-        glPushMatrix()
-        gluLookAt((self.rows+10)*math.cos(self.angle)*math.cos(self.up), (self.rows+10)*math.sin(self.up), (self.rows+10)*math.sin(self.angle)*math.cos(self.up), 0.0, 0.0, 0.0, 0.0, -1.0, 0.0)
+        glColor3f(1.0, 1.0, 1.0)
 
+        glPushMatrix()
+
+        # Translate the world based on the arcball
+        glTranslatef(0.0,0.0,-self.camera)
+        for i in range(len(self.wr)-1,-1,-1):
+            r = self.wr[i]
+            glRotatef(numpy.degrees(r[0]), r[1][0], r[1][1], r[1][2])
+
+        # Working with the modelview matrix to determine current direction
+        mvm = glGetFloatv(GL_MODELVIEW_MATRIX)
+        mvm_x = mvm[:,0]
+        mvm_y = mvm[:,1]
+        mvm_z = mvm[:,2]
+        mvm_l = mvm[2]
+        mvm_u = mvm[1]
+        mvm_r = mvm[0]
+        mvm_c = mvm[3]
+        mvm_cC = mvm * numpy.array([mvm_c]).T
+        mvm_cC = mvm_cC[2]
+
+        print("\x1b[H\x1b[2J")
+        print('Modelview matrix=')
+        print(mvm)
+
+        print('')
+        print('Xaxis      ='+str(mvm_x))
+        print('Yaxis      ='+str(mvm_y))
+        print('Zaxis      ='+str(mvm_z))
+        print('')
+        print('RightVector='+str(numpy.rint(mvm_r)))
+        print('UpVector   ='+str(numpy.rint(mvm_u)))
+        print('LookVector ='+str(numpy.rint(mvm_l)))
+
+        print('')
+        print('Camera     ='+str(mvm_c))
+        print("Camera'    ="+str(mvm_cC))
 
         for row in range(self.rows-1):
             for col in range(self.cols-1):
