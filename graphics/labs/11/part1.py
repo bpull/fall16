@@ -1,13 +1,16 @@
 #!/usr/bin/python3
 
 # Load in Required libraries
-import numpy, math, time, random
+import numpy, time, sys
+from Particle import *
+
+sys.dont_write_bytecode = True
 
 # Our required libraries!
 from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
-from particle import *
+
 # Our new Scene Class
 class Scene:
 
@@ -20,38 +23,38 @@ class Scene:
     # arcball angle determination
     def vector_angle(self, p1, p2):
         # Calculate the angle between the two vectors
-        theta = numpy.arccos((p1.dot(p2))/(numpy.linalg.norm(p2) * numpy.linalg.norm(p1)))
+        tht = numpy.arccos((p1.dot(p2))/(numpy.linalg.norm(p2) * numpy.linalg.norm(p1)))
         # Calculate the axis of rotation (u)
         u = (numpy.cross(p1, p2) / (numpy.linalg.norm(p2) * numpy.linalg.norm(p1)))
-        return theta, u
-
-
+        return tht, u
 
     # Scene Initialization
     def __init__(self):
         self.width = 400
         self.height = 400
-        self.camera = 60
+        self.camera = 150
 
-        self.P1 = numpy.array([0,0,0])
-        self.P2 = numpy.array([0,0,0])
-        self.theta = 0.0
-        self.u = numpy.array([0,0,0])
-        self.wr = []
-        self.track = time.time()
-        self.trackStep = 0.02
-        self.timeStep = 0.01
-        self.Time = 0.0
         self.particles = []
 
         for i in range(0, 10000):
-            p = particle(numpy.array([0.0, 0.0, 0.0]), numpy.array([0.0, 0.0, 0.0]), numpy.array([0.0, -9.8, 0.0]), i)
+            p = Particle(numpy.array([0.0, 0.0, 0.0]), numpy.array([0.0, -9.8, 0.0]), i)
             self.particles.append(p)
+
+        self.last = time.time()
+        self.timeStep = 0.01
+        self.time = 0.0
+
+        #rotation variables
+        self.P1 = numpy.array([0,0,0])
+        self.P2 = numpy.array([0,0,0])
+        self.tht = 0.0
+        self.u = numpy.array([0,0,0])
+        self.wr = []
 
         glutInit(sys.argv)
         glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGB|GLUT_DEPTH)
         glutInitWindowSize(self.width, self.height)
-        glutCreateWindow("Lab 11")
+        glutCreateWindow("Lab 11 - Part 1")
         glutDisplayFunc(self.display)
         glutIdleFunc(self.idle)
         glutKeyboardFunc(self.keyboard)
@@ -60,18 +63,11 @@ class Scene:
         glutMotionFunc(self.motion)
         glMatrixMode(GL_PROJECTION)
         glLoadIdentity()
-        glFrustum(-5.0, 5.0, -5.0, 5.0, 5.0, 100.0)
+        glFrustum(-5.0, 5.0, -5.0, 5.0, 5.0, 200.0)
         glMatrixMode(GL_MODELVIEW)
         glLoadIdentity()
         glEnable(GL_DEPTH_TEST)
         glutMainLoop()
-
-
-    def idle(self):
-        if (time.time() - self.track) > self.trackStep:
-            self.track = time.time()
-            self.Time += self.timeStep
-            glutPostRedisplay()
 
     # hit a key
     def keyboard(self, key, x, y):
@@ -100,9 +96,15 @@ class Scene:
         x = -1.0 * (self.width/2.0 - x)
         y = self.height/2.0 - y
         self.P2 = numpy.array([x,y,z])
-        theta, u = self.vector_angle(self.P1, self.P2)
-        self.wr[-1] = [theta, u]
+        tht, u = self.vector_angle(self.P1, self.P2)
+        self.wr[-1] = [tht, u]
         glutPostRedisplay()
+
+    def idle(self):
+        if time.time() > self.last+self.timeStep:
+            self.last = time.time()
+            self.time += self.timeStep
+            glutPostRedisplay()
 
     # Build the scene
     def display(self):
@@ -118,25 +120,14 @@ class Scene:
             r = self.wr[i]
             glRotatef(numpy.degrees(r[0]), r[1][0], r[1][1], r[1][2])
 
-        # Working with the modelview matrix to determine current direction
-        mvm = glGetFloatv(GL_MODELVIEW_MATRIX)
-        mvm_x = mvm[:,0]
-        mvm_y = mvm[:,1]
-        mvm_z = mvm[:,2]
-        mvm_l = mvm[2]
-        mvm_u = mvm[1]
-        mvm_r = mvm[0]
-        mvm_c = mvm[3]
-        mvm_cC = mvm * numpy.array([mvm_c]).T
-        mvm_cC = mvm_cC[2]
 
+        #lets draw!
+        for part in self.particles:
+            part.drawMe(self.time)
 
-
+        # Lets put a cube in the middle!
         glColor3f(1.0, 1.0, 1.0)
         glutWireCube(20)
-
-        for i in range(0, 10000):
-            self.particles[i].draw(self.Time)
 
         glPopMatrix()
         glutSwapBuffers()
